@@ -1,0 +1,50 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class BoyStroller: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            FillIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M40 24H12L14.5 34H36L40 24Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M12 24L8 15H3.5")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            FillIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M23 8L32 24H40L44 13C41.6667 10 37 4 34 4C30 4 25.6667 6.66667 23 8Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M29 5L33 12")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

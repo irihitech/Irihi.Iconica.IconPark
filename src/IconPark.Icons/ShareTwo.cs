@@ -1,0 +1,22 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class ShareTwo: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            FillIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M26 4L44 22L26 39V28C12 28 6 43 6 43C6 26 11 15 26 15V4Z")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

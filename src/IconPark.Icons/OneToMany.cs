@@ -1,0 +1,58 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class OneToMany: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            FillIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = false,
+            InheritStrokeJoin = false,
+            Data = StreamGeometry.Parse(
+                "M42 7H6C4.89543 7 4 7.89543 4 9V39C4 40.1046 4.89543 41 6 41H42C43.1046 41 44 40.1046 44 39V9C44 7.89543 43.1046 7 42 7Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M11 20.5799L15 18V30")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M29 30V18L37 30V18")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M22 20V21")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M22 27V28")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

@@ -1,0 +1,59 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class HeadsetOne: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = -1,
+            FillIndex = 45,
+            InheritStrokeWidth = false,
+            InheritStrokeCap = false,
+            InheritStrokeJoin = false,
+            Data = StreamGeometry.Parse(
+                "M36 32C40.4183 32 44 28.4183 44 24C44 19.5817 40.4183 16 36 16")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = false,
+            InheritStrokeJoin = false,
+            Data = StreamGeometry.Parse(
+                "M36 32V32C40.4183 32 44 28.4183 44 24C44 19.5817 40.4183 16 36 16")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = -1,
+            FillIndex = 45,
+            InheritStrokeWidth = false,
+            InheritStrokeCap = false,
+            InheritStrokeJoin = false,
+            Data = StreamGeometry.Parse(
+                "M12 16C7.58172 16 4 19.5817 4 24C4 28.4183 7.58172 32 12 32")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = false,
+            InheritStrokeJoin = false,
+            Data = StreamGeometry.Parse(
+                "M12 16C7.58172 16 4 19.5817 4 24C4 28.4183 7.58172 32 12 32V32")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M12 32V31.5V29V24V16C12 9.37258 17.3726 4 24 4C30.6274 4 36 9.37258 36 16V32C36 38.6274 30.6274 44 24 44")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

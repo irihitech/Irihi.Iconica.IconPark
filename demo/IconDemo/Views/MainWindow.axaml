@@ -27,12 +27,8 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <WrapPanel>
-        <icons:Abdominal/>
-        <icons:Comments Mode="Line" LineCap="Round" LineJoin="Round"/>
-        <icons:Comments Mode="Fill" LineCap="Round" LineJoin="Round"/>
-        <icons:Comments Mode="TwoTone" LineCap="Round" LineJoin="Round"/>
-        <icons:Comments Mode="MultiColor" LineCap="Round" LineJoin="Round"/>
-    </WrapPanel>
+    <ListBox >
+        
+    </ListBox>
 
 </Window>

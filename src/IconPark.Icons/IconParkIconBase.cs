@@ -5,7 +5,7 @@ using Avalonia.Media;
 
 namespace IconPark.Icons;
 
-public abstract class IconParkIconBase : Control
+public abstract class IconParkIconBase : Avalonia.Controls.Control
 {
    
     public static readonly StyledProperty<IBrush?> OuterStrokeProperty =

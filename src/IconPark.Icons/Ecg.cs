@@ -1,0 +1,21 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class Ecg: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M4 22H8L12 11L17 37L23 20L27 28L34 15L38 29L40 22H44")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

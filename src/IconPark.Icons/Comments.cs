@@ -8,32 +8,38 @@ public class Comments: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 0,
+            StrokeIndex = 45,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
+            InheritStrokeJoin = true,
             Data = StreamGeometry.Parse(
                 "M33 38H22V30H36V22H44V38H39L36 41L33 38Z")
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 0,
-            FillIndex = 1,
+            StrokeIndex = 45,
+            FillIndex = 45,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
+            InheritStrokeJoin = true,
             Data = StreamGeometry.Parse(
                 "M4 6H36V30H17L13 34L9 30H4V6Z")
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 2,
+            StrokeIndex = 45,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
+            InheritStrokeJoin = true,
             Data = StreamGeometry.Parse(
                 "M12 22H18")
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 2,
+            StrokeIndex = 45,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
             Data = StreamGeometry.Parse(
                 "M12 14H24")
         },
