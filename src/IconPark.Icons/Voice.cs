@@ -1,0 +1,30 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class Voice: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M9 23C9 31.2843 15.7157 38 24 38C32.2843 38 39 31.2843 39 23")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M24 38V44")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

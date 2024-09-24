@@ -8,8 +8,8 @@ public class Dot: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 0,
+            FillIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,

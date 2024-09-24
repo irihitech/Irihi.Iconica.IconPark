@@ -1,0 +1,77 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class UsbMicroOne: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            FillIndex = 1,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M4 18C4 16.3431 5.34315 15 7 15H41C42.6569 15 44 16.3431 44 18V30C44 31.6569 42.6569 33 41 33H7C5.34315 33 4 31.6569 4 30V18Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 2,
+            FillIndex = 1,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M11 15H37V23H11V15Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 2,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M21 23V21")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 2,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M27 23V21")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 2,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M32 23V21")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 2,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M16 23V21")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M8 15L40 15")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

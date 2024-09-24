@@ -8,7 +8,7 @@ public class ListTwo: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -17,7 +17,7 @@ public class ListTwo: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -26,7 +26,7 @@ public class ListTwo: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -35,7 +35,7 @@ public class ListTwo: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -44,7 +44,7 @@ public class ListTwo: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -53,7 +53,7 @@ public class ListTwo: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,

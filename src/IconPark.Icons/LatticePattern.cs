@@ -8,7 +8,7 @@ public class LatticePattern: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -17,7 +17,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -26,7 +26,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -35,7 +35,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -44,7 +44,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -53,7 +53,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -62,7 +62,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -71,7 +71,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -80,7 +80,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -89,7 +89,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -98,7 +98,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -107,7 +107,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -116,7 +116,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -125,7 +125,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -134,7 +134,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -143,7 +143,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -152,7 +152,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -161,7 +161,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -170,7 +170,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -179,7 +179,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -188,7 +188,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -197,7 +197,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -206,7 +206,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -215,7 +215,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -224,7 +224,7 @@ public class LatticePattern: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,

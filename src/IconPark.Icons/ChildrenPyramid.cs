@@ -8,8 +8,8 @@ public class ChildrenPyramid: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 0,
+            FillIndex = 1,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -18,8 +18,8 @@ public class ChildrenPyramid: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 0,
+            FillIndex = 1,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -28,7 +28,7 @@ public class ChildrenPyramid: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -37,7 +37,7 @@ public class ChildrenPyramid: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,

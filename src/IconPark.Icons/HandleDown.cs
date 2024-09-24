@@ -8,8 +8,8 @@ public class HandleDown: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 2,
+            FillIndex = 3,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,

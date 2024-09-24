@@ -1,0 +1,49 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class UsbOne: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            FillIndex = 1,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = false,
+            InheritStrokeJoin = false,
+            Data = StreamGeometry.Parse(
+                "M42 21H6V42H42V21Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M14 21V6H34V21")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M20 12V14")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M28 12V14")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

@@ -1,0 +1,30 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class UTurnUp: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M13 14L13 33C13 39.0751 17.9249 44 24 44V44C30.0751 44 35 39.0751 35 33V4")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M30 9L35 4L40 9")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

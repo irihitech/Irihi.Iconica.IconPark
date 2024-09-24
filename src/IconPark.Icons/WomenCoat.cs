@@ -1,0 +1,39 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class WomenCoat: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M12 10C16 9 19 4 19 4H29C29 4 32 9.2 36 10L42 31H34V44H14V31H6L12 10Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M19 4L24 18L29 4")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M24 18L24 44")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

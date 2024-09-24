@@ -8,8 +8,8 @@ public class FilterOne: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 0,
+            FillIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -18,8 +18,8 @@ public class FilterOne: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 0,
+            FillIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -28,8 +28,8 @@ public class FilterOne: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 0,
+            FillIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,

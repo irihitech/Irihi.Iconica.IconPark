@@ -1,0 +1,67 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class ZoomInternal: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            FillIndex = 1,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = false,
+            InheritStrokeJoin = false,
+            Data = StreamGeometry.Parse(
+                "M44 4H4V44H44V4Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 2,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M16 4V16H4")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 2,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M36 24V36H24")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 2,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M36 36L24 24")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M4 6V26")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            InheritStrokeJoin = true,
+            Data = StreamGeometry.Parse(
+                "M7 4H27")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

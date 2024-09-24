@@ -9,7 +9,7 @@ public class Customer: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 0,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -19,7 +19,7 @@ public class Customer: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 0,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -29,7 +29,7 @@ public class Customer: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 0,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,

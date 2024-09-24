@@ -8,8 +8,8 @@ public class Jewelry: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 2,
+            FillIndex = 3,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -18,7 +18,7 @@ public class Jewelry: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 2,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -27,7 +27,7 @@ public class Jewelry: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 2,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,

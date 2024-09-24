@@ -8,7 +8,7 @@ public class Perfume: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -18,7 +18,7 @@ public class Perfume: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 2,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,

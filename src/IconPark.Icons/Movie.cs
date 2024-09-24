@@ -8,8 +8,8 @@ public class Movie: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 0,
+            FillIndex = 1,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -18,8 +18,8 @@ public class Movie: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 2,
+            FillIndex = 3,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -28,8 +28,8 @@ public class Movie: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 2,
+            FillIndex = 3,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -38,8 +38,8 @@ public class Movie: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 2,
+            FillIndex = 3,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -48,8 +48,8 @@ public class Movie: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 2,
+            FillIndex = 3,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -58,7 +58,7 @@ public class Movie: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,

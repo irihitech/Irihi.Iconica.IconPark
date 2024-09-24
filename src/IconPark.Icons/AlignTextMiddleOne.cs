@@ -8,7 +8,7 @@ public class AlignTextMiddleOne: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 2,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -17,7 +17,7 @@ public class AlignTextMiddleOne: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 2,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,

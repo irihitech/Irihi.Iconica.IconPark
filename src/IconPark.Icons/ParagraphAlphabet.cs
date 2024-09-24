@@ -8,7 +8,7 @@ public class ParagraphAlphabet: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -17,7 +17,7 @@ public class ParagraphAlphabet: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -26,7 +26,7 @@ public class ParagraphAlphabet: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -35,7 +35,7 @@ public class ParagraphAlphabet: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -45,7 +45,7 @@ public class ParagraphAlphabet: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -54,7 +54,7 @@ public class ParagraphAlphabet: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,

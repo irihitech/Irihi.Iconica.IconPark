@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:icons="clr-namespace:IconPark.Icons;assembly=IconPark.Icons"
+        xmlns:dataTemplates="clr-namespace:IconDemo.DataTemplates"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="IconDemo.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -18,6 +19,7 @@
             <Setter Property="InnerFill" Value="#43CCF8"/>
             <Setter Property="Width" Value="48"/>
             <Setter Property="Height" Value="48"/>
+            <Setter Property="Mode" Value="MultiColor"/>
         </Style>
     </Window.Styles>
 
@@ -27,8 +29,18 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <ListBox >
-        
-    </ListBox>
+    <Grid RowDefinitions="Auto, *">
+        <Button Grid.Row="0" Command="{Binding LoadCommand}"></Button>
+        <ListBox Grid.Row="1" ItemsSource="{Binding IconNames}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <dataTemplates:IconDataTemplate/>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
 
 </Window>

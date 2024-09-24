@@ -8,8 +8,8 @@ public class SunOne: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 0,
+            FillIndex = 1,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -19,7 +19,7 @@ public class SunOne: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 0,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -29,7 +29,7 @@ public class SunOne: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 0,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -39,7 +39,7 @@ public class SunOne: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 0,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -49,7 +49,7 @@ public class SunOne: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 0,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -59,7 +59,7 @@ public class SunOne: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 0,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -69,7 +69,7 @@ public class SunOne: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 0,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -79,7 +79,7 @@ public class SunOne: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 0,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -89,7 +89,7 @@ public class SunOne: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 0,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,

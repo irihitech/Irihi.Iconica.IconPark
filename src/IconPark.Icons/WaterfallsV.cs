@@ -1,0 +1,52 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class WaterfallsV: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            FillIndex = 1,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = false,
+            InheritStrokeJoin = false,
+            Data = StreamGeometry.Parse(
+                "M23 20L23 6L6 6L6 20L23 20Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            FillIndex = 1,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = false,
+            InheritStrokeJoin = false,
+            Data = StreamGeometry.Parse(
+                "M42 42V28L25 28L25 42H42Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            FillIndex = 1,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = false,
+            InheritStrokeJoin = false,
+            Data = StreamGeometry.Parse(
+                "M31 6V20H42V6H31Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            FillIndex = 1,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = false,
+            InheritStrokeJoin = false,
+            Data = StreamGeometry.Parse(
+                "M6 28L6 42H17V28H6Z")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

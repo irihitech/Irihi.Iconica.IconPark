@@ -8,8 +8,8 @@ public class Cpu: IconParkIconBase
     [
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 0,
+            FillIndex = 1,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -18,8 +18,8 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
-            FillIndex = 45,
+            StrokeIndex = 2,
+            FillIndex = 3,
             InheritStrokeWidth = true,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -29,7 +29,7 @@ public class Cpu: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -38,7 +38,7 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -48,7 +48,7 @@ public class Cpu: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -57,7 +57,7 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -67,7 +67,7 @@ public class Cpu: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -76,7 +76,7 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -86,7 +86,7 @@ public class Cpu: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -95,7 +95,7 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -105,7 +105,7 @@ public class Cpu: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -114,7 +114,7 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -124,7 +124,7 @@ public class Cpu: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -133,7 +133,7 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -143,7 +143,7 @@ public class Cpu: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -152,7 +152,7 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -162,7 +162,7 @@ public class Cpu: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -171,7 +171,7 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -181,7 +181,7 @@ public class Cpu: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -190,7 +190,7 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -200,7 +200,7 @@ public class Cpu: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -209,7 +209,7 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -219,7 +219,7 @@ public class Cpu: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -228,7 +228,7 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
@@ -238,7 +238,7 @@ public class Cpu: IconParkIconBase
         new PathDrawingElement()
         {
             StrokeIndex = -1,
-            FillIndex = 45,
+            FillIndex = 1,
             InheritStrokeWidth = false,
             InheritStrokeCap = false,
             InheritStrokeJoin = false,
@@ -247,7 +247,7 @@ public class Cpu: IconParkIconBase
         },
         new PathDrawingElement()
         {
-            StrokeIndex = 45,
+            StrokeIndex = 0,
             InheritStrokeWidth = true,
             InheritStrokeCap = true,
             InheritStrokeJoin = true,
