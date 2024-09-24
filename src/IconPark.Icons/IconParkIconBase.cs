@@ -104,6 +104,49 @@ public abstract class IconParkIconBase : Control
     }
     
     protected abstract DrawingElement[]? DrawingData { get; }
+    private IBrush? GetBrush(int index)
+    {
+        if (Mode == IconMode.Line)
+        {
+            return index switch
+            {
+                0 => OuterStroke,
+                2 => OuterStroke,
+                _ => null,
+            };
+        }
+        if (Mode == IconMode.Fill)
+        {
+            return index switch
+            {
+                0 => OuterStroke,
+                1 => OuterStroke,
+                2 => Brushes.White,
+                3 => Brushes.White,
+                _ => null,
+            };
+        }
+
+        if (Mode == IconMode.TwoTone)
+        {
+            return index switch
+            {
+                0 => OuterStroke,
+                1 => OuterFill,
+                2 => OuterStroke,
+                3 => OuterFill,
+                _ => null
+            };
+        }
+        return index switch
+        {
+            0 => OuterStroke,
+            1 => OuterFill,
+            2 => InnerStroke,
+            3 => InnerFill,
+            _ => null
+        };
+    }
 
     public override void Render(DrawingContext context)
     {
@@ -112,12 +155,17 @@ public abstract class IconParkIconBase : Control
         {
             return;
         }
-
-        foreach (var element in DrawingData)
+        
+        var scale = new Vector(this.Bounds.Width / 48.0, this.Bounds.Height / 48.0);
+        using (context.PushTransform(Matrix.CreateScale(scale)))
         {
-            if (element is PathDrawingElement pde)
+            foreach (var element in DrawingData)
             {
-                context.DrawPathElement(pde, null, null);
+                if (element is PathDrawingElement pde)
+                {
+                    context.DrawPathElement(pde, GetBrush(element.FillIndex),
+                        new Pen(GetBrush(element.StrokeIndex), 4, lineCap: LineCap, lineJoin: LineJoin));
+                }
             }
         }
     }

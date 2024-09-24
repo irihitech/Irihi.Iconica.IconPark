@@ -3,11 +3,23 @@
         xmlns:vm="using:IconDemo.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:icons="clr-namespace:IconPark.Icons;assembly=IconPark.Icons"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="IconDemo.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="IconDemo">
+    
+    <Window.Styles>
+        <Style Selector=":is(icons|IconParkIconBase)">
+            <Setter Property="OuterStroke" Value="#333"/>
+            <Setter Property="InnerStroke" Value="#FFF"/>
+            <Setter Property="OuterFill" Value="#2F88FF"/>
+            <Setter Property="InnerFill" Value="#43CCF8"/>
+            <Setter Property="Width" Value="48"/>
+            <Setter Property="Height" Value="48"/>
+        </Style>
+    </Window.Styles>
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,6 +27,12 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <WrapPanel>
+        <icons:Abdominal/>
+        <icons:Comments Mode="Line" LineCap="Round" LineJoin="Round"/>
+        <icons:Comments Mode="Fill" LineCap="Round" LineJoin="Round"/>
+        <icons:Comments Mode="TwoTone" LineCap="Round" LineJoin="Round"/>
+        <icons:Comments Mode="MultiColor" LineCap="Round" LineJoin="Round"/>
+    </WrapPanel>
 
 </Window>

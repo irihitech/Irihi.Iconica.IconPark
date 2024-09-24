@@ -1,0 +1,43 @@
+using Avalonia.Media;
+
+namespace IconPark.Icons;
+
+public class Comments: IconParkIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            Data = StreamGeometry.Parse(
+                "M33 38H22V30H36V22H44V38H39L36 41L33 38Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            FillIndex = 1,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            Data = StreamGeometry.Parse(
+                "M4 6H36V30H17L13 34L9 30H4V6Z")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 2,
+            InheritStrokeWidth = true,
+            InheritStrokeCap = true,
+            Data = StreamGeometry.Parse(
+                "M12 22H18")
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 2,
+            Data = StreamGeometry.Parse(
+                "M12 14H24")
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

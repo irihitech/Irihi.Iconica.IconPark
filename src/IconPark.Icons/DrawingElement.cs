@@ -5,8 +5,8 @@ namespace IconPark.Icons;
 
 public abstract class DrawingElement
 {
-    public int StrokeIndex { get; set; }
-    public int FillIndex { get; set; }
+    public int StrokeIndex { get; set; } = -1;
+    public int FillIndex { get; set; } = -1;
     public bool InheritStrokeWidth { get; set; }
     public bool InheritStrokeCap { get; set; }
     public bool InheritStrokeJoin { get; set; }
