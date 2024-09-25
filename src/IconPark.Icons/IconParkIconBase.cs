@@ -1,13 +1,10 @@
-using System.Collections.Concurrent;
 using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Media;
 
 namespace IconPark.Icons;
 
 public abstract class IconParkIconBase : Avalonia.Controls.Control
 {
-   
     public static readonly StyledProperty<IBrush?> OuterStrokeProperty =
         AvaloniaProperty.Register<IconParkIconBase, IBrush?>(
             nameof(OuterStroke));
@@ -102,33 +99,29 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
         get => GetValue(BackgroundProperty);
         set => SetValue(BackgroundProperty, value);
     }
-    
+
     protected abstract DrawingElement[]? DrawingData { get; }
+
     private IBrush? GetBrush(int index)
     {
         if (Mode == IconMode.Line)
-        {
             return index switch
             {
                 0 => OuterStroke,
                 2 => OuterStroke,
-                _ => null,
+                _ => null
             };
-        }
         if (Mode == IconMode.Fill)
-        {
             return index switch
             {
                 0 => OuterStroke,
                 1 => OuterStroke,
                 2 => Brushes.White,
                 3 => Brushes.White,
-                _ => null,
+                _ => null
             };
-        }
 
         if (Mode == IconMode.TwoTone)
-        {
             return index switch
             {
                 0 => OuterStroke,
@@ -137,7 +130,6 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
                 3 => OuterFill,
                 _ => null
             };
-        }
         return index switch
         {
             0 => OuterStroke,
@@ -151,21 +143,25 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
     public override void Render(DrawingContext context)
     {
         base.Render(context);
-        if (DrawingData == null)
-        {
-            return;
-        }
-        
+        if (DrawingData == null) return;
+        Matrix.CreateRotation(1);
         var scale = new Vector(Bounds.Width / 48.0, Bounds.Height / 48.0);
         using (context.PushTransform(Matrix.CreateScale(scale)))
         {
             foreach (var element in DrawingData)
             {
                 if (element is PathDrawingElement pde)
-                {
                     context.DrawPathElement(pde, GetBrush(element.FillIndex),
                         new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin));
-                }
+                else if (element is EllipseDrawingElement ede)
+                    context.DrawEllipseElement(ede, GetBrush(element.FillIndex),
+                        new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin));
+                else if (element is LineDrawingElement lde)
+                    context.DrawLineElement(lde,
+                        new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin));
+                else if (element is RectDrawingElement rde)
+                    context.DrawRectElement(rde, GetBrush(element.FillIndex),
+                        new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin));
             }
         }
     }
