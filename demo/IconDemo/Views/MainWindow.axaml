@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:icons="clr-namespace:IconPark.Icons;assembly=IconPark.Icons"
         xmlns:dataTemplates="clr-namespace:IconDemo.DataTemplates"
+        xmlns:views="clr-namespace:IconDemo.Views"
         mc:Ignorable="d" d:DesignWidth="800"
         d:DesignHeight="450"
         x:Class="IconDemo.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
+        Name="root"
         Title="IconDemo">
 
     <Design.DataContext>
@@ -18,7 +20,7 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <Grid RowDefinitions="Auto, *">
+    <Grid RowDefinitions="Auto, Auto, *">
         <Grid.Styles>
             <Style Selector=":is(icons|IconParkIconBase)">
                 <Setter Property="Mode"
@@ -29,9 +31,17 @@
                         Value="{Binding #size.Value}" />
                 <Setter Property="StrokeWidth"
                         Value="{Binding #thickness.Value}" />
+                <Setter Property="OuterFill"
+                        Value="{Binding $parent[views:MainWindow].((vm:MainWindowViewModel)DataContext).OuterFillBrush}" />
+                <Setter Property="OuterStroke"
+                        Value="{Binding $parent[views:MainWindow].((vm:MainWindowViewModel)DataContext).OuterStrokeBrush}" />
+                <Setter Property="InnerFill"
+                        Value="{Binding $parent[views:MainWindow].((vm:MainWindowViewModel)DataContext).InnerFillBrush}" />
+                <Setter Property="InnerStroke"
+                        Value="{Binding $parent[views:MainWindow].((vm:MainWindowViewModel)DataContext).InnerStrokeBrush}" />
             </Style>
         </Grid.Styles>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" Margin="0 16">
             <Button Content="Load"
                     VerticalAlignment="Center"
                     Margin="8 0"
@@ -59,7 +69,28 @@
                     IsSnapToTickEnabled="True" />
         </StackPanel>
 
-        <ListBox Grid.Row="1"
+        <StackPanel Grid.Row="1" Orientation="Horizontal"
+                    Margin="0 16">
+            <TextBlock Text="OuterFill"
+                       VerticalAlignment="Center" />
+            <ColorPicker Color="{Binding OuterFillColor}"
+                         Margin="8 0" />
+            <TextBlock Text="OuterStroke"
+                       VerticalAlignment="Center" />
+            <ColorPicker Color="{Binding OuterStrokeColor}"
+                         Margin="8 0" />
+            <TextBlock Text="InnerFill"
+                       VerticalAlignment="Center" />
+            <ColorPicker Color="{Binding InnerFillColor}"
+                         Margin="8 0" />
+            <TextBlock Text="InnerStroke"
+                       VerticalAlignment="Center" />
+            <ColorPicker Color="{Binding InnerStrokeColor}"
+                         Margin="8 0" />
+            <Button Content="Reset Colors" Command="{Binding ResetCommand}"/>
+        </StackPanel>
+
+        <ListBox Grid.Row="2"
                  ItemsSource="{Binding IconNames}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
