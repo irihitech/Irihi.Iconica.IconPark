@@ -54,6 +54,7 @@
                        Margin="8 0" />
             <Slider Name="thickness"
                     Width="48" Minimum="1"
+                    VerticalAlignment="Center"
                     Maximum="4" TickFrequency="1"
                     IsSnapToTickEnabled="True" />
         </StackPanel>

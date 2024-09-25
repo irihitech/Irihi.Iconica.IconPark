@@ -27,11 +27,11 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
 
     public static readonly StyledProperty<PenLineCap> LineCapProperty =
         AvaloniaProperty.Register<IconParkIconBase, PenLineCap>(
-            nameof(LineCap));
+            nameof(LineCap), PenLineCap.Round);
 
     public static readonly StyledProperty<PenLineJoin> LineJoinProperty =
         AvaloniaProperty.Register<IconParkIconBase, PenLineJoin>(
-            nameof(LineJoin));
+            nameof(LineJoin), PenLineJoin.Round);
 
     public static readonly StyledProperty<IconMode> ModeProperty =
         AvaloniaProperty.Register<IconParkIconBase, IconMode>(
@@ -251,6 +251,8 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
     public override void Render(DrawingContext context)
     {
         base.Render(context);
+        if (Background is not null)
+            context.FillRectangle(Background, Bounds);
         if (DrawingData == null) return;
         var mode = Mode;
         Matrix.CreateRotation(1);
