@@ -7,23 +7,23 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
 {
     public static readonly StyledProperty<IBrush?> OuterStrokeProperty =
         AvaloniaProperty.Register<IconParkIconBase, IBrush?>(
-            nameof(OuterStroke));
+            nameof(OuterStroke), new SolidColorBrush(Color.Parse("#333")));
 
     public static readonly StyledProperty<IBrush?> OuterFillProperty =
         AvaloniaProperty.Register<IconParkIconBase, IBrush?>(
-            nameof(OuterFill));
+            nameof(OuterFill), new SolidColorBrush(Color.Parse("#2F88FF")));
 
     public static readonly StyledProperty<IBrush?> InnerStrokeProperty =
         AvaloniaProperty.Register<IconParkIconBase, IBrush?>(
-            nameof(InnerStroke));
+            nameof(InnerStroke), Brushes.White);
 
     public static readonly StyledProperty<IBrush?> InnerFillProperty =
         AvaloniaProperty.Register<IconParkIconBase, IBrush?>(
-            nameof(InnerFill));
+            nameof(InnerFill), new SolidColorBrush(Color.Parse("#43CCF8")));
 
     public static readonly StyledProperty<double> StrokeWidthProperty =
         AvaloniaProperty.Register<IconParkIconBase, double>(
-            nameof(StrokeWidth));
+            nameof(StrokeWidth), 4);
 
     public static readonly StyledProperty<PenLineCap> LineCapProperty =
         AvaloniaProperty.Register<IconParkIconBase, PenLineCap>(
@@ -48,6 +48,8 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
 
     static IconParkIconBase()
     {
+        WidthProperty.OverrideDefaultValue<IconParkIconBase>(24);
+        HeightProperty.OverrideDefaultValue<IconParkIconBase>(24);
         OuterFillProperty.Changed.AddClassHandler<IconParkIconBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 0));
         OuterStrokeProperty.Changed.AddClassHandler<IconParkIconBase, IBrush?>(
             (icon, e) => icon.InvalidateBrushes(e, 1));

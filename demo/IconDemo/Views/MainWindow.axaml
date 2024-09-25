@@ -5,46 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:icons="clr-namespace:IconPark.Icons;assembly=IconPark.Icons"
         xmlns:dataTemplates="clr-namespace:IconDemo.DataTemplates"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="800"
+        d:DesignHeight="450"
         x:Class="IconDemo.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="IconDemo">
-    
-    <Window.Styles>
-        <Style Selector=":is(icons|IconParkIconBase)">
-            <Setter Property="OuterStroke" Value="#333"/>
-            <Setter Property="InnerStroke" Value="#FFF"/>
-            <Setter Property="OuterFill" Value="#2F88FF"/>
-            <Setter Property="InnerFill" Value="#43CCF8" />
-            <Setter Property="Width" Value="48" />
-            <Setter Property="Height" Value="48" />
-            <Setter Property="LineCap" Value="Round" />
-            <Setter Property="LineJoin" Value="Round" />
-            <Setter Property="StrokeWidth" Value="2" />
-            <Setter Property="Mode" Value="Line"/>
-        </Style>
-    </Window.Styles>
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Design.DataContext>
 
     <Grid RowDefinitions="Auto, *">
-        <StackPanel>
-            <Button Content="Load" Command="{Binding LoadCommand}"/>
+        <Grid.Styles>
+            <Style Selector=":is(icons|IconParkIconBase)">
+                <Setter Property="Mode"
+                        Value="{Binding #mode.SelectedItem}" />
+                <Setter Property="Width"
+                        Value="{Binding #size.Value}" />
+                <Setter Property="Height"
+                        Value="{Binding #size.Value}" />
+                <Setter Property="StrokeWidth"
+                        Value="{Binding #thickness.Value}" />
+            </Style>
+        </Grid.Styles>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Load"
+                    VerticalAlignment="Center"
+                    Margin="8 0"
+                    Command="{Binding LoadCommand}" />
+            <ComboBox Name="mode"
+                      VerticalAlignment="Center"
+                      Margin="8 0"
+                      ItemsSource="{Binding Modes}"
+                      SelectedItem="{Binding SelectedMode}" />
+            <TextBlock Text="Size"
+                       VerticalAlignment="Center"
+                       Margin="8 0" />
+            <Slider Name="size" VerticalAlignment="Center"
+                    Value="24"
+                    Margin="8 0" Width="160" Minimum="12"
+                    Maximum="96" IsSnapToTickEnabled="True"
+                    TickFrequency="1" />
+            <TextBlock Text="Thickness"
+                       VerticalAlignment="Center"
+                       Margin="8 0" />
+            <Slider Name="thickness"
+                    Width="48" Minimum="1"
+                    Maximum="4" TickFrequency="1"
+                    IsSnapToTickEnabled="True" />
         </StackPanel>
-        
-        <ListBox Grid.Row="1" ItemsSource="{Binding IconNames}">
+
+        <ListBox Grid.Row="1"
+                 ItemsSource="{Binding IconNames}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel/>
+                    <WrapPanel />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
-                <dataTemplates:IconDataTemplate/>
+                <dataTemplates:IconDataTemplate />
             </ListBox.ItemTemplate>
         </ListBox>
     </Grid>
