@@ -48,9 +48,7 @@ static string GenerateDocument(string name, List<DrawingElement> drawingElements
             sb.AppendLine("            Data = StreamGeometry.Parse(");
             sb.AppendLine($"                \"{pathData.Data}\"),");
             if (!string.IsNullOrWhiteSpace(pathData.Transform))
-            {
                 sb.AppendLine($"            Transform = {CreateMatrix(pathData.Transform)},");
-            }
             sb.AppendLine("        },");
         }
         else if (element is EllipseDrawingElement ellipseData)
@@ -67,9 +65,7 @@ static string GenerateDocument(string name, List<DrawingElement> drawingElements
             sb.AppendLine($"            InheritStrokeCap = {ellipseData.InheritStrokeCap.ToString().ToLower()},");
             sb.AppendLine($"            InheritStrokeJoin = {ellipseData.InheritStrokeJoin.ToString().ToLower()},");
             if (!string.IsNullOrWhiteSpace(ellipseData.Transform))
-            {
                 sb.AppendLine($"            Transform = {CreateMatrix(ellipseData.Transform)},");
-            }
             sb.AppendLine("        },");
         }
         else if (element is LineDrawingElement lineData)
@@ -86,9 +82,7 @@ static string GenerateDocument(string name, List<DrawingElement> drawingElements
             sb.AppendLine($"            InheritStrokeCap = {lineData.InheritStrokeCap.ToString().ToLower()},");
             sb.AppendLine($"            InheritStrokeJoin = {lineData.InheritStrokeJoin.ToString().ToLower()},");
             if (!string.IsNullOrWhiteSpace(lineData.Transform))
-            {
                 sb.AppendLine($"            Transform = {CreateMatrix(lineData.Transform)},");
-            }
             sb.AppendLine("        },");
         }
         else if (element is RectDrawingElement rectData)
@@ -107,9 +101,7 @@ static string GenerateDocument(string name, List<DrawingElement> drawingElements
             sb.AppendLine($"            InheritStrokeCap = {rectData.InheritStrokeCap.ToString().ToLower()},");
             sb.AppendLine($"            InheritStrokeJoin = {rectData.InheritStrokeJoin.ToString().ToLower()},");
             if (!string.IsNullOrWhiteSpace(rectData.Transform))
-            {
                 sb.AppendLine($"            Transform = {CreateMatrix(rectData.Transform)},");
-            }
             sb.AppendLine("        },");
         }
     }
@@ -122,8 +114,10 @@ static string GenerateDocument(string name, List<DrawingElement> drawingElements
     return sb.ToString();
 }
 
+int index = 0;
 foreach (var fileName in fileNames)
 {
+    index++;
     try
     {
         var name = Path.GetFileNameWithoutExtension(fileName);
@@ -131,6 +125,8 @@ foreach (var fileName in fileNames)
         var match = Regex.Matches(fileContent, @"<svg\b[^>]*>([\s\S]*?)<\/svg>");
         var xmlDoc = new XmlDocument();
         var value = match.First().Value;
+        value = value.Replace("{{", "{");
+        value = value.Replace("}}", "}");
         value = value.Replace("{", "\"{");
         value = value.Replace("}", "}\"");
         xmlDoc.LoadXml(value);
@@ -189,10 +185,10 @@ foreach (var fileName in fileNames)
 
                 var ellipseData = new EllipseDrawingElement
                 {
-                    X = double.Parse(cx),
-                    Y = double.Parse(cy),
-                    RadiusX = double.Parse(r),
-                    RadiusY = double.Parse(r),
+                    X = cx.Length > 0 ? double.Parse(cx) : 0,
+                    Y = cy.Length > 0 ? double.Parse(cy) : 0,
+                    RadiusX = r.Length > 0 ? double.Parse(r) : 0,
+                    RadiusY = r.Length > 0 ? double.Parse(r) : 0,
                     FillIndex = fillIndex,
                     StrokeIndex = strokeIndex,
                     InheritStrokeWidth = inheritStrokeWidth,
@@ -221,10 +217,10 @@ foreach (var fileName in fileNames)
 
                 var ellipseData = new EllipseDrawingElement
                 {
-                    X = double.Parse(cx),
-                    Y = double.Parse(cy),
-                    RadiusX = double.Parse(rx),
-                    RadiusY = double.Parse(ry),
+                    X = cx.Length > 0 ? double.Parse(cx) : 0,
+                    Y = cy.Length > 0 ? double.Parse(cy) : 0,
+                    RadiusX = rx.Length > 0 ? double.Parse(rx) : 0,
+                    RadiusY = ry.Length > 0 ? double.Parse(ry) : 0,
                     FillIndex = fillIndex,
                     StrokeIndex = strokeIndex,
                     InheritStrokeWidth = inheritStrokeWidth,
@@ -255,10 +251,10 @@ foreach (var fileName in fileNames)
 
                 var rectData = new RectDrawingElement
                 {
-                    X = double.Parse(x),
-                    Y = double.Parse(y),
-                    Width = double.Parse(width),
-                    Height = double.Parse(height),
+                    X = x.Length > 0 ? double.Parse(x) : 0,
+                    Y = y.Length > 0 ? double.Parse(y) : 0,
+                    Width = width.Length > 0 ? double.Parse(width) : 0,
+                    Height = height.Length > 0 ? double.Parse(height) : 0,
                     Rx = rx.Length > 0 ? double.Parse(rx) : null,
                     Ry = ry.Length > 0 ? double.Parse(ry) : null,
                     FillIndex = fillIndex,
@@ -289,10 +285,10 @@ foreach (var fileName in fileNames)
 
                 var lineData = new LineDrawingElement
                 {
-                    X1 = double.Parse(x1),
-                    Y1 = double.Parse(y1),
-                    X2 = double.Parse(x2),
-                    Y2 = double.Parse(y2),
+                    X1 = x1.Length > 0 ? double.Parse(x1) : 0,
+                    Y1 = y1.Length > 0 ? double.Parse(y1) : 0,
+                    X2 = x2.Length > 0 ? double.Parse(x2) : 0,
+                    Y2 = y2.Length > 0 ? double.Parse(y2) : 0,
                     FillIndex = fillIndex,
                     StrokeIndex = strokeIndex,
                     InheritStrokeWidth = inheritStrokeWidth,
@@ -310,6 +306,8 @@ foreach (var fileName in fileNames)
 
         await File.WriteAllTextAsync(targetPath, sourceCode);
         Debug.Write(".");
+        if (index % 50 == 0)
+            Debug.WriteLine(string.Empty);
         // Debug.WriteLine($"Generated {name}.cs");
     }
     catch (Exception e)
@@ -322,10 +320,7 @@ foreach (var fileName in fileNames)
 
 static string? CreateMatrix(string? transformString)
 {
-    if (string.IsNullOrEmpty(transformString))
-    {
-        return null;
-    }
+    if (string.IsNullOrEmpty(transformString)) return null;
     if (transformString.StartsWith("matrix"))
     {
         var values = transformString.Split('(')[1].Split(')')[0].Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -337,20 +332,18 @@ static string? CreateMatrix(string? transformString)
         // values: angle, x, y
         var values = transformString.Split('(')[1].Split(')')[0].Split(' ', StringSplitOptions.RemoveEmptyEntries);
         if (values.Length == 1)
-        {
             return
                 $"Matrix.CreateRotation({values[0]})";
-        }
 
         var angle = double.Parse(values[0]);
         var x = double.Parse(values[1]);
         var y = double.Parse(values[2]);
 
         var radians = angle * (Math.PI / 180.0);
-        var num = Math.Cos(radians);
-        var skewY = Math.Sin(radians);
+        var cos = Math.Cos(radians);
+        var sin = Math.Sin(radians);
 
-        return $"new Matrix({num}, {skewY}, {-skewY}, {num}, {x}, {y})";
+        return $"new Matrix({cos}, {sin}, {-sin}, {cos}, {x * (1.0 - cos) + y * sin}, {y * (1.0 - cos) - x * sin})";
     }
 
     return null;

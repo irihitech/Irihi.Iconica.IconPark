@@ -152,16 +152,16 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
             {
                 if (element is PathDrawingElement pde)
                     context.DrawPathElement(pde, GetBrush(element.FillIndex),
-                        new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin));
+                        new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin), scale);
                 else if (element is EllipseDrawingElement ede)
                     context.DrawEllipseElement(ede, GetBrush(element.FillIndex),
-                        new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin));
+                        new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin), scale);
                 else if (element is LineDrawingElement lde)
                     context.DrawLineElement(lde,
-                        new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin));
+                        new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin), scale);
                 else if (element is RectDrawingElement rde)
                     context.DrawRectElement(rde, GetBrush(element.FillIndex),
-                        new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin));
+                        new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin), scale);
             }
         }
     }
