@@ -6,7 +6,7 @@ namespace IconPark.Icons;
 public static class DrawingContextExtensions
 {
     public static void DrawPathElement(this DrawingContext context, PathDrawingElement element, IBrush? brush,
-        IPen? pen, Vector scale)
+        IPen? pen)
     {
         if (element.Data is null) return;
 
@@ -23,7 +23,7 @@ public static class DrawingContextExtensions
     }
 
     public static void DrawEllipseElement(this DrawingContext context, EllipseDrawingElement element, IBrush? brush,
-        IPen? pen, Vector scale)
+        IPen? pen)
     {
         if (element.Transform is not null)
         {
@@ -41,7 +41,7 @@ public static class DrawingContextExtensions
         }
     }
 
-    public static void DrawLineElement(this DrawingContext context, LineDrawingElement element, IPen pen, Vector scale)
+    public static void DrawLineElement(this DrawingContext context, LineDrawingElement element, IPen pen)
     {
         if (element.Transform is not null)
         {
@@ -60,7 +60,7 @@ public static class DrawingContextExtensions
     }
 
     public static void DrawRectElement(this DrawingContext context, RectDrawingElement element, IBrush? brush,
-        IPen? pen, Vector scale)
+        IPen? pen)
     {
         var rect = new Rect(element.X, element.Y, element.Width, element.Height);
         if (element.Transform is not null)

@@ -16,12 +16,13 @@
             <Setter Property="OuterStroke" Value="#333"/>
             <Setter Property="InnerStroke" Value="#FFF"/>
             <Setter Property="OuterFill" Value="#2F88FF"/>
-            <Setter Property="InnerFill" Value="#43CCF8"/>
-            <Setter Property="Width" Value="48"/>
-            <Setter Property="Height" Value="48"/>
-            <Setter Property="LineCap" Value="Round"/>
-            <Setter Property="LineJoin" Value="Round"/>
-            <Setter Property="Mode" Value="MultiColor"/>
+            <Setter Property="InnerFill" Value="#43CCF8" />
+            <Setter Property="Width" Value="48" />
+            <Setter Property="Height" Value="48" />
+            <Setter Property="LineCap" Value="Round" />
+            <Setter Property="LineJoin" Value="Round" />
+            <Setter Property="StrokeWidth" Value="2" />
+            <Setter Property="Mode" Value="Line"/>
         </Style>
     </Window.Styles>
 
