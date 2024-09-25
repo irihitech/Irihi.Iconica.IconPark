@@ -68,19 +68,6 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
         _pens[4] = new Pen(Brushes.White);
     }
 
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-        _brushes[0] = OuterStroke;
-        _brushes[1] = OuterFill;
-        _brushes[2] = InnerStroke;
-        _brushes[3] = InnerFill;
-        _pens[0] = new Pen(OuterStroke, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
-        _pens[1] = new Pen(OuterFill, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
-        _pens[2] = new Pen(InnerStroke, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
-        _pens[3] = new Pen(InnerFill, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
-    }
-
     public IBrush? OuterStroke
     {
         get => GetValue(OuterStrokeProperty);
@@ -136,6 +123,19 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
     }
 
     protected abstract DrawingElement[]? DrawingData { get; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _brushes[0] = OuterStroke;
+        _brushes[1] = OuterFill;
+        _brushes[2] = InnerStroke;
+        _brushes[3] = InnerFill;
+        _pens[0] = new Pen(OuterStroke, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
+        _pens[1] = new Pen(OuterFill, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
+        _pens[2] = new Pen(InnerStroke, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
+        _pens[3] = new Pen(InnerFill, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
+    }
 
     private void InvalidateBrushes(AvaloniaPropertyChangedEventArgs<IBrush?> args, int index)
     {

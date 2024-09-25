@@ -9,9 +9,4 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
-
-    protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
-    {
-        base.OnAttachedToVisualTree(e);
-    }
 }

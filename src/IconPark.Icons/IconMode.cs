@@ -5,5 +5,5 @@ public enum IconMode
     Line,
     Fill,
     TwoTone,
-    MultiColor,
+    MultiColor
 }
