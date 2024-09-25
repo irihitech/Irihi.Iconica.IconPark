@@ -5,6 +5,7 @@ namespace IconPark.Icons;
 
 public abstract class IconParkIconBase : Avalonia.Controls.Control
 {
+    
     public static readonly StyledProperty<IBrush?> OuterStrokeProperty =
         AvaloniaProperty.Register<IconParkIconBase, IBrush?>(
             nameof(OuterStroke));
