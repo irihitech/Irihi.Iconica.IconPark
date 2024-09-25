@@ -50,12 +50,12 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
     {
         WidthProperty.OverrideDefaultValue<IconParkIconBase>(24);
         HeightProperty.OverrideDefaultValue<IconParkIconBase>(24);
-        OuterFillProperty.Changed.AddClassHandler<IconParkIconBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 0));
+        OuterFillProperty.Changed.AddClassHandler<IconParkIconBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 1));
         OuterStrokeProperty.Changed.AddClassHandler<IconParkIconBase, IBrush?>(
-            (icon, e) => icon.InvalidateBrushes(e, 1));
-        InnerFillProperty.Changed.AddClassHandler<IconParkIconBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 2));
+            (icon, e) => icon.InvalidateBrushes(e, 0));
+        InnerFillProperty.Changed.AddClassHandler<IconParkIconBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 3));
         InnerStrokeProperty.Changed.AddClassHandler<IconParkIconBase, IBrush?>(
-            (icon, e) => icon.InvalidateBrushes(e, 3));
+            (icon, e) => icon.InvalidateBrushes(e, 2));
         StrokeWidthProperty.Changed.AddClassHandler<IconParkIconBase, double>(
             (icon, e) => icon.InvalidateStrokeWidth(e));
         LineCapProperty.Changed.AddClassHandler<IconParkIconBase, PenLineCap>((icon, e) => icon.InvalidateLineCap(e));
