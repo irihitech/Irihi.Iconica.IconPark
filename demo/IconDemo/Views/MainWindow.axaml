@@ -33,7 +33,10 @@
     </Design.DataContext>
 
     <Grid RowDefinitions="Auto, *">
-        <Button Grid.Row="0" Command="{Binding LoadCommand}"></Button>
+        <StackPanel>
+            <Button Content="Load" Command="{Binding LoadCommand}"/>
+        </StackPanel>
+        
         <ListBox Grid.Row="1" ItemsSource="{Binding IconNames}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
