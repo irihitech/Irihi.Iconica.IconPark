@@ -24,7 +24,7 @@ public partial class MainWindowViewModel : ViewModelBase
         // Use reflection to get all icon names from IconPark.Icon assembly.
         // This is a workaround to avoid hardcoding icon names.
         
-        var assembly = typeof(IconPark.Icons.Add).Assembly;
+        var assembly = typeof(IconPark.Icons.IconParkIconBase).Assembly;
         var iconNames = assembly.GetTypes()
             .Where(t=>t.BaseType == typeof(IconPark.Icons.IconParkIconBase))
             .Select(t => t.Name)

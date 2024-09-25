@@ -156,7 +156,7 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
             return;
         }
         
-        var scale = new Vector(this.Bounds.Width / 48.0, this.Bounds.Height / 48.0);
+        var scale = new Vector(Bounds.Width / 48.0, Bounds.Height / 48.0);
         using (context.PushTransform(Matrix.CreateScale(scale)))
         {
             foreach (var element in DrawingData)
@@ -164,7 +164,7 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
                 if (element is PathDrawingElement pde)
                 {
                     context.DrawPathElement(pde, GetBrush(element.FillIndex),
-                        new Pen(GetBrush(element.StrokeIndex), 4, lineCap: LineCap, lineJoin: LineJoin));
+                        new Pen(GetBrush(element.StrokeIndex), 2, lineCap: LineCap, lineJoin: LineJoin));
                 }
             }
         }
