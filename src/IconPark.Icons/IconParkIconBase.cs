@@ -148,7 +148,7 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
     private void InvalidatePens(int? index = null)
     {
         if (index is null)
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < 6; i++)
                 _pens[i] = new Pen(_brushes[i], StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
         else
             _pens[index.Value] = new Pen(_brushes[index.Value], StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);

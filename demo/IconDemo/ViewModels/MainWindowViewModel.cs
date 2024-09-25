@@ -16,9 +16,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty] private ObservableCollection<IconMode> _modes = new( Enum.GetValues<IconMode>());
     [ObservableProperty] private IconMode _selectedMode;
     [ObservableProperty] private Color? _outerFillColor = Color.Parse("#2F88FF");
-    [ObservableProperty] private Color? _innerFillColor = Colors.White;
+    [ObservableProperty] private Color? _innerFillColor = Color.Parse("#43CCF8");
     [ObservableProperty] private Color? _outerStrokeColor = Color.Parse("#333");
-    [ObservableProperty] private Color? _innerStrokeColor = Color.Parse("#43CCF8");
+    [ObservableProperty] private Color? _innerStrokeColor = Color.Parse("#FFF");
     [ObservableProperty] private SolidColorBrush _outerFillBrush;
     [ObservableProperty] private SolidColorBrush _innerFillBrush;
     [ObservableProperty] private SolidColorBrush _outerStrokeBrush;
@@ -41,9 +41,9 @@ public partial class MainWindowViewModel : ViewModelBase
     private void Reset()
     {
         OuterFillColor = Color.Parse("#2F88FF");
-        InnerFillColor = Colors.White;
+        InnerFillColor = Color.Parse("#43CCF8");
         OuterStrokeColor = Color.Parse("#333");
-        InnerStrokeColor = Color.Parse("#43CCF8");
+        InnerStrokeColor = Color.Parse("#FFF");
         
     }
 
