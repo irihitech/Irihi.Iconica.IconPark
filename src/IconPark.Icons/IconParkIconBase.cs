@@ -251,8 +251,7 @@ public abstract class IconParkIconBase : Avalonia.Controls.Control
     public override void Render(DrawingContext context)
     {
         base.Render(context);
-        if (Background is not null)
-            context.FillRectangle(Background, Bounds);
+        context.FillRectangle(Background ?? Brushes.Transparent, Bounds);
         if (DrawingData == null) return;
         var mode = Mode;
         Matrix.CreateRotation(1);
