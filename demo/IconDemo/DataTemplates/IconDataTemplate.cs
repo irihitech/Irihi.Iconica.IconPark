@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Avalonia.Controls.Templates;
 using Avalonia.Data;
+using IconDemo.Models;
 using Irihi.Iconica;
 using Control = Avalonia.Controls.Control;
 
@@ -11,15 +12,15 @@ public class IconDataTemplate: IDataTemplate
 {
     public Control? Build(object? param)
     {
-        if (param is not string s) return null;
-        var type = typeof(IconicaBase).Assembly.GetTypes().FirstOrDefault(a => a.Name == s);
-        if (type == null) return null;
-        var icon = Activator.CreateInstance(type) as IconicaBase;
-        return icon;
+        if (param is IconInfo i)
+        {
+            return i.Creator?.Invoke();
+        }
+        return null;
     }
 
     public bool Match(object? data)
     {
-        return data is string;
+        return data is IconInfo;
     }
 }

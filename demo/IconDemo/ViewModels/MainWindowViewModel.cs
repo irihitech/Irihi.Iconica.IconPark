@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using IconDemo.Models;
 using Irihi.Iconica;
 using Irihi.Iconica.Icons;
 
@@ -13,7 +14,7 @@ namespace IconDemo.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    [ObservableProperty] private ObservableCollection<string> _iconNames;
+    [ObservableProperty] private ObservableCollection<IconInfo> _iconNames;
     [ObservableProperty] private ObservableCollection<IconMode> _modes = new( Enum.GetValues<IconMode>());
     [ObservableProperty] private IconMode _selectedMode;
     [ObservableProperty] private Color? _outerFillColor = Color.Parse("#2F88FF");
@@ -30,7 +31,7 @@ public partial class MainWindowViewModel : ViewModelBase
     
     public MainWindowViewModel()
     {
-        IconNames = new ObservableCollection<string>();
+        IconNames = new ObservableCollection<IconInfo>();
         LoadCommand = new RelayCommand(OnLoad);
         ResetCommand = new RelayCommand(Reset);
         OuterFillBrush = new SolidColorBrush(OuterFillColor ?? Colors.Transparent);
@@ -72,12 +73,9 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         // Use reflection to get all icon names from IconPark.Icon assembly.
         // This is a workaround to avoid hardcoding icon names.
-        
-        var assembly = typeof(IconicaBase).Assembly;
-        var iconNames = assembly.GetTypes()
-            .Where(t=>t.BaseType == typeof(Irihi.Iconica.IconicaBase))
-            .Select(t => t.Name)
-            .ToList();
-        IconNames = new ObservableCollection<string>(iconNames);
+
+        IconNames.Clear();
+        IconNames = new ObservableCollection<IconInfo>(IconInfo.IconInfos);
+
     }
 }

@@ -2,6 +2,7 @@
 
 using System.Diagnostics;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Xml;
 using IconGenerator;
@@ -13,6 +14,10 @@ var sourceTargetPath = Path.Combine(rootPath, "src", "Irihi.Iconica", "Generated
 
 if (!Directory.Exists(sourceTargetPath))
     Directory.CreateDirectory(sourceTargetPath);
+
+var iconsInfoFile = Path.Combine(rootPath, "iconpark", "packages", "react", "icons.json");
+var iconsInfoFileContent = File.ReadAllText(iconsInfoFile);
+var infoList = JsonSerializer.Deserialize<IconInfo[]>(iconsInfoFileContent);
 
 static string GenerateDocument(string name, List<DrawingElement> drawingElements)
 {
@@ -118,9 +123,13 @@ foreach (var fileName in fileNames)
     index++;
     try
     {
-        var name = Path.GetFileNameWithoutExtension(fileName);
+        var className = Path.GetFileNameWithoutExtension(fileName);
         var fileContent = await File.ReadAllTextAsync(fileName);
         var match = Regex.Matches(fileContent, @"<svg\b[^>]*>([\s\S]*?)<\/svg>");
+        var iconNameMatches = Regex.Matches(fileContent, @"export\s+default\s+IconWrapper\(\s*'([^']+)',");
+        var lowercaseIconName = iconNameMatches.First().Groups[1].Value;
+        var info = infoList!.First(a => a.Name == lowercaseIconName);
+        info.ClassName = className;
         var xmlDoc = new XmlDocument();
         var value = match.First().Value;
         value = value.Replace("{{", "{");
@@ -297,11 +306,12 @@ foreach (var fileName in fileNames)
             }
         }
 
-        var sourceCode = GenerateDocument(name, list);
+        var sourceCode = GenerateDocument(className, list);
 
-        var targetPath = Path.Combine(sourceTargetPath, $"{name}.cs");
+        var targetPath = Path.Combine(sourceTargetPath, $"{className}.cs");
 
         await File.WriteAllTextAsync(targetPath, sourceCode);
+        info.Valid = true;
         Debug.Write(".");
         if (index % 50 == 0)
             Debug.WriteLine(string.Empty);
@@ -314,6 +324,45 @@ foreach (var fileName in fileNames)
         Debug.WriteLine(e.Message);
     }
 }
+
+StringBuilder builder = new StringBuilder();
+builder.AppendLine("using System;");
+builder.AppendLine("using System.Collections.Generic;");
+builder.AppendLine("using Irihi.Iconica;");
+builder.AppendLine("using Irihi.Iconica.Icons;");
+builder.AppendLine("namespace IconDemo.Models;");
+builder.AppendLine("public partial class IconInfo");
+builder.AppendLine("{");
+builder.AppendLine("    public static List<IconInfo> IconInfos { get; } =");
+builder.AppendLine("    [");
+foreach (var info in infoList)
+{
+    if(!info.Valid) continue;
+    builder.AppendLine($"        new IconInfo()");
+    builder.AppendLine("        {");
+    builder.AppendLine($"            Author = \"{info.Author.Trim()}\",");
+    builder.AppendLine($"            Category = \"{info.Category.Trim()}\",");
+    builder.AppendLine($"            CategoryChinese = \"{info.CategoryCN.Trim()}\",");
+    builder.AppendLine($"            ClassName = \"{info.ClassName.Trim()}\",");
+    builder.AppendLine($"            Id = {info.Id},");
+    builder.AppendLine($"            Name = \"{info.Name.Trim()}\",");
+    builder.AppendLine($"            Rtl = {info.Rtl.ToString().ToLower().Trim()},");
+    builder.AppendLine($"            Tag = [{string.Join(", " , info.Tag.Select(a => $"\"{a.Trim()}\""))}],");
+    builder.AppendLine($"            Title = \"{info.Title.Trim()}\",");
+    builder.AppendLine($"            Creator = () => new Irihi.Iconica.Icons.{info.ClassName.Trim()}(),");
+    var keywords = new List<string>(info.Tag);
+    keywords.Add(info.Name);
+    keywords.Add(info.Title);
+    keywords.Add(info.ClassName);
+    builder.AppendLine($"            Keywords = [{string.Join(", ", keywords.Select(a => $"\"{a.Trim()}\""))}],");
+    builder.AppendLine($"            IconType = typeof(Irihi.Iconica.Icons.{info.ClassName.Trim()})");
+    builder.AppendLine("        },");
+}
+builder.AppendLine("    ];");
+builder.AppendLine("}");
+
+var iconInfoFile = Path.Combine(rootPath, "demo", "IconDemo", "Models", "IconInfo.Generated.cs");
+await File.WriteAllTextAsync(iconInfoFile, builder.ToString());
 
 static string? CreateMatrix(string? transformString)
 {
