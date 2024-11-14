@@ -1,11 +1,11 @@
-<Window xmlns="https://github.com/avaloniaui"
+<u:UrsaWindow xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:IconDemo.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:dataTemplates="clr-namespace:IconDemo.DataTemplates"
-        xmlns:views="clr-namespace:IconDemo.Views"
-        xmlns:iconica="clr-namespace:Irihi.Iconica;assembly=Irihi.Iconica"
+        xmlns:u="https://irihi.tech/ursa"
+        xmlns:iconica="https://irihi.tech/iconica"
         mc:Ignorable="d" d:DesignWidth="800"
         d:DesignHeight="450"
         x:Class="IconDemo.Views.MainWindow"
@@ -13,94 +13,141 @@
         Icon="/Assets/avalonia-logo.ico"
         Name="root"
         Title="IconDemo">
-
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel />
-    </Design.DataContext>
-
-    <Grid RowDefinitions="Auto, Auto, *">
+    <Grid ColumnDefinitions="*, Auto">
         <Grid.Styles>
             <Style Selector=":is(iconica|IconicaBase)">
-                <Setter Property="Mode"
-                        Value="{Binding #mode.SelectedItem}" />
-                <Setter Property="Width"
-                        Value="{Binding #size.Value}" />
-                <Setter Property="Height"
-                        Value="{Binding #size.Value}" />
-                <Setter Property="StrokeWidth"
-                        Value="{Binding #thickness.Value}" />
-                <Setter Property="OuterFill"
-                        Value="{Binding $parent[views:MainWindow].((vm:MainWindowViewModel)DataContext).OuterFillBrush}" />
-                <Setter Property="OuterStroke"
-                        Value="{Binding $parent[views:MainWindow].((vm:MainWindowViewModel)DataContext).OuterStrokeBrush}" />
-                <Setter Property="InnerFill"
-                        Value="{Binding $parent[views:MainWindow].((vm:MainWindowViewModel)DataContext).InnerFillBrush}" />
-                <Setter Property="InnerStroke"
-                        Value="{Binding $parent[views:MainWindow].((vm:MainWindowViewModel)DataContext).InnerStrokeBrush}" />
+                <Setter Property="Mode" Value="{Binding #mode.SelectedItem}" />
+                <Setter Property="Width" Value="{Binding #size.Value}" />
+                <Setter Property="Height" Value="{Binding #size.Value}" />
+                <Setter Property="StrokeWidth" Value="{Binding #thickness.Value}" />
+                <Setter Property="OuterFill" Value="{DynamicResource IconOuterFillBrush}" />
+                <Setter Property="OuterStroke" Value="{DynamicResource IconOuterStrokeBrush}" />
+                <Setter Property="InnerFill" Value="{DynamicResource IconInnerFillBrush}" />
+                <Setter Property="InnerStroke" Value="{DynamicResource IconInnerStrokeBrush}" />
             </Style>
         </Grid.Styles>
-        <StackPanel Orientation="Horizontal" Margin="0 16">
-            <Button Content="Load"
+        <Border Padding="16" Theme="{DynamicResource CardBorder}">
+            <Grid RowDefinitions="Auto, *">
+                <StackPanel Grid.Row="0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Margin="8"
+                            HorizontalAlignment="Left"
+                            Classes="H3"
+                            Text="ICONICA灵动大师系列图标"
+                            Theme="{DynamicResource TitleTextBlock}" />
+                        <u:Badge Header="AOT Compatible" Classes="Success"/>
+                    </StackPanel>
+                    <TextBlock
+                        Margin="8"
+                        HorizontalAlignment="Left"
+                        Text="灵活多变的Avalonia自绘图标库" />
+                    <TextBox
+                        MaxWidth="600"
+                        Margin="8"
+                        HorizontalContentAlignment="Stretch"
+                        Classes="ClearButton"
+                        Text="{Binding SearchInput}"
+                        Watermark="输入图标名称" />
+                </StackPanel>
+                <ScrollViewer Grid.Row="1" Background="{DynamicResource SemiBackground0}">
+                    <ItemsControl Margin="24" ItemsSource="{Binding VirtualizedNames}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <ItemsControl Margin="0,16" ItemsSource="{Binding}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="8" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Background="Transparent">
+                                                <ContentControl Content="{Binding}">
+                                                    <ContentControl.ContentTemplate>
+                                                        <dataTemplates:IconDataTemplate />
+                                                    </ContentControl.ContentTemplate>
+                                                </ContentControl>
+                                                <TextBlock Text="{Binding ClassName}" FontSize="10" HorizontalAlignment="Center"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+        <Border
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Width="300"
+            Theme="{DynamicResource CardBorder}">
+            <u:Form HorizontalAlignment="Stretch">
+                <Slider
+                    Name="size"
+                    HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
-                    Margin="8 0"
-                    Command="{Binding LoadCommand}" />
-            <ComboBox Name="mode"
-                      VerticalAlignment="Center"
-                      Margin="8 0"
-                      ItemsSource="{Binding Modes}"
-                      SelectedItem="{Binding SelectedMode}" />
-            <TextBlock Text="Size"
-                       VerticalAlignment="Center"
-                       Margin="8 0" />
-            <Slider Name="size" VerticalAlignment="Center"
-                    Value="24"
-                    Margin="8 0" Width="160" Minimum="12"
-                    Maximum="96" IsSnapToTickEnabled="True"
-                    TickFrequency="1" />
-            <TextBlock Text="Thickness"
-                       VerticalAlignment="Center"
-                       Margin="8 0" />
-            <Slider Name="thickness"
-                    Width="48" Minimum="1"
+                    u:FormItem.Label="图标大小"
+                    IsSnapToTickEnabled="True"
+                    Maximum="96"
+                    Minimum="12"
+                    TickFrequency="1"
+                    Value="48" />
+                <Slider
+                    Name="thickness"
+                    HorizontalAlignment="Stretch"
                     VerticalAlignment="Center"
-                    Maximum="4" TickFrequency="1"
-                    IsSnapToTickEnabled="True" />
-        </StackPanel>
-
-        <StackPanel Grid.Row="1" Orientation="Horizontal"
-                    Margin="0 16">
-            <TextBlock Text="OuterFill"
-                       VerticalAlignment="Center" />
-            <ColorPicker Color="{Binding OuterFillColor}"
-                         Margin="8 0" />
-            <TextBlock Text="OuterStroke"
-                       VerticalAlignment="Center" />
-            <ColorPicker Color="{Binding OuterStrokeColor}"
-                         Margin="8 0" />
-            <TextBlock Text="InnerFill"
-                       VerticalAlignment="Center" />
-            <ColorPicker Color="{Binding InnerFillColor}"
-                         Margin="8 0" />
-            <TextBlock Text="InnerStroke"
-                       VerticalAlignment="Center" />
-            <ColorPicker Color="{Binding InnerStrokeColor}"
-                         Margin="8 0" />
-            <Button Content="Reset Colors" Command="{Binding ResetCommand}"/>
-        </StackPanel>
-
-        <ListBox Grid.Row="2"
-                 ItemsSource="{Binding IconNames}">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListBox.ItemTemplate>
-                <dataTemplates:IconDataTemplate />
-            </ListBox.ItemTemplate>
-        </ListBox>
+                    u:FormItem.Label="线条粗细"
+                    IsSnapToTickEnabled="True"
+                    Maximum="4"
+                    Minimum="1"
+                    TickFrequency="1"
+                    Value="2" />
+                <ListBox
+                    Name="mode"
+                    u:FormItem.Label="图标风格（颜色）"
+                    ItemsSource="{Binding Modes}"
+                    SelectedIndex="{Binding SelectedMode}"
+                    Theme="{DynamicResource PureCardRadioGroupListBox}">
+                    <ListBox.Styles>
+                        <Style Selector="ListBoxItem">
+                            <Setter Property="Padding" Value="4" />
+                            <Setter Property="Margin" Value="4" />
+                        </Style>
+                    </ListBox.Styles>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="2" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
+                <u:FormItem NoLabel="True">
+                    <UniformGrid Columns="2">
+                        <TextBlock Text="外部描边颜色" />
+                        <TextBlock Text="外部填充颜色" />
+                        <ColorPicker Height="24" Color="{Binding OuterStrokeColor}" />
+                        <ColorPicker Height="24" Color="{Binding OuterFillColor}" />
+                        <TextBlock Text="内部描边颜色" />
+                        <TextBlock Text="内部填充颜色" />
+                        <ColorPicker Height="24" Color="{Binding InnerStrokeColor}" />
+                        <ColorPicker Height="24" Color="{Binding InnerFillColor}" />
+                    </UniformGrid>
+                </u:FormItem>
+                <Button
+                    HorizontalAlignment="Stretch"
+                    u:FormItem.NoLabel="True"
+                    Classes="Tertiary"
+                    Command="{Binding ResetCommand}"
+                    Content="还原色彩" />
+            </u:Form>
+        </Border>
     </Grid>
-
-</Window>
+</u:UrsaWindow>

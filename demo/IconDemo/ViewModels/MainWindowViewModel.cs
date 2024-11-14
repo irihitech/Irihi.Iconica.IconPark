@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Avalonia;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -14,30 +16,36 @@ namespace IconDemo.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    [ObservableProperty] private ObservableCollection<IconInfo> _iconNames;
-    [ObservableProperty] private ObservableCollection<IconMode> _modes = new( Enum.GetValues<IconMode>());
-    [ObservableProperty] private IconMode _selectedMode;
-    [ObservableProperty] private Color? _outerFillColor = Color.Parse("#2F88FF");
+    [ObservableProperty] private List<IconInfo>? _activeIconNames;
+    [ObservableProperty] private Rect _bounds;
+
+    [ObservableProperty] private List<IconInfo>? _iconNames;
     [ObservableProperty] private Color? _innerFillColor = Color.Parse("#43CCF8");
-    [ObservableProperty] private Color? _outerStrokeColor = Color.Parse("#333");
     [ObservableProperty] private Color? _innerStrokeColor = Color.Parse("#FFF");
-    [ObservableProperty] private SolidColorBrush _outerFillBrush;
-    [ObservableProperty] private SolidColorBrush _innerFillBrush;
-    [ObservableProperty] private SolidColorBrush _outerStrokeBrush;
-    [ObservableProperty] private SolidColorBrush _innerStrokeBrush;
+
+    [ObservableProperty] private ObservableCollection<IconMode> _modes = new()
+        { IconMode.Line, IconMode.Fill, IconMode.TwoTone, IconMode.MultiColor };
+
+    [ObservableProperty] private Color? _outerFillColor = Color.Parse("#2F88FF");
+    [ObservableProperty] private Color? _outerStrokeColor = Color.Parse("#333");
+    [ObservableProperty] private string? _searchInput;
+    [ObservableProperty] private IconMode _selectedMode;
+    [ObservableProperty] private List<List<IconInfo>> _virtualizedNames = new();
+
+    public MainWindowViewModel()
+    {
+        LoadCommand = new RelayCommand(OnLoad);
+        ResetCommand = new RelayCommand(Reset);
+        OnLoad();
+    }
 
     public ICommand LoadCommand { get; set; }
     public ICommand ResetCommand { get; set; }
     
-    public MainWindowViewModel()
+    private void OnLoad()
     {
-        IconNames = new ObservableCollection<IconInfo>();
-        LoadCommand = new RelayCommand(OnLoad);
-        ResetCommand = new RelayCommand(Reset);
-        OuterFillBrush = new SolidColorBrush(OuterFillColor ?? Colors.Transparent);
-        InnerFillBrush = new SolidColorBrush(InnerFillColor ?? Colors.Transparent);
-        OuterStrokeBrush = new SolidColorBrush(OuterStrokeColor ?? Colors.Transparent);
-        InnerStrokeBrush = new SolidColorBrush(InnerStrokeColor ?? Colors.Transparent);
+        IconNames = IconInfo.IconInfos;
+        ActiveIconNames = IconNames;
     }
 
     private void Reset()
@@ -46,36 +54,24 @@ public partial class MainWindowViewModel : ViewModelBase
         InnerFillColor = Color.Parse("#43CCF8");
         OuterStrokeColor = Color.Parse("#333");
         InnerStrokeColor = Color.Parse("#FFF");
-        
     }
 
-    partial void OnOuterFillColorChanged(Color? value)
+    partial void OnSearchInputChanged(string? value)
     {
-        OuterFillBrush = new SolidColorBrush(value ?? Colors.Transparent);
-    }
-    
-    partial void OnInnerFillColorChanged(Color? value)
-    {
-        InnerFillBrush = new SolidColorBrush(value ?? Colors.Transparent);
-    }
-    
-    partial void OnOuterStrokeColorChanged(Color? value)
-    {
-        OuterStrokeBrush = new SolidColorBrush(value ?? Colors.Transparent);
-    }
-    
-    partial void OnInnerStrokeColorChanged(Color? value)
-    {
-        InnerStrokeBrush = new SolidColorBrush(value ?? Colors.Transparent);
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            ActiveIconNames = IconNames;
+            return;
+        }
+
+        ActiveIconNames = IconNames
+                          ?.Where(n => n.Keywords.Any(b => b.Contains(value, StringComparison.OrdinalIgnoreCase)))
+                          .ToList();
     }
 
-    private void OnLoad()
+    partial void OnActiveIconNamesChanged(List<IconInfo>? value)
     {
-        // Use reflection to get all icon names from IconPark.Icon assembly.
-        // This is a workaround to avoid hardcoding icon names.
-
-        IconNames.Clear();
-        IconNames = new ObservableCollection<IconInfo>(IconInfo.IconInfos);
-
+        if (value is null) return;
+        VirtualizedNames = value.Chunk(8).Select(a => a.ToList()).ToList();
     }
 }
