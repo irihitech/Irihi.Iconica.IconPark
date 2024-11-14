@@ -1,0 +1,84 @@
+<UserControl
+    x:Class="IconDemo.Views.IconViewer"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:iconica="https://irihi.tech/iconica"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="https://irihi.tech/ursa"
+    xmlns:viewModels="clr-namespace:IconDemo.ViewModels"
+    xmlns:views="clr-namespace:IconDemo.Views"
+    Name="root"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="viewModels:IconViewerViewModel"
+    ColumnCount="{Binding ColumnCount, Mode=OneWayToSource}"
+    mc:Ignorable="d">
+    <Grid RowDefinitions="Auto, *">
+        <StackPanel Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    Margin="8"
+                    HorizontalAlignment="Left"
+                    Classes="H3"
+                    Text="ICONICA灵动大师系列图标"
+                    Theme="{DynamicResource TitleTextBlock}" />
+                <u:Badge Classes="Success" Header="AOT Compatible" />
+            </StackPanel>
+            <TextBlock
+                Margin="8"
+                HorizontalAlignment="Left"
+                Text="灵活多变的Avalonia自绘图标库" />
+            <TextBox
+                MaxWidth="600"
+                Margin="8"
+                HorizontalContentAlignment="Stretch"
+                Classes="ClearButton"
+                Text="{Binding SearchInput}"
+                Watermark="输入图标名称">
+                <TextBox.InnerRightContent>
+                    <PathIcon />
+                </TextBox.InnerRightContent>
+            </TextBox>
+        </StackPanel>
+        <ScrollViewer
+            Name="IconsContainer"
+            Grid.Row="1"
+            Background="{DynamicResource SemiBackground0}">
+            <ScrollViewer.Styles>
+                <Style Selector=":is(iconica|IconicaBase)">
+                    <Setter Property="Width" Value="48"/>
+                    <Setter Property="Height" Value="48"/>
+                    <Setter Property="OuterFill" Value="{DynamicResource IconOuterFillBrush}" />
+                    <Setter Property="OuterStroke" Value="{DynamicResource IconOuterStrokeBrush}" />
+                    <Setter Property="InnerFill" Value="{DynamicResource IconInnerFillBrush}" />
+                    <Setter Property="InnerStroke" Value="{DynamicResource IconInnerStrokeBrush}" />
+                    <Setter Property="FallbackBrush" Value="{DynamicResource SemiGrey0}" />
+                </Style>
+            </ScrollViewer.Styles>
+            <ItemsControl Margin="24" ItemsSource="{Binding VirtualizedNames}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ItemsControl ItemsSource="{Binding}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="{Binding #root.ColumnCount}" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <views:IconBriefView />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

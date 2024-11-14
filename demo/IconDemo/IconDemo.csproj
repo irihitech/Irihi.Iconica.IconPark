@@ -34,4 +34,8 @@
     <ItemGroup>
       <ProjectReference Include="..\..\src\Irihi.Iconica\Irihi.Iconica.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controls\" />
+    </ItemGroup>
 </Project>

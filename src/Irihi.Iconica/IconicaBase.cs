@@ -54,16 +54,12 @@ public abstract class IconicaBase : Avalonia.Controls.Control
     {
         WidthProperty.OverrideDefaultValue<IconicaBase>(24);
         HeightProperty.OverrideDefaultValue<IconicaBase>(24);
+        OuterStrokeProperty.Changed.AddClassHandler<IconicaBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 0));
         OuterFillProperty.Changed.AddClassHandler<IconicaBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 1));
-        OuterStrokeProperty.Changed.AddClassHandler<IconicaBase, IBrush?>(
-            (icon, e) => icon.InvalidateBrushes(e, 0));
+        InnerStrokeProperty.Changed.AddClassHandler<IconicaBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 2));
         InnerFillProperty.Changed.AddClassHandler<IconicaBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 3));
-        InnerStrokeProperty.Changed.AddClassHandler<IconicaBase, IBrush?>(
-            (icon, e) => icon.InvalidateBrushes(e, 2));
-        FallbackBrushProperty.Changed.AddClassHandler<IconicaBase, IBrush?>(
-            (icon, e) => icon.InvalidateBrushes(e, 4));
-        StrokeWidthProperty.Changed.AddClassHandler<IconicaBase, double>(
-            (icon, e) => icon.InvalidateStrokeWidth(e));
+        FallbackBrushProperty.Changed.AddClassHandler<IconicaBase, IBrush?>( (icon, e) => icon.InvalidateBrushes(e, 4));
+        StrokeWidthProperty.Changed.AddClassHandler<IconicaBase, double>( (icon, e) => icon.InvalidateStrokeWidth(e));
         LineCapProperty.Changed.AddClassHandler<IconicaBase, PenLineCap>((icon, e) => icon.InvalidateLineCap(e));
         LineJoinProperty.Changed.AddClassHandler<IconicaBase, PenLineJoin>((icon, e) =>
             icon.InvalidateLineJoin(e));
@@ -150,7 +146,7 @@ public abstract class IconicaBase : Avalonia.Controls.Control
         _pens[1] = new Pen(OuterFill, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
         _pens[2] = new Pen(InnerStroke, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
         _pens[3] = new Pen(InnerFill, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
-        _pens[4] = new Pen(Brushes.White, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
+        _pens[4] = new Pen(FallbackBrush, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
     }
 
     private void InvalidateBrushes(AvaloniaPropertyChangedEventArgs<IBrush?> args, int index)

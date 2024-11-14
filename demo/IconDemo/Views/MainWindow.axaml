@@ -3,9 +3,8 @@
         xmlns:vm="using:IconDemo.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:dataTemplates="clr-namespace:IconDemo.DataTemplates"
         xmlns:u="https://irihi.tech/ursa"
-        xmlns:iconica="https://irihi.tech/iconica"
+        xmlns:views="clr-namespace:IconDemo.Views"
         mc:Ignorable="d" d:DesignWidth="800"
         d:DesignHeight="450"
         x:Class="IconDemo.Views.MainWindow"
@@ -13,76 +12,12 @@
         Icon="/Assets/avalonia-logo.ico"
         Name="root"
         Title="IconDemo">
+    <u:UrsaWindow.RightContent>
+        <u:ThemeToggleButton/>
+    </u:UrsaWindow.RightContent>
     <Grid ColumnDefinitions="*, Auto">
-        <Grid.Styles>
-            <Style Selector=":is(iconica|IconicaBase)">
-                <Setter Property="Mode" Value="{Binding #mode.SelectedItem}" />
-                <Setter Property="Width" Value="{Binding #size.Value}" />
-                <Setter Property="Height" Value="{Binding #size.Value}" />
-                <Setter Property="StrokeWidth" Value="{Binding #thickness.Value}" />
-                <Setter Property="OuterFill" Value="{DynamicResource IconOuterFillBrush}" />
-                <Setter Property="OuterStroke" Value="{DynamicResource IconOuterStrokeBrush}" />
-                <Setter Property="InnerFill" Value="{DynamicResource IconInnerFillBrush}" />
-                <Setter Property="InnerStroke" Value="{DynamicResource IconInnerStrokeBrush}" />
-            </Style>
-        </Grid.Styles>
         <Border Padding="16" Theme="{DynamicResource CardBorder}">
-            <Grid RowDefinitions="Auto, *">
-                <StackPanel Grid.Row="0">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock
-                            Margin="8"
-                            HorizontalAlignment="Left"
-                            Classes="H3"
-                            Text="ICONICA灵动大师系列图标"
-                            Theme="{DynamicResource TitleTextBlock}" />
-                        <u:Badge Header="AOT Compatible" Classes="Success"/>
-                    </StackPanel>
-                    <TextBlock
-                        Margin="8"
-                        HorizontalAlignment="Left"
-                        Text="灵活多变的Avalonia自绘图标库" />
-                    <TextBox
-                        MaxWidth="600"
-                        Margin="8"
-                        HorizontalContentAlignment="Stretch"
-                        Classes="ClearButton"
-                        Text="{Binding SearchInput}"
-                        Watermark="输入图标名称" />
-                </StackPanel>
-                <ScrollViewer Grid.Row="1" Background="{DynamicResource SemiBackground0}">
-                    <ItemsControl Margin="24" ItemsSource="{Binding VirtualizedNames}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <ItemsControl Margin="0,16" ItemsSource="{Binding}">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <UniformGrid Columns="8" />
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Background="Transparent">
-                                                <ContentControl Content="{Binding}">
-                                                    <ContentControl.ContentTemplate>
-                                                        <dataTemplates:IconDataTemplate />
-                                                    </ContentControl.ContentTemplate>
-                                                </ContentControl>
-                                                <TextBlock Text="{Binding ClassName}" FontSize="10" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
-            </Grid>
+            <views:IconViewer/>
         </Border>
         <Border
             Grid.Row="0"
@@ -98,7 +33,7 @@
                     u:FormItem.Label="图标大小"
                     IsSnapToTickEnabled="True"
                     Maximum="96"
-                    Minimum="12"
+                    Minimum="24"
                     TickFrequency="1"
                     Value="48" />
                 <Slider
@@ -111,24 +46,23 @@
                     Minimum="1"
                     TickFrequency="1"
                     Value="2" />
-                <ListBox
+                <u:SelectionList
                     Name="mode"
                     u:FormItem.Label="图标风格（颜色）"
                     ItemsSource="{Binding Modes}"
-                    SelectedIndex="{Binding SelectedMode}"
-                    Theme="{DynamicResource PureCardRadioGroupListBox}">
-                    <ListBox.Styles>
+                    SelectedIndex="{Binding SelectedMode}">
+                    <u:SelectionList.Styles>
                         <Style Selector="ListBoxItem">
                             <Setter Property="Padding" Value="4" />
                             <Setter Property="Margin" Value="4" />
                         </Style>
-                    </ListBox.Styles>
-                    <ListBox.ItemsPanel>
+                    </u:SelectionList.Styles>
+                    <u:SelectionList.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Columns="2" />
                         </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                </ListBox>
+                    </u:SelectionList.ItemsPanel>
+                </u:SelectionList>
                 <u:FormItem NoLabel="True">
                     <UniformGrid Columns="2">
                         <TextBlock Text="外部描边颜色" />
