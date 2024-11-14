@@ -6,7 +6,8 @@ using System.Windows.Input;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using IconPark.Icons;
+using Irihi.Iconica;
+using Irihi.Iconica.Icons;
 
 namespace IconDemo.ViewModels;
 
@@ -72,9 +73,9 @@ public partial class MainWindowViewModel : ViewModelBase
         // Use reflection to get all icon names from IconPark.Icon assembly.
         // This is a workaround to avoid hardcoding icon names.
         
-        var assembly = typeof(IconParkIconBase).Assembly;
+        var assembly = typeof(IconicaBase).Assembly;
         var iconNames = assembly.GetTypes()
-            .Where(t=>t.BaseType == typeof(IconPark.Icons.IconParkIconBase))
+            .Where(t=>t.BaseType == typeof(Irihi.Iconica.IconicaBase))
             .Select(t => t.Name)
             .ToList();
         IconNames = new ObservableCollection<string>(iconNames);

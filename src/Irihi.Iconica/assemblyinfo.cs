@@ -1,0 +1,4 @@
+using Avalonia.Metadata;
+
+[assembly:XmlnsPrefix("https://irihi.tech/ursa", "u")]
+[assembly:XmlnsDefinition("https://irihi.tech/ursa", "Ursa")]

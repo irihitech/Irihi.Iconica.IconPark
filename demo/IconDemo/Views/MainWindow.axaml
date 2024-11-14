@@ -3,9 +3,9 @@
         xmlns:vm="using:IconDemo.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:icons="clr-namespace:IconPark.Icons;assembly=IconPark.Icons"
         xmlns:dataTemplates="clr-namespace:IconDemo.DataTemplates"
         xmlns:views="clr-namespace:IconDemo.Views"
+        xmlns:iconica="clr-namespace:Irihi.Iconica;assembly=Irihi.Iconica"
         mc:Ignorable="d" d:DesignWidth="800"
         d:DesignHeight="450"
         x:Class="IconDemo.Views.MainWindow"
@@ -22,7 +22,7 @@
 
     <Grid RowDefinitions="Auto, Auto, *">
         <Grid.Styles>
-            <Style Selector=":is(icons|IconParkIconBase)">
+            <Style Selector=":is(iconica|IconicaBase)">
                 <Setter Property="Mode"
                         Value="{Binding #mode.SelectedItem}" />
                 <Setter Property="Width"

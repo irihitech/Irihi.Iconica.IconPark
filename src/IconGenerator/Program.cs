@@ -9,7 +9,7 @@ using IconGenerator;
 var rootPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", ".."));
 var svgPath = Path.Combine(rootPath, "iconpark", "packages", "react", "src", "icons");
 var fileNames = Directory.GetFiles(svgPath, "*.tsx");
-var sourceTargetPath = Path.Combine(rootPath, "src", "IconPark.Icons", "Generated");
+var sourceTargetPath = Path.Combine(rootPath, "src", "Irihi.Iconica", "Generated");
 
 if (!Directory.Exists(sourceTargetPath))
     Directory.CreateDirectory(sourceTargetPath);
@@ -23,10 +23,11 @@ static string GenerateDocument(string name, List<DrawingElement> drawingElements
     sb.AppendLine("// Generated Date: " + DateTime.Today.Date);
     sb.AppendLine("using Avalonia;");
     sb.AppendLine("using Avalonia.Media;");
+    sb.AppendLine("using Irihi.Iconica;");
     sb.AppendLine();
-    sb.AppendLine("namespace IconPark.Icons;");
+    sb.AppendLine("namespace Irihi.Iconica.Icons;");
     sb.AppendLine();
-    sb.AppendLine($"public class {name}: IconParkIconBase");
+    sb.AppendLine($"public class {name}: IconicaBase");
     sb.AppendLine("{");
     sb.AppendLine("    private static readonly DrawingElement[]? StaticDrawingData =");
     sb.AppendLine("    [");

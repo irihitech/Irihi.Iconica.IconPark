@@ -30,6 +30,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\IconPark.Icons\IconPark.Icons.csproj" />
+      <ProjectReference Include="..\..\src\Irihi.Iconica\Irihi.Iconica.csproj" />
     </ItemGroup>
 </Project>
