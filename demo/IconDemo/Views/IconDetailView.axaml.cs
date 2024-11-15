@@ -14,7 +14,6 @@ public partial class IconDetailView : UserControl
     public IconDetailView()
     {
         InitializeComponent();
-        this.DataContext = new IconDetailViewModel();
     }
     
 }

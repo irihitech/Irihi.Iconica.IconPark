@@ -25,17 +25,17 @@ public partial class SettingPanelViewModel : ObservableObject
     private readonly Color? _lightDefaultOuterStrokeColor = Color.Parse("#FF333333");
     private readonly Color? _lightDefaultFallbackColor = Colors.White;
 
-    private readonly Color? _darkInnerFillColor = Color.Parse("#FF33C2B0");
-    private readonly Color? _darkInnerStrokeColor = Color.Parse("#FF333333");
-    private readonly Color? _darkOuterFillColor = Color.Parse("#FF54A9FF");
-    private readonly Color? _darkOuterStrokeColor = Color.Parse("#FFFFFFFF");
-    private readonly Color? _darkFallbackColor = Colors.Black;
+    private Color? _darkInnerFillColor = Color.Parse("#FF33C2B0");
+    private Color? _darkInnerStrokeColor = Color.Parse("#FF333333");
+    private Color? _darkOuterFillColor = Color.Parse("#FF54A9FF");
+    private Color? _darkOuterStrokeColor = Color.Parse("#FFFFFFFF");
+    private Color? _darkFallbackColor = Colors.Black;
 
-    private readonly Color? _lightInnerFillColor = Color.Parse("#FF00B3A1");
-    private readonly Color? _lightInnerStrokeColor = Color.Parse("#FFFFFFFF");
-    private readonly Color? _lightOuterFillColor = Color.Parse("#FF0077FA");
-    private readonly Color? _lightOuterStrokeColor = Color.Parse("#FF333333");
-    private readonly Color? _lightFallbackColor = Colors.White;
+    private Color? _lightInnerFillColor = Color.Parse("#FF00B3A1");
+    private Color? _lightInnerStrokeColor = Color.Parse("#FFFFFFFF");
+    private Color? _lightOuterFillColor = Color.Parse("#FF0077FA");
+    private Color? _lightOuterStrokeColor = Color.Parse("#FF333333");
+    private Color? _lightFallbackColor = Colors.White;
     private ThemeVariant? _currentThemeVariant;
     [ObservableProperty] private Color? _fallbackColor = Colors.White;
     [ObservableProperty] private Color? _innerFillColor = Color.Parse("#43CCF8");
@@ -60,11 +60,11 @@ public partial class SettingPanelViewModel : ObservableObject
         WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(InnerFillColor)));
         if(_currentThemeVariant == ThemeVariant.Light)
         {
-            InnerFillColor = _lightInnerFillColor;
+            _lightInnerFillColor = InnerFillColor;
         }
         else if (_currentThemeVariant == ThemeVariant.Dark)
         {
-            InnerFillColor = _darkInnerFillColor;
+            _darkInnerFillColor = InnerFillColor;
         }
     }
 
@@ -73,11 +73,11 @@ public partial class SettingPanelViewModel : ObservableObject
         WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(InnerStrokeColor)));
         if (_currentThemeVariant == ThemeVariant.Light)
         {
-            InnerStrokeColor = _lightInnerStrokeColor;
+             _lightInnerStrokeColor = InnerStrokeColor;
         }
         else if (_currentThemeVariant == ThemeVariant.Dark)
         {
-            InnerStrokeColor = _darkInnerStrokeColor;
+            _darkInnerStrokeColor = InnerStrokeColor;
         }
     }
 
@@ -86,11 +86,11 @@ public partial class SettingPanelViewModel : ObservableObject
         WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(OuterFillColor)));
         if (_currentThemeVariant == ThemeVariant.Light)
         {
-            OuterFillColor = _lightOuterFillColor;
+             _lightOuterFillColor = OuterFillColor;
         }
         else if (_currentThemeVariant == ThemeVariant.Dark)
         {
-            OuterFillColor = _darkOuterFillColor;
+            _darkOuterFillColor = OuterFillColor;
         }
     }
 
@@ -99,11 +99,11 @@ public partial class SettingPanelViewModel : ObservableObject
         WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(OuterStrokeColor)));
         if (_currentThemeVariant == ThemeVariant.Light)
         {
-            OuterStrokeColor = _lightOuterStrokeColor;
+             _lightOuterStrokeColor = OuterStrokeColor;
         }
         else if (_currentThemeVariant == ThemeVariant.Dark)
         {
-            OuterStrokeColor = _darkOuterStrokeColor;
+            _darkOuterStrokeColor = OuterStrokeColor;
         }
     }
 
@@ -112,11 +112,11 @@ public partial class SettingPanelViewModel : ObservableObject
         WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(FallbackColor)));
         if (_currentThemeVariant == ThemeVariant.Light)
         {
-            FallbackColor = _lightFallbackColor;
+            _lightFallbackColor = FallbackColor;
         }
         else if (_currentThemeVariant == ThemeVariant.Dark)
         {
-            FallbackColor = _darkFallbackColor;
+            _darkFallbackColor = FallbackColor;
         }
     }
     

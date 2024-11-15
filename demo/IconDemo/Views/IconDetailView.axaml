@@ -11,14 +11,6 @@
     Width="400"
     x:DataType="viewModels:IconDetailViewModel"
     mc:Ignorable="d">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Light" />
-                <ResourceDictionary x:Key="Dark" />
-            </ResourceDictionary.ThemeDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
     <UserControl.Styles>
         <Style Selector=":is(iconica|IconicaBase)">
             <Setter Property="Width" Value="{DynamicResource IconSize}" />

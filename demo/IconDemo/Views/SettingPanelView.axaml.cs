@@ -8,6 +8,5 @@ public partial class SettingPanelView : UserControl
     public SettingPanelView()
     {
         InitializeComponent();
-        DataContext = new SettingPanelViewModel();
     }
 }

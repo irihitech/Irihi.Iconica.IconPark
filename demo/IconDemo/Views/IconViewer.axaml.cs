@@ -11,7 +11,6 @@ public partial class IconViewer : UserControl
     public IconViewer()
     {
         InitializeComponent();
-        this.DataContext = new IconViewerViewModel();
         IconsContainer.SizeChanged += OnContainerSizeChanged;
     }
     

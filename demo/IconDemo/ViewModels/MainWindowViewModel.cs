@@ -16,5 +16,14 @@ namespace IconDemo.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
+    public IconDetailViewModel IconDetailViewModel { get; set; }
+    public SettingPanelViewModel SettingPanelViewModel { get; set; }
+    public IconViewerViewModel IconViewerViewModel { get; set; }
     
+    public MainWindowViewModel()
+    {
+        IconDetailViewModel = new IconDetailViewModel();
+        SettingPanelViewModel = new SettingPanelViewModel();
+        IconViewerViewModel = new IconViewerViewModel();
+    }
 }
