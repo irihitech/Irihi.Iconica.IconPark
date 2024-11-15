@@ -12,6 +12,7 @@
         Margin="8"
         Padding="0"
         BorderBrush="{DynamicResource BorderCardBorderBrush}"
+        PointerPressed="InputElement_OnPointerPressed"
         BorderThickness="0.5"
         Classes="Hover"
         CornerRadius="2"

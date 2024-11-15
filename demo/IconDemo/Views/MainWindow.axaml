@@ -1,87 +1,37 @@
-<u:UrsaWindow xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:IconDemo.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:u="https://irihi.tech/ursa"
-        xmlns:views="clr-namespace:IconDemo.Views"
-        mc:Ignorable="d" d:DesignWidth="800"
-        d:DesignHeight="450"
-        x:Class="IconDemo.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Name="root"
-        Title="IconDemo">
+<u:UrsaWindow
+    x:Class="IconDemo.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="https://irihi.tech/ursa"
+    xmlns:views="clr-namespace:IconDemo.Views"
+    xmlns:vm="using:IconDemo.ViewModels"
+    Name="root"
+    Title="IconDemo"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:MainWindowViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    mc:Ignorable="d">
+    <u:UrsaWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light"/>
+                <ResourceDictionary x:Key="Dark"/>
+            </ResourceDictionary.ThemeDictionaries>
+            <x:Double x:Key="IconSize">24</x:Double>
+            <x:Double x:Key="IconStrokeWidth">2</x:Double>
+        </ResourceDictionary>
+    </u:UrsaWindow.Resources>
     <u:UrsaWindow.RightContent>
-        <u:ThemeToggleButton/>
+        <u:ThemeToggleButton />
     </u:UrsaWindow.RightContent>
-    <Grid ColumnDefinitions="*, Auto">
-        <Border Padding="16" Theme="{DynamicResource CardBorder}">
-            <views:IconViewer/>
+    <Grid ColumnDefinitions="*, Auto" RowDefinitions="*, Auto">
+        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Padding="16" Theme="{DynamicResource CardBorder}">
+            <views:IconViewer />
         </Border>
-        <Border
-            Grid.Row="0"
-            Grid.RowSpan="2"
-            Grid.Column="1"
-            Width="300"
-            Theme="{DynamicResource CardBorder}">
-            <u:Form HorizontalAlignment="Stretch">
-                <Slider
-                    Name="size"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
-                    u:FormItem.Label="图标大小"
-                    IsSnapToTickEnabled="True"
-                    Maximum="96"
-                    Minimum="24"
-                    TickFrequency="1"
-                    Value="48" />
-                <Slider
-                    Name="thickness"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center"
-                    u:FormItem.Label="线条粗细"
-                    IsSnapToTickEnabled="True"
-                    Maximum="4"
-                    Minimum="1"
-                    TickFrequency="1"
-                    Value="2" />
-                <u:SelectionList
-                    Name="mode"
-                    u:FormItem.Label="图标风格（颜色）"
-                    ItemsSource="{Binding Modes}"
-                    SelectedIndex="{Binding SelectedMode}">
-                    <u:SelectionList.Styles>
-                        <Style Selector="ListBoxItem">
-                            <Setter Property="Padding" Value="4" />
-                            <Setter Property="Margin" Value="4" />
-                        </Style>
-                    </u:SelectionList.Styles>
-                    <u:SelectionList.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <UniformGrid Columns="2" />
-                        </ItemsPanelTemplate>
-                    </u:SelectionList.ItemsPanel>
-                </u:SelectionList>
-                <u:FormItem NoLabel="True">
-                    <UniformGrid Columns="2">
-                        <TextBlock Text="外部描边颜色" />
-                        <TextBlock Text="外部填充颜色" />
-                        <ColorPicker Height="24" Color="{Binding OuterStrokeColor}" />
-                        <ColorPicker Height="24" Color="{Binding OuterFillColor}" />
-                        <TextBlock Text="内部描边颜色" />
-                        <TextBlock Text="内部填充颜色" />
-                        <ColorPicker Height="24" Color="{Binding InnerStrokeColor}" />
-                        <ColorPicker Height="24" Color="{Binding InnerFillColor}" />
-                    </UniformGrid>
-                </u:FormItem>
-                <Button
-                    HorizontalAlignment="Stretch"
-                    u:FormItem.NoLabel="True"
-                    Classes="Tertiary"
-                    Command="{Binding ResetCommand}"
-                    Content="还原色彩" />
-            </u:Form>
-        </Border>
+        <views:IconDetailView Grid.Column="1" Grid.Row="0" />
+        <views:SettingPanelView Grid.Column="1" Grid.Row="1" />
     </Grid>
 </u:UrsaWindow>

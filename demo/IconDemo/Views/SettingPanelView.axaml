@@ -1,0 +1,122 @@
+<UserControl
+    x:Class="IconDemo.Views.SettingPanelView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="https://irihi.tech/ursa"
+    xmlns:viewModels="clr-namespace:IconDemo.ViewModels"
+    Width="400"
+    x:DataType="viewModels:SettingPanelViewModel"
+    mc:Ignorable="d">
+    <Design.DataContext>
+        <viewModels:SettingPanelViewModel />
+    </Design.DataContext>
+    <Border Theme="{DynamicResource CardBorder}">
+        <u:Form HorizontalAlignment="Stretch">
+            <u:FormItem Label="图标大小">
+                <DockPanel LastChildFill="True">
+                    <u:NumericDoubleUpDown
+                        Width="100"
+                        DockPanel.Dock="Right"
+                        Minimum="{Binding #size.Minimum}"
+                        Maximum="{Binding #size.Maximum}"
+                        AllowDrag="True"
+                        Value="{Binding #size.Value}" />
+                    <Slider
+                        Name="size"
+                        Margin="0,0,8,0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        IsSnapToTickEnabled="True"
+                        Maximum="256"
+                        Minimum="12"
+                        TickFrequency="1"
+                        Value="{Binding Size}" />
+                </DockPanel>
+            </u:FormItem>
+            <u:FormItem Label="线条粗细">
+                <DockPanel LastChildFill="True">
+                    <u:NumericDoubleUpDown
+                        Width="100"
+                        DockPanel.Dock="Right"
+                        Minimum="{Binding #thickness.Minimum}"
+                        Maximum="{Binding #thickness.Maximum}"
+                        AllowDrag="True"
+                        Value="{Binding #thickness.Value}" />
+                    <Slider
+                        Name="thickness"
+                        Margin="0,0,8,0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        u:FormItem.Label="线条粗细"
+                        IsSnapToTickEnabled="True"
+                        Maximum="4"
+                        Minimum="1"
+                        TickFrequency="1"
+                        Value="{Binding StrokeWidth}" />
+                </DockPanel>
+            </u:FormItem>
+            <u:SelectionList
+                Name="mode"
+                u:FormItem.Label="图标风格（颜色）"
+                ItemsSource="{Binding Modes}"
+                SelectedItem="{Binding SelectedMode}">
+                <u:SelectionList.Styles>
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Padding" Value="4" />
+                        <Setter Property="Margin" Value="4" />
+                    </Style>
+                </u:SelectionList.Styles>
+                <u:SelectionList.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="2" />
+                    </ItemsPanelTemplate>
+                </u:SelectionList.ItemsPanel>
+            </u:SelectionList>
+            <u:FormItem NoLabel="True">
+                <UniformGrid Columns="2">
+                    <UniformGrid.Styles>
+                        <Style Selector="ColorPicker">
+                            <Setter Property="Theme" Value="{StaticResource SimpleColorPicker}" />
+                        </Style>
+                        <Style Selector="ColorPicker DropDownButton">
+                            <Setter Property="Padding" Value="0" />
+                            <Style Selector="^ /template/ PathIcon">
+                                <Setter Property="IsVisible" Value="False" />
+                            </Style>
+                        </Style>
+                        <Style Selector="TextBlock">
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                        <Style Selector="DockPanel">
+                            <Setter Property="Margin" Value="4" />
+                        </Style>
+                    </UniformGrid.Styles>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock DockPanel.Dock="Left" Text="外部描边" />
+                        <ColorPicker Color="{Binding OuterStrokeColor}" />
+                    </DockPanel>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock DockPanel.Dock="Left" Text="外部填充" />
+                        <ColorPicker Color="{Binding OuterFillColor}" />
+                    </DockPanel>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock DockPanel.Dock="Left" Text="内部描边" />
+                        <ColorPicker Color="{Binding InnerStrokeColor}" />
+                    </DockPanel>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock DockPanel.Dock="Left" Text="内部填充" />
+                        <ColorPicker Color="{Binding InnerFillColor}" />
+                    </DockPanel>
+                </UniformGrid>
+            </u:FormItem>
+            <Button
+                HorizontalAlignment="Stretch"
+                u:FormItem.NoLabel="True"
+                Classes="Tertiary"
+                Command="{Binding ResetCommand}"
+                Content="还原色彩" />
+        </u:Form>
+    </Border>
+</UserControl>
