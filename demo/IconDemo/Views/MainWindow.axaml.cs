@@ -1,5 +1,6 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Media.Immutable;
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm.Messaging;
@@ -43,6 +44,12 @@ public partial class MainWindow : UrsaWindow
         var themeProvider = Resources.ThemeDictionaries[ActualThemeVariant];
         if (themeProvider is ResourceDictionary rd && message.Value is not null)
             rd[message.ResourceKey] = new ImmutableSolidColorBrush(message.Value.Value);
+    }
+
+    protected override void OnLoaded(RoutedEventArgs e)
+    {
+        base.OnLoaded(e);
+        WeakReferenceMessenger.Default.Send(ActualThemeVariant);
     }
 
     private static void OnActualThemeChanged(ThemeVariant themeVariant)

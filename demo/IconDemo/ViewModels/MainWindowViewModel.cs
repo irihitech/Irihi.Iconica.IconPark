@@ -11,6 +11,7 @@ using CommunityToolkit.Mvvm.Input;
 using IconDemo.Models;
 using Irihi.Iconica;
 using Irihi.Iconica.Icons;
+using Ursa.Controls;
 
 namespace IconDemo.ViewModels;
 
@@ -25,5 +26,13 @@ public partial class MainWindowViewModel : ViewModelBase
         IconDetailViewModel = new IconDetailViewModel();
         SettingPanelViewModel = new SettingPanelViewModel();
         IconViewerViewModel = new IconViewerViewModel();
+        SaveDialogCommand = new AsyncRelayCommand(OnSaveDialogAsync);
     }
+
+    private async Task OnSaveDialogAsync()
+    {
+        await MessageBox.ShowOverlayAsync("Hello World");
+    }
+
+    public ICommand SaveDialogCommand { get; set; }
 }

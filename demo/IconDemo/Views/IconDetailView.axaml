@@ -33,8 +33,8 @@
             LabelPosition="Left"
             LabelWidth="*">
             <ContentControl
-                MinWidth="256"
-                MinHeight="256"
+                MinWidth="128"
+                MinHeight="128"
                 HorizontalAlignment="Center"
                 u:FormItem.NoLabel="True"
                 Content="{Binding}"

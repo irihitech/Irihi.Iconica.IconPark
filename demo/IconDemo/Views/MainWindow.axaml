@@ -7,8 +7,11 @@
     xmlns:u="https://irihi.tech/ursa"
     xmlns:views="clr-namespace:IconDemo.Views"
     xmlns:vm="using:IconDemo.ViewModels"
+    xmlns:iconica="https://irihi.tech/iconica"
     Name="root"
     Title="IconDemo"
+    MinHeight="600"
+    MinWidth="600"
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:DataType="vm:MainWindowViewModel"
@@ -25,9 +28,14 @@
         </ResourceDictionary>
     </u:UrsaWindow.Resources>
     <u:UrsaWindow.RightContent>
-        <u:ThemeToggleButton />
+        <StackPanel Orientation="Horizontal">
+            <Button Theme="{DynamicResource BorderlessButton}" Classes="Tertiary" Padding="8" Command="{Binding SaveDialogCommand}">
+                <iconica:Export Width="16" Height="16" Mode="Fill" StrokeWidth="6"/>
+            </Button>
+            <u:ThemeToggleButton />
+        </StackPanel>
     </u:UrsaWindow.RightContent>
-    <Grid ColumnDefinitions="*, Auto" RowDefinitions="*, Auto">
+    <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, *">
         <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Padding="16" Theme="{DynamicResource CardBorder}">
             <views:IconViewer DataContext="{Binding IconViewerViewModel}" />
         </Border>
