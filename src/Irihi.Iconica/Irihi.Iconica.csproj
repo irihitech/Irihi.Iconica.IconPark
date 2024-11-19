@@ -2,10 +2,15 @@
 
     <PropertyGroup>
         <OutputType>library</OutputType>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PackageId>Irihi.Iconica</PackageId>
+        <PackageIcon>irihi.png</PackageIcon>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <Authors>IRIHI Technology Co., Ltd. 上海铱泓科技服务有限公司</Authors>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Generated\" />
+        <None Include="irihi.png" Pack="true" PackagePath=""/>
     </ItemGroup>
 
 </Project>
