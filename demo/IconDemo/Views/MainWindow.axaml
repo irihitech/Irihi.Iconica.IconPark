@@ -30,7 +30,7 @@
     <u:UrsaWindow.RightContent>
         <StackPanel Orientation="Horizontal">
             <Button Theme="{DynamicResource BorderlessButton}" Classes="Tertiary" Padding="8" Command="{Binding SaveDialogCommand}">
-                <iconica:Export Width="16" Height="16" Mode="Fill" StrokeWidth="6"/>
+                <iconica:Export Width="16" Height="16" Mode="Fill" StrokeWidth="6" OuterStroke="{DynamicResource SemiGrey8}"/>
             </Button>
             <u:ThemeToggleButton />
         </StackPanel>

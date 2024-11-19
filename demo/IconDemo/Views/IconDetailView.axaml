@@ -40,7 +40,7 @@
                 Content="{Binding}"
                 ContentTemplate="{x:Static dataTemplates:IconDataTemplate.Instance}" />
             <TextBlock Text="{Binding Title}" u:FormItem.Label="名称"/>
-            <TextBlock Text="{Binding ClassName}" u:FormItem.Label="类名" />
+            <SelectableTextBlock Text="{Binding ClassName}" u:FormItem.Label="类名" />
             <u:FormItem Label="类别">
                 <StackPanel Orientation="Horizontal">
                     <Label

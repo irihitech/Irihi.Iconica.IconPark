@@ -83,33 +83,107 @@
                             </Style>
                             <Style Selector="ColorPicker DropDownButton">
                                 <Setter Property="Padding" Value="0" />
+                                <Setter Property="HorizontalAlignment" Value="Stretch" />
                                 <Style Selector="^ /template/ PathIcon">
                                     <Setter Property="IsVisible" Value="False" />
                                 </Style>
                             </Style>
-                            <Style Selector="TextBlock">
-                                <Setter Property="VerticalAlignment" Value="Center" />
-                            </Style>
-                            <Style Selector="DockPanel">
-                                <Setter Property="Margin" Value="4" />
+                            <Style Selector="Grid.Root">
+                                <Setter Property="Margin" Value="8 4" />
                             </Style>
                         </UniformGrid.Styles>
-                        <DockPanel LastChildFill="True">
-                            <TextBlock DockPanel.Dock="Left" Text="外部描边" />
-                            <ColorPicker Color="{Binding OuterStrokeColor}" />
-                        </DockPanel>
-                        <DockPanel LastChildFill="True">
-                            <TextBlock DockPanel.Dock="Left" Text="外部填充" />
-                            <ColorPicker Color="{Binding OuterFillColor}" />
-                        </DockPanel>
-                        <DockPanel LastChildFill="True">
-                            <TextBlock DockPanel.Dock="Left" Text="内部描边" />
-                            <ColorPicker Color="{Binding InnerStrokeColor}" />
-                        </DockPanel>
-                        <DockPanel LastChildFill="True">
-                            <TextBlock DockPanel.Dock="Left" Text="内部填充" />
-                            <ColorPicker Color="{Binding InnerFillColor}" />
-                        </DockPanel>
+                        <Grid
+                            Classes="Root"
+                            ColumnDefinitions="Auto, *"
+                            RowDefinitions="*, *">
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="外部描边" />
+                            <SelectableTextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                Text="{Binding OuterStrokeColor}" />
+                            <ColorPicker
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Width="{x:Static x:Double.NaN}"
+                                HorizontalAlignment="Stretch"
+                                Color="{Binding OuterStrokeColor}" />
+                        </Grid>
+                        <Grid
+                            Classes="Root"
+                            ColumnDefinitions="Auto, *"
+                            RowDefinitions="*, *">
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="外部填充" />
+                            <SelectableTextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                Text="{Binding OuterFillColor}" />
+                            <ColorPicker
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Width="{x:Static x:Double.NaN}"
+                                HorizontalAlignment="Stretch"
+                                Color="{Binding OuterFillColor}" />
+                        </Grid>
+                        <Grid
+                            Classes="Root"
+                            ColumnDefinitions="Auto, *"
+                            RowDefinitions="*, *">
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="内部描边" />
+                            <SelectableTextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                Text="{Binding InnerStrokeColor}" />
+                            <ColorPicker
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Width="{x:Static x:Double.NaN}"
+                                HorizontalAlignment="Stretch"
+                                Color="{Binding InnerStrokeColor}" />
+                        </Grid>
+                        <Grid
+                            Classes="Root"
+                            ColumnDefinitions="Auto, *"
+                            RowDefinitions="*, *">
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="内部填充" />
+                            <SelectableTextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                Text="{Binding InnerFillColor}" />
+                            <ColorPicker
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Width="{x:Static x:Double.NaN}"
+                                HorizontalAlignment="Stretch"
+                                Color="{Binding InnerFillColor}" />
+                        </Grid>
                     </UniformGrid>
                 </u:FormItem>
                 <Button
