@@ -13,7 +13,7 @@
         <viewModels:SettingPanelViewModel />
     </Design.DataContext>
     <Border Theme="{DynamicResource CardBorder}">
-        <ScrollViewer>
+        <ScrollViewer Theme="{DynamicResource StaticScrollViewer}">
             <u:Form HorizontalAlignment="Stretch">
                 <u:FormItem Label="图标大小">
                     <DockPanel LastChildFill="True">

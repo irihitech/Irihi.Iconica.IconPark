@@ -20,8 +20,8 @@
         <Grid ColumnDefinitions="Auto, *">
             <ContentControl
                 Grid.Column="0"
-                MinWidth="96"
-                MinHeight="96"
+                MinWidth="48"
+                MinHeight="48"
                 Margin="8,2"
                 Content="{Binding}"
                 ContentTemplate="{x:Static dataTemplates:IconDataTemplate.Instance}" />

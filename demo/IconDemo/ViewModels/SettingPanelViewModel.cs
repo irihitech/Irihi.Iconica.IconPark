@@ -25,17 +25,17 @@ public partial class SettingPanelViewModel : ObservableObject
     private readonly Color? _lightDefaultOuterStrokeColor = Color.Parse("#FF333333");
     private readonly Color? _lightDefaultFallbackColor = Colors.White;
 
-    private Color? _darkInnerFillColor = Color.Parse("#FF33C2B0");
-    private Color? _darkInnerStrokeColor = Color.Parse("#FF333333");
-    private Color? _darkOuterFillColor = Color.Parse("#FF54A9FF");
-    private Color? _darkOuterStrokeColor = Color.Parse("#FFFFFFFF");
-    private Color? _darkFallbackColor = Colors.Black;
+    internal Color? _darkInnerFillColor = Color.Parse("#FF33C2B0");
+    internal Color? _darkInnerStrokeColor = Color.Parse("#FF333333");
+    internal Color? _darkOuterFillColor = Color.Parse("#FF54A9FF");
+    internal Color? _darkOuterStrokeColor = Color.Parse("#FFFFFFFF");
+    internal Color? _darkFallbackColor = Colors.Black;
 
-    private Color? _lightInnerFillColor = Color.Parse("#FF00B3A1");
-    private Color? _lightInnerStrokeColor = Color.Parse("#FFFFFFFF");
-    private Color? _lightOuterFillColor = Color.Parse("#FF0077FA");
-    private Color? _lightOuterStrokeColor = Color.Parse("#FF333333");
-    private Color? _lightFallbackColor = Colors.White;
+    internal Color? _lightInnerFillColor = Color.Parse("#FF00B3A1");
+    internal Color? _lightInnerStrokeColor = Color.Parse("#FFFFFFFF");
+    internal Color? _lightOuterFillColor = Color.Parse("#FF0077FA");
+    internal Color? _lightOuterStrokeColor = Color.Parse("#FF333333");
+    internal Color? _lightFallbackColor = Colors.White;
     private ThemeVariant? _currentThemeVariant;
     [ObservableProperty] private Color? _fallbackColor = Colors.White;
     [ObservableProperty] private Color? _innerFillColor = Color.Parse("#43CCF8");

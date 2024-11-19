@@ -1,26 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
-using Avalonia;
-using Avalonia.Media;
-using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using IconDemo.Models;
-using Irihi.Iconica;
-using Irihi.Iconica.Icons;
+using IconDemo.Views;
 using Ursa.Controls;
 
 namespace IconDemo.ViewModels;
 
-public partial class MainWindowViewModel : ViewModelBase
+public class MainWindowViewModel : ViewModelBase
 {
-    public IconDetailViewModel IconDetailViewModel { get; set; }
-    public SettingPanelViewModel SettingPanelViewModel { get; set; }
-    public IconViewerViewModel IconViewerViewModel { get; set; }
-    
     public MainWindowViewModel()
     {
         IconDetailViewModel = new IconDetailViewModel();
@@ -29,10 +16,20 @@ public partial class MainWindowViewModel : ViewModelBase
         SaveDialogCommand = new AsyncRelayCommand(OnSaveDialogAsync);
     }
 
-    private async Task OnSaveDialogAsync()
-    {
-        await MessageBox.ShowOverlayAsync("Hello World");
-    }
+    public IconDetailViewModel IconDetailViewModel { get; set; }
+    public SettingPanelViewModel SettingPanelViewModel { get; set; }
+    public IconViewerViewModel IconViewerViewModel { get; set; }
 
     public ICommand SaveDialogCommand { get; set; }
+
+    private async Task OnSaveDialogAsync()
+    {
+        var vm = new ExportViewModel(SettingPanelViewModel, IconDetailViewModel.IconInfo);
+        await OverlayDialog.ShowModal<ExportView, ExportViewModel>(vm,
+            options: new OverlayDialogOptions
+            {
+                Title = "获取样式",
+                Buttons = DialogButton.None
+            });
+    }
 }

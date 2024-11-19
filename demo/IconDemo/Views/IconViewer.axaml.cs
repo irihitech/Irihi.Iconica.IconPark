@@ -16,7 +16,7 @@ public partial class IconViewer : UserControl
     
     private void OnContainerSizeChanged(object? sender, SizeChangedEventArgs e)
     {
-        ColumnCount = (int) (e.NewSize.Width / 300);
+        ColumnCount = (int) (e.NewSize.Width / 200);
     }
 
     public static readonly StyledProperty<int> ColumnCountProperty = AvaloniaProperty.Register<MainWindow, int>(
