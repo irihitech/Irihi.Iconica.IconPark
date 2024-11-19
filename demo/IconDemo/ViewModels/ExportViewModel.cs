@@ -9,7 +9,7 @@ namespace IconDemo.ViewModels;
 public partial class ExportViewModel: ObservableObject
 {
     private SettingPanelViewModel _settingPanelViewModel;
-    private IconInfo? _iconType;
+    private IconInfo? _iconInfo;
     
     [ObservableProperty] private string? _globalStyle;
     [ObservableProperty] private string? _globalResource;
@@ -20,7 +20,7 @@ public partial class ExportViewModel: ObservableObject
     public ExportViewModel(SettingPanelViewModel settingPanelViewModel, IconInfo? iconType)
     {
         _settingPanelViewModel = settingPanelViewModel;
-        _iconType = iconType;
+        _iconInfo = iconType;
         _hasIconInfo = iconType != null;
         GenerateGlobalStyle();
         GenerateGlobalResource();
@@ -66,9 +66,9 @@ public partial class ExportViewModel: ObservableObject
     
     private void GenerateIcon()
     {
-        if (_iconType is null) return;
+        if (_iconInfo is null) return;
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine($"<iconica:{_iconType?.IconType} Width=\"{_settingPanelViewModel.Size}\" Height=\"{_settingPanelViewModel.Size}\"");
+        sb.AppendLine($"<iconica:{_iconInfo.ClassName} Width=\"{_settingPanelViewModel.Size}\" Height=\"{_settingPanelViewModel.Size}\"");
         if (UseLocalColor)
         {
             sb.AppendLine($"    OuterFill=\"{{DynamicResource IconOuterFillBrush}}\"");
