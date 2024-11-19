@@ -8,6 +8,7 @@
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
         <PublishAot>true</PublishAot>
+        <Authors>IRIHI Technology Co., Ltd. 上海铱泓科技服务有限公司</Authors>
     </PropertyGroup>
 
     <ItemGroup>

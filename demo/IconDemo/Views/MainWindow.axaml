@@ -15,7 +15,7 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:DataType="vm:MainWindowViewModel"
-    Icon="/Assets/avalonia-logo.ico"
+    Icon="/Assets/irihi.ico"
     mc:Ignorable="d">
     <u:UrsaWindow.Resources>
         <ResourceDictionary>
