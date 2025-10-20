@@ -7,7 +7,7 @@
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
     <Application.Styles>
         <semi:SemiTheme />
-        <StyleInclude Source="avares://Semi.Avalonia.ColorPicker/Index.axaml" />
+        <semi:ColorPickerSemiTheme />
         <u-semi:SemiTheme/>
     </Application.Styles>
     <Application.Resources>
