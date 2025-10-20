@@ -30,7 +30,7 @@ public partial class ExportViewModel: ObservableObject
     private void GenerateGlobalStyle()
     {
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine("<Style Selector=\":is(iconica|IconicaBase)\">");
+        sb.AppendLine("<Style Selector=\":is(iconica|IconParkBase)\">");
         sb.AppendLine($"    <Setter Property=\"OuterFill\" Value=\"{{DynamicResource IconOuterFillBrush}}\" />");
         sb.AppendLine($"    <Setter Property=\"OuterStroke\" Value=\"{{DynamicResource IconOuterStrokeBrush}}\" />");
         sb.AppendLine($"    <Setter Property=\"InnerFill\" Value=\"{{DynamicResource IconInnerFillBrush}}\" />");

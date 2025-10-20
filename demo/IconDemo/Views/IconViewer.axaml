@@ -46,7 +46,7 @@
             Grid.Row="1"
             Background="{DynamicResource SemiBackground0}">
             <ScrollViewer.Styles>
-                <Style Selector=":is(iconica|IconicaBase)">
+                <Style Selector=":is(iconica|IconParkBase)">
                     <Setter Property="Width" Value="36" />
                     <Setter Property="Height" Value="36" />
                     <Setter Property="Mode" Value="{DynamicResource IconMode}" />

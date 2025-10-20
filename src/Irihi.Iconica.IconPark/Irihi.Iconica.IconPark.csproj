@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>library</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageId>Irihi.Iconica.IconPark</PackageId>
+        <PackageIcon>irihi.png</PackageIcon>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <Authors>IRIHI Technology Co., Ltd. 上海铱泓科技服务有限公司</Authors>
+        <RootNamespace>Irihi.Iconica</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia" Version="11.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="irihi.png" Pack="true" PackagePath=""/>
+    </ItemGroup>
+
+</Project>

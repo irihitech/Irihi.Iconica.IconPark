@@ -33,7 +33,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Irihi.Iconica\Irihi.Iconica.csproj" />
+      <ProjectReference Include="..\..\src\Irihi.Iconica.IconPark\Irihi.Iconica.IconPark.csproj" />
     </ItemGroup>
 
     <ItemGroup>

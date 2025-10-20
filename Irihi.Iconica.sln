@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irihi.Iconica", "src\Irihi.Iconica\Irihi.Iconica.csproj", "{5EE30ED3-9FE0-4F55-A718-94CBBD3C08B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irihi.Iconica.IconPark", "src\Irihi.Iconica.IconPark\Irihi.Iconica.IconPark.csproj", "{5EE30ED3-9FE0-4F55-A718-94CBBD3C08B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IconDemo", "demo\IconDemo\IconDemo.csproj", "{30307A74-565D-4149-926A-70DD10987D04}"
 EndProject

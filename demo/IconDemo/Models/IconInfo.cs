@@ -16,7 +16,7 @@ public partial class IconInfo
     public List<string> Tag { get; set; } = [];
     public bool Rtl { get; set; }
     public string ClassName { get; set; } = string.Empty;
-    public Func<IconicaBase>? Creator { get; set; }
+    public Func<IconParkBase>? Creator { get; set; }
     public List<string> Keywords { get; set; } = [];
     public Type IconType { get; set; }
 }
