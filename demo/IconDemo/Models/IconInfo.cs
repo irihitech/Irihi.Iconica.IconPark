@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Irihi.Iconica;
-using Irihi.Iconica.Icons;
+using Irihi.Iconica.IconPark;
 
 namespace IconDemo.Models;
 

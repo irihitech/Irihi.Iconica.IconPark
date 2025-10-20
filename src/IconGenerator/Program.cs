@@ -10,7 +10,7 @@ using IconGenerator;
 var rootPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", ".."));
 var svgPath = Path.Combine(rootPath, "iconpark", "packages", "react", "src", "icons");
 var fileNames = Directory.GetFiles(svgPath, "*.tsx");
-var sourceTargetPath = Path.Combine(rootPath, "src", "Irihi.Iconica", "Generated");
+var sourceTargetPath = Path.Combine(rootPath, "src", "Irihi.Iconica.IconPark", "Generated");
 
 if (!Directory.Exists(sourceTargetPath))
     Directory.CreateDirectory(sourceTargetPath);
@@ -329,7 +329,7 @@ StringBuilder builder = new StringBuilder();
 builder.AppendLine("using System;");
 builder.AppendLine("using System.Collections.Generic;");
 builder.AppendLine("using Irihi.Iconica;");
-builder.AppendLine("using Irihi.Iconica.Icons;");
+builder.AppendLine("using Irihi.Iconica.IconPark.Icons;");
 builder.AppendLine("namespace IconDemo.Models;");
 builder.AppendLine("public partial class IconInfo");
 builder.AppendLine("{");
@@ -349,13 +349,13 @@ foreach (var info in infoList)
     builder.AppendLine($"            Rtl = {info.Rtl.ToString().ToLower().Trim()},");
     builder.AppendLine($"            Tag = [{string.Join(", " , info.Tag.Select(a => $"\"{a.Trim()}\""))}],");
     builder.AppendLine($"            Title = \"{info.Title.Trim()}\",");
-    builder.AppendLine($"            Creator = () => new Irihi.Iconica.Icons.{info.ClassName.Trim()}(),");
+    builder.AppendLine($"            Creator = () => new Irihi.Iconica.IconPark.Icons.{info.ClassName.Trim()}(),");
     var keywords = new List<string>(info.Tag);
     keywords.Add(info.Name);
     keywords.Add(info.Title);
     keywords.Add(info.ClassName);
     builder.AppendLine($"            Keywords = [{string.Join(", ", keywords.Select(a => $"\"{a.Trim()}\""))}],");
-    builder.AppendLine($"            IconType = typeof(Irihi.Iconica.Icons.{info.ClassName.Trim()})");
+    builder.AppendLine($"            IconType = typeof(Irihi.Iconica.IconPark.Icons.{info.ClassName.Trim()})");
     builder.AppendLine("        },");
 }
 builder.AppendLine("    ];");

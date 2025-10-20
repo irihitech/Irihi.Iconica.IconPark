@@ -1,6 +1,6 @@
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.Messaging.Messages;
-using Irihi.Iconica;
+using Irihi.Iconica.IconPark;
 
 namespace IconDemo.Messages;
 

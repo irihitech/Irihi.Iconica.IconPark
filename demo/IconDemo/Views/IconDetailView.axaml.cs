@@ -5,7 +5,7 @@ using Avalonia.Media.Immutable;
 using CommunityToolkit.Mvvm.Messaging;
 using IconDemo.Messages;
 using IconDemo.ViewModels;
-using Irihi.Iconica.Icons;
+using Irihi.Iconica.IconPark.Icons;
 
 namespace IconDemo.Views;
 
