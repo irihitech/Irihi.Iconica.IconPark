@@ -21,7 +21,7 @@
                     Margin="8"
                     HorizontalAlignment="Left"
                     Classes="H3"
-                    Text="ICONICA灵动大师系列图标"
+                    Text="IRIHI ICONICA 系列图标 - IconPark"
                     Theme="{DynamicResource TitleTextBlock}" />
                 <u:Badge Classes="Success" Header="AOT Compatible" />
             </StackPanel>
