@@ -6,17 +6,17 @@ using IconDemo.Models;
 
 namespace IconDemo.ViewModels;
 
-public partial class ExportViewModel: ObservableObject
+public partial class ExportViewModel : ObservableObject
 {
     private SettingPanelViewModel _settingPanelViewModel;
     private IconInfo? _iconInfo;
-    
+
     [ObservableProperty] private string? _globalStyle;
     [ObservableProperty] private string? _globalResource;
     [ObservableProperty] private string? _icon;
     [ObservableProperty] private bool _useLocalColor;
     [ObservableProperty] private bool _hasIconInfo;
-    
+
     public ExportViewModel(SettingPanelViewModel settingPanelViewModel, IconInfo? iconType)
     {
         _settingPanelViewModel = settingPanelViewModel;
@@ -29,65 +29,77 @@ public partial class ExportViewModel: ObservableObject
 
     private void GenerateGlobalStyle()
     {
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine("<Style Selector=\":is(iconica|IconParkBase)\">");
-        sb.AppendLine($"    <Setter Property=\"OuterFill\" Value=\"{{DynamicResource IconOuterFillBrush}}\" />");
-        sb.AppendLine($"    <Setter Property=\"OuterStroke\" Value=\"{{DynamicResource IconOuterStrokeBrush}}\" />");
-        sb.AppendLine($"    <Setter Property=\"InnerFill\" Value=\"{{DynamicResource IconInnerFillBrush}}\" />");
-        sb.AppendLine($"    <Setter Property=\"InnerStroke\" Value=\"{{DynamicResource IconInnerStrokeBrush}}\" />");
-        sb.AppendLine($"    <Setter Property=\"FallbackBrush\" Value=\"{{DynamicResource IconFallbackBrush}}\" />");
-        sb.AppendLine("</Style>");
-        GlobalStyle = sb.ToString();
+        GlobalStyle =
+            """
+            <Style Selector=":is(iconica|IconParkBase)">
+                <Setter Property="OuterFill" Value="{{DynamicResource IconOuterFillBrush}}" />
+                <Setter Property="OuterStroke" Value="{{DynamicResource IconOuterStrokeBrush}}" />
+                <Setter Property="InnerFill" Value="{{DynamicResource IconInnerFillBrush}}" />
+                <Setter Property="InnerStroke" Value="{{DynamicResource IconInnerStrokeBrush}}" />
+                <Setter Property="FallbackBrush" Value="{{DynamicResource IconFallbackBrush}}" />
+            </Style>
+            """;
     }
-    
+
     private void GenerateGlobalResource()
     {
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine("<ResourceDictionary>");
-        sb.AppendLine("    <ResourceDictionary.ThemeDictionaries>");
-        sb.AppendLine("        <ResourceDictionary x:Key=\"Light\">");
-        sb.AppendLine($"            <SolidColorBrush x:Key=\"IconOuterFillBrush\" Color=\"{_settingPanelViewModel._lightOuterFillColor}\" />");
-        sb.AppendLine($"            <SolidColorBrush x:Key=\"IconOuterStrokeBrush\" Color=\"{_settingPanelViewModel._lightOuterStrokeColor}\" />");
-        sb.AppendLine($"            <SolidColorBrush x:Key=\"IconInnerFillBrush\" Color=\"{_settingPanelViewModel._lightInnerFillColor}\" />");
-        sb.AppendLine($"            <SolidColorBrush x:Key=\"IconInnerStrokeBrush\" Color=\"{_settingPanelViewModel._lightInnerStrokeColor}\" />");
-        sb.AppendLine($"            <SolidColorBrush x:Key=\"IconFallbackBrush\" Color=\"{_settingPanelViewModel._lightFallbackColor}\" />");
-        sb.AppendLine("        </ResourceDictionary>");
-        sb.AppendLine("        <ResourceDictionary x:Key=\"Dark\">");
-        sb.AppendLine($"            <SolidColorBrush x:Key=\"IconOuterFillBrush\" Color=\"{_settingPanelViewModel._darkOuterFillColor}\" />");
-        sb.AppendLine($"            <SolidColorBrush x:Key=\"IconOuterStrokeBrush\" Color=\"{_settingPanelViewModel._darkOuterStrokeColor}\" />");
-        sb.AppendLine($"            <SolidColorBrush x:Key=\"IconInnerFillBrush\" Color=\"{_settingPanelViewModel._darkInnerFillColor}\" />");
-        sb.AppendLine($"            <SolidColorBrush x:Key=\"IconInnerStrokeBrush\" Color=\"{_settingPanelViewModel._darkInnerStrokeColor}\" />");
-        sb.AppendLine($"            <SolidColorBrush x:Key=\"IconFallbackBrush\" Color=\"{_settingPanelViewModel._darkFallbackColor}\" />");
-        sb.AppendLine("        </ResourceDictionary>");
-        sb.AppendLine("    </ResourceDictionary.ThemeDictionaries>");
-        sb.AppendLine("</ResourceDictionary>");
-        GlobalResource = sb.ToString();
+        GlobalResource =
+            $"""
+             <ResourceDictionary>
+                 <ResourceDictionary.ThemeDictionaries>
+                     <ResourceDictionary x:Key="Light">
+                         <SolidColorBrush x:Key="IconOuterFillBrush" Color="{_settingPanelViewModel._lightOuterFillColor}" />
+                         <SolidColorBrush x:Key="IconOuterStrokeBrush" Color="{_settingPanelViewModel._lightOuterStrokeColor}" />
+                         <SolidColorBrush x:Key="IconInnerFillBrush" Color="{_settingPanelViewModel._lightInnerFillColor}" />
+                         <SolidColorBrush x:Key="IconInnerStrokeBrush" Color="{_settingPanelViewModel._lightInnerStrokeColor}" />
+                         <SolidColorBrush x:Key="IconFallbackBrush" Color="{_settingPanelViewModel._lightFallbackColor}" />
+                    </ResourceDictionary>
+                    <ResourceDictionary x:Key="Dark">
+                         <SolidColorBrush x:Key="IconOuterFillBrush" Color="{_settingPanelViewModel._darkOuterFillColor}" />
+                         <SolidColorBrush x:Key="IconOuterStrokeBrush" Color="{_settingPanelViewModel._darkOuterStrokeColor}" />
+                         <SolidColorBrush x:Key="IconInnerFillBrush" Color="{_settingPanelViewModel._darkInnerFillColor}" />
+                         <SolidColorBrush x:Key="IconInnerStrokeBrush" Color="{_settingPanelViewModel._darkInnerStrokeColor}" />
+                         <SolidColorBrush x:Key="IconFallbackBrush" Color="{_settingPanelViewModel._darkFallbackColor}" />
+                     </ResourceDictionary>
+                 </ResourceDictionary.ThemeDictionaries>
+             </ResourceDictionary>
+             """;
     }
-    
+
     private void GenerateIcon()
     {
         if (_iconInfo is null) return;
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine($"<iconica:{_iconInfo.ClassName} Width=\"{_settingPanelViewModel.Size}\" Height=\"{_settingPanelViewModel.Size}\"");
+
+        var element =
+            $"""
+             <iconpark:{_iconInfo.ClassName} Width="{_settingPanelViewModel.Size}" Height="{_settingPanelViewModel.Size}"
+             """;
         if (UseLocalColor)
         {
-            sb.AppendLine($"    OuterFill=\"{{DynamicResource IconOuterFillBrush}}\"");
-            sb.AppendLine($"    OuterStroke=\"{{DynamicResource IconOuterStrokeBrush}}\"");
-            sb.AppendLine($"    InnerFill=\"{{DynamicResource IconInnerFillBrush}}\"");
-            sb.AppendLine($"    InnerStroke=\"{{DynamicResource IconInnerStrokeBrush}}\"");
-            sb.AppendLine($"    FallbackBrush=\"{{DynamicResource IconFallbackBrush}}\"");
+            element =
+                $$$"""
+                   {{{element}}}
+                       OuterFill="{{DynamicResource IconOuterFillBrush}}"
+                       OuterStroke="{{DynamicResource IconOuterStrokeBrush}}"
+                       InnerFill="{{DynamicResource IconInnerFillBrush}}"
+                       InnerStroke="{{DynamicResource IconInnerStrokeBrush}}"
+                       FallbackBrush="{{DynamicResource IconFallbackBrush}}"
+                   """;
         }
-        sb.AppendLine($"    StrokeWidth=\"{_settingPanelViewModel.StrokeWidth}\"");
-        sb.AppendLine($"    LineCap=\"Round\"");
-        sb.AppendLine($"    LineJoin=\"Round\"");
-        sb.AppendLine($"    Mode=\"{(_settingPanelViewModel.SelectedMode)}\"");
-        sb.AppendLine("    />");
-        Icon = sb.ToString();
+
+        element =
+            $"""
+             {element}
+                 StrokeWidth="{_settingPanelViewModel.StrokeWidth}"
+                 LineCap="Round"
+                 LineJoin="Round"
+                 Mode="{_settingPanelViewModel.SelectedMode}" />");
+             """;
+        Icon = element;
     }
-    
+
     partial void OnUseLocalColorChanged(bool value)
     {
         GenerateIcon();
     }
-    
 }
