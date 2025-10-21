@@ -1,6 +1,3 @@
-using System;
-using System.Text;
-using Avalonia.Metadata;
 using CommunityToolkit.Mvvm.ComponentModel;
 using IconDemo.Models;
 
@@ -31,7 +28,7 @@ public partial class ExportViewModel : ObservableObject
     {
         GlobalStyle =
             """
-            <Style Selector=":is(iconica|IconParkBase)">
+            <Style Selector=":is(iconpark|IconParkBase)">
                 <Setter Property="OuterFill" Value="{{DynamicResource IconOuterFillBrush}}" />
                 <Setter Property="OuterStroke" Value="{{DynamicResource IconOuterStrokeBrush}}" />
                 <Setter Property="InnerFill" Value="{{DynamicResource IconInnerFillBrush}}" />
@@ -53,8 +50,8 @@ public partial class ExportViewModel : ObservableObject
                          <SolidColorBrush x:Key="IconInnerFillBrush" Color="{_settingPanelViewModel._lightInnerFillColor}" />
                          <SolidColorBrush x:Key="IconInnerStrokeBrush" Color="{_settingPanelViewModel._lightInnerStrokeColor}" />
                          <SolidColorBrush x:Key="IconFallbackBrush" Color="{_settingPanelViewModel._lightFallbackColor}" />
-                    </ResourceDictionary>
-                    <ResourceDictionary x:Key="Dark">
+                     </ResourceDictionary>
+                     <ResourceDictionary x:Key="Dark">
                          <SolidColorBrush x:Key="IconOuterFillBrush" Color="{_settingPanelViewModel._darkOuterFillColor}" />
                          <SolidColorBrush x:Key="IconOuterStrokeBrush" Color="{_settingPanelViewModel._darkOuterStrokeColor}" />
                          <SolidColorBrush x:Key="IconInnerFillBrush" Color="{_settingPanelViewModel._darkInnerFillColor}" />
@@ -69,10 +66,11 @@ public partial class ExportViewModel : ObservableObject
     private void GenerateIcon()
     {
         if (_iconInfo is null) return;
-
         var element =
             $"""
-             <iconpark:{_iconInfo.ClassName} Width="{_settingPanelViewModel.Size}" Height="{_settingPanelViewModel.Size}"
+             <iconpark:{_iconInfo.ClassName}
+                 Width="{_settingPanelViewModel.Size}"
+                 Height="{_settingPanelViewModel.Size}"
              """;
         if (UseLocalColor)
         {
@@ -93,7 +91,7 @@ public partial class ExportViewModel : ObservableObject
                  StrokeWidth="{_settingPanelViewModel.StrokeWidth}"
                  LineCap="Round"
                  LineJoin="Round"
-                 Mode="{_settingPanelViewModel.SelectedMode}" />");
+                 Mode="{_settingPanelViewModel.SelectedMode}" />
              """;
         Icon = element;
     }
