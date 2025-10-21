@@ -10,6 +10,7 @@
         <PackageId>Irihi.Iconica.IconPark</PackageId>
         <PackageIcon>irihi.png</PackageIcon>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <Authors>IRIHI Technology Co., Ltd. 上海铱泓科技服务有限公司</Authors>
@@ -24,6 +25,7 @@
         <None Include="irihi.png" Pack="true" PackagePath=""/>
         <None Include="../../LICENSE" Pack="true" PackagePath=""/>
         <None Include="../../NOTICE" Pack="true" PackagePath=""/>
+        <None Include="../../README.md" Pack="true" PackagePath=""/>
     </ItemGroup>
 
 </Project>
