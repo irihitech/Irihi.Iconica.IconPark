@@ -149,8 +149,14 @@ The demo application provides a searchable gallery of all available icons with l
 
 ## License
 
-- Original IconPark designs: Copyright © 2025 ByteDance IconPark Authors
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+This library includes icons from [IconPark](https://github.com/bytedance/iconpark) by ByteDance, which is also licensed under Apache License 2.0.
+
+### Copyright Notices
+
 - Generated code and library: Copyright © 2025 IRIHI Technology Co., Ltd.
+- Original IconPark designs: Copyright © 2019-present Bytedance Inc.
 
 ## Credits
 
