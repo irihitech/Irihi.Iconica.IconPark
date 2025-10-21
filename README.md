@@ -29,10 +29,10 @@ Traditional approach:
 With Irihi.Iconica.IconPark:
 ```xml
 <!-- Dynamic colors that can be changed at runtime -->
-<iconPark:Bowling OuterStroke="Red" 
-                  OuterFill="Blue" 
-                  InnerStroke="White" 
-                  InnerFill="LightBlue" />
+<iconpark:Bear OuterStroke="Red" 
+               OuterFill="Blue" 
+               InnerStroke="White" 
+               InnerFill="LightBlue" />
 ```
 
 #### 2. **Multiple Display Modes**
@@ -43,26 +43,26 @@ Switch between different icon styles at runtime:
 - **MultiColor Mode**: Full color palette
 
 ```xml
-<iconPark:Bowling Mode="Line" />
-<iconPark:Bowling Mode="Fill" />
-<iconPark:Bowling Mode="TwoTone" />
-<iconPark:Bowling Mode="MultiColor" />
+<iconpark:Bear Mode="Line" />
+<iconpark:Bear Mode="Fill" />
+<iconpark:Bear Mode="TwoTone" />
+<iconpark:Bear Mode="MultiColor" />
 ```
 
 #### 3. **Consistent Sizing and Scaling**
 Icons automatically scale to any size without quality loss:
 ```xml
-<iconPark:Bowling Width="16" Height="16" />
-<iconPark:Bowling Width="64" Height="64" />
-<iconPark:Bowling Width="256" Height="256" />
+<iconpark:Bear Width="16" Height="16" />
+<iconpark:Bear Width="64" Height="64" />
+<iconpark:Bear Width="256" Height="256" />
 ```
 
 #### 4. **Stroke Customization**
 Adjust stroke width, line caps, and joins dynamically:
 ```xml
-<iconPark:Bowling StrokeWidth="2" 
-                  LineCap="Round" 
-                  LineJoin="Round" />
+<iconpark:Bear StrokeWidth="2" 
+               LineCap="Round" 
+               LineJoin="Round" />
 ```
 
 #### 5. **Type Safety and IntelliSense**
@@ -129,20 +129,20 @@ The demo application provides a searchable gallery of all available icons with l
 
 ```xml
 <Window xmlns="https://github.com/avaloniaui"
-        xmlns:iconPark="clr-namespace:Irihi.Iconica.IconPark.Icons;assembly=Irihi.Iconica.IconPark">
+        xmlns:iconpark="https://irihi.tech/iconica/iconpark">
     <StackPanel>
         <!-- Basic icon -->
-        <iconPark:Bowling Width="24" Height="24" />
+        <iconpark:Bear Width="24" Height="24" />
         
         <!-- Customized icon -->
-        <iconPark:Bowling Width="48" Height="48"
-                          Mode="TwoTone"
-                          OuterStroke="#333333"
-                          OuterFill="#2F88FF"
-                          InnerStroke="White"
-                          InnerFill="#43CCF8"
-                          StrokeWidth="4"
-                          LineCap="Round" />
+        <iconpark:Bear Width="48" Height="48"
+                       Mode="TwoTone"
+                       OuterStroke="#333333"
+                       OuterFill="#2F88FF"
+                       InnerStroke="White"
+                       InnerFill="#43CCF8"
+                       StrokeWidth="4"
+                       LineCap="Round" />
     </StackPanel>
 </Window>
 ```

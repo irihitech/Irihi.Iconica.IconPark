@@ -7,7 +7,7 @@
     xmlns:u="https://irihi.tech/ursa"
     xmlns:views="clr-namespace:IconDemo.Views"
     xmlns:vm="using:IconDemo.ViewModels"
-    xmlns:iconica="https://irihi.tech/iconica"
+    xmlns:iconica="https://irihi.tech/iconica/iconpark"
     Name="root"
     Title="IconDemo"
     MinHeight="600"
