@@ -7,7 +7,7 @@
     xmlns:u="https://irihi.tech/ursa"
     xmlns:views="clr-namespace:IconDemo.Views"
     xmlns:vm="using:IconDemo.ViewModels"
-    xmlns:iconica="https://irihi.tech/iconica/iconpark"
+    xmlns:iconpark="https://irihi.tech/iconica/iconpark"
     Name="root"
     Title="IconDemo"
     MinHeight="600"
@@ -30,7 +30,7 @@
     <u:UrsaWindow.RightContent>
         <StackPanel Orientation="Horizontal">
             <Button Theme="{DynamicResource BorderlessButton}" Classes="Tertiary" Padding="8" Command="{Binding SaveDialogCommand}">
-                <iconica:Export Width="16" Height="16" Mode="Fill" StrokeWidth="6" OuterStroke="{DynamicResource SemiGrey8}"/>
+                <iconpark:Export Width="16" Height="16" Mode="Fill" StrokeWidth="6" OuterStroke="{DynamicResource SemiGrey8}"/>
             </Button>
             <u:ThemeToggleButton />
         </StackPanel>

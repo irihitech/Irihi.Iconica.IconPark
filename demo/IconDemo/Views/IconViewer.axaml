@@ -3,7 +3,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:iconica="https://irihi.tech/iconica/iconpark"
+    xmlns:iconpark="https://irihi.tech/iconica/iconpark"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:u="https://irihi.tech/ursa"
     xmlns:viewModels="clr-namespace:IconDemo.ViewModels"
@@ -46,7 +46,7 @@
             Grid.Row="1"
             Background="{DynamicResource SemiBackground0}">
             <ScrollViewer.Styles>
-                <Style Selector=":is(iconica|IconParkBase)">
+                <Style Selector=":is(iconpark|IconParkBase)">
                     <Setter Property="Width" Value="36" />
                     <Setter Property="Height" Value="36" />
                     <Setter Property="Mode" Value="{DynamicResource IconMode}" />
