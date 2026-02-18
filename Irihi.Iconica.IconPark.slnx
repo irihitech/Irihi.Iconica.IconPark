@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Solution Items/" />
+  <Project Path="src\Irihi.Iconica.IconPark\Irihi.Iconica.IconPark.csproj" />
+  <Project Path="demo\IconDemo\IconDemo.csproj" />
+  <Project Path="src\IconGenerator\IconGenerator.csproj" />
+</Solution>
