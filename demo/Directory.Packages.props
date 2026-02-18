@@ -3,14 +3,13 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="Avalonia" Version="11.3.7" />
-    <PackageVersion Include="Avalonia.Desktop" Version="11.3.7" />
-    <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.3.7" />
-    <PackageVersion Include="Avalonia.Diagnostics" Version="11.3.7" />
+    <PackageVersion Include="Avalonia" Version="12.0.0-preview1" />
+    <PackageVersion Include="Avalonia.Desktop" Version="12.0.0-preview1" />
+    <PackageVersion Include="Avalonia.Fonts.Inter" Version="12.0.0-preview1" />
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageVersion Include="Irihi.Ursa" Version="1.13.0" />
-    <PackageVersion Include="Irihi.Ursa.Themes.Semi" Version="1.13.0" />
-    <PackageVersion Include="Semi.Avalonia" Version="11.3.7" />
-    <PackageVersion Include="Semi.Avalonia.ColorPicker" Version="11.3.7" />
+    <PackageVersion Include="Irihi.Ursa" Version="2.0.0-preview1" />
+    <PackageVersion Include="Irihi.Ursa.Themes.Semi" Version="2.0.0-preview1" />
+    <PackageVersion Include="Semi.Avalonia" Version="12.0.0-preview1" />
+    <PackageVersion Include="Semi.Avalonia.ColorPicker" Version="12.0.0-preview1" />
   </ItemGroup>
 </Project>
