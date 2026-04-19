@@ -182,6 +182,7 @@
                                 Grid.ColumnSpan="2"
                                 Width="{x:Static x:Double.NaN}"
                                 HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Stretch"
                                 Color="{Binding InnerFillColor}" />
                         </Grid>
                     </UniformGrid>
