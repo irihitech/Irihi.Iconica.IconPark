@@ -32,14 +32,9 @@
             <TextBox
                 MaxWidth="600"
                 Margin="8"
-                HorizontalContentAlignment="Stretch"
                 Classes="ClearButton"
                 Text="{Binding SearchInput}"
-                PlaceholderText="输入图标名称">
-                <TextBox.InnerRightContent>
-                    <PathIcon />
-                </TextBox.InnerRightContent>
-            </TextBox>
+                PlaceholderText="输入图标名称" />
         </StackPanel>
         <ScrollViewer
             Name="IconsContainer"
