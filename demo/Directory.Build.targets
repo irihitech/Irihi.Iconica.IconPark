@@ -1,0 +1,5 @@
+<Project>
+  <ItemGroup>
+    <PackageReference Update="Avalonia" VersionOverride="12.1.1" />
+  </ItemGroup>
+</Project>

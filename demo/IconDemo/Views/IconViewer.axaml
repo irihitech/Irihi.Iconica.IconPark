@@ -35,7 +35,7 @@
                 HorizontalContentAlignment="Stretch"
                 Classes="ClearButton"
                 Text="{Binding SearchInput}"
-                Watermark="输入图标名称">
+                PlaceholderText="输入图标名称">
                 <TextBox.InnerRightContent>
                     <PathIcon />
                 </TextBox.InnerRightContent>
@@ -69,7 +69,9 @@
                         <ItemsControl ItemsSource="{Binding}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <UniformGrid Columns="{Binding #root.ColumnCount}" />
+                                    <u:VirtualizingUniformGrid
+                                        UniformItemHeight="False"
+                                        Columns="{Binding #root.ColumnCount}" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>

@@ -1,9 +1,5 @@
-using System;
-using System.Linq;
 using Avalonia.Controls.Templates;
-using Avalonia.Data;
 using IconDemo.Models;
-using Irihi.Iconica;
 using Control = Avalonia.Controls.Control;
 
 namespace IconDemo.DataTemplates;

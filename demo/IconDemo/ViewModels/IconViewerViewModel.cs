@@ -35,6 +35,7 @@ public partial class IconViewerViewModel : ObservableObject
 
     partial void OnColumnCountChanged(int value)
     {
+        value = Math.Max(value, 1);
         var values = VirtualizedNames.SelectMany(a => a).ToList();
         VirtualizedNames = values.Chunk(value).Select(a => a.ToList()).ToList();
     }
