@@ -1,0 +1,25 @@
+using Avalonia.Media;
+
+namespace Irihi.Iconica.TDesign.Icons;
+
+public class PauseCircleStroke : TDesignIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            FillIndex = 1,
+            StrokeIndex = 0,
+            Data = StreamGeometry.Parse(
+                "M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z"),
+        },
+        new PathDrawingElement()
+        {
+            StrokeIndex = 2,
+            Data = StreamGeometry.Parse(
+                "M16.5 12L7.5 12"),
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}

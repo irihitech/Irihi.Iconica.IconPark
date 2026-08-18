@@ -1,0 +1,18 @@
+﻿using Avalonia.Media;
+
+namespace Irihi.Iconica.TDesign.Icons;
+
+public class Link : TDesignIconBase
+{
+    private static readonly DrawingElement[]? StaticDrawingData =
+    [
+        new PathDrawingElement()
+        {
+            StrokeIndex = 0,
+            Data = StreamGeometry.Parse(
+                "M11.6762 6.99023L13.9998 4.6666C15.4726 3.19382 17.8604 3.19382 19.3332 4.6666C20.806 6.13938 20.806 8.52723 19.3332 10L17.0096 12.3236M6.98974 11.6766L4.66611 14.0003C3.19333 15.4731 3.19333 17.8609 4.66611 19.3337C6.13889 20.8065 8.52675 20.8065 9.99953 19.3337L12.3232 17.0101M13.9985 9.99989L9.99847 14"),
+        },
+    ];
+
+    protected override DrawingElement[]? DrawingData => StaticDrawingData;
+}
