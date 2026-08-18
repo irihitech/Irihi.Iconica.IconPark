@@ -25,7 +25,7 @@ public class MainWindowViewModel : ViewModelBase
     private async Task OnSaveDialogAsync()
     {
         var vm = new ExportViewModel(SettingPanelViewModel, IconDetailViewModel.IconInfo);
-        await OverlayDialog.ShowModal<ExportView, ExportViewModel>(vm,
+        await OverlayDialog.ShowStandardAsync<ExportView, ExportViewModel>(vm,
             options: new OverlayDialogOptions
             {
                 Title = "获取样式",

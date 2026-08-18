@@ -18,7 +18,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia"/>
+        <ProjectReference Include="..\Irihi.Iconica.Core\Irihi.Iconica.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>

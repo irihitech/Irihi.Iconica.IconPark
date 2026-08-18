@@ -1,12 +1,11 @@
 using Avalonia;
 using Avalonia.Media;
 
-namespace Irihi.Iconica.IconPark;
+namespace Irihi.Iconica.Core;
 
 public static class DrawingContextExtensions
 {
-    public static void DrawPathElement(this DrawingContext context, PathDrawingElement element, IBrush? brush,
-        IPen? pen)
+    public static void DrawPathElement(this DrawingContext context, PathDrawingElement element, IBrush? brush, IPen? pen)
     {
         if (element.Data is null) return;
 
@@ -30,14 +29,15 @@ public static class DrawingContextExtensions
             var transform = element.Transform.Value;
             using (context.PushTransform(transform))
             {
-                context.DrawEllipse(brush, pen, new Avalonia.Point(element.X, element.Y), element.RadiusX,
-                    element.RadiusY);
+                context.DrawEllipse(brush, pen, new Point(element.X, element.Y),
+                    element.RadiusX, element.RadiusY);
             }
         }
 
         else
         {
-            context.DrawEllipse(brush, pen, new Avalonia.Point(element.X, element.Y), element.RadiusX, element.RadiusY);
+            context.DrawEllipse(brush, pen, new Point(element.X, element.Y),
+                element.RadiusX, element.RadiusY);
         }
     }
 
@@ -48,14 +48,14 @@ public static class DrawingContextExtensions
             var transform = element.Transform.Value;
             using (context.PushTransform(transform))
             {
-                context.DrawLine(pen, new Avalonia.Point(element.X1, element.Y1),
-                    new Avalonia.Point(element.X2, element.Y2));
+                context.DrawLine(pen, new Point(element.X1, element.Y1),
+                    new Point(element.X2, element.Y2));
             }
         }
         else
         {
-            context.DrawLine(pen, new Avalonia.Point(element.X1, element.Y1),
-                new Avalonia.Point(element.X2, element.Y2));
+            context.DrawLine(pen, new Point(element.X1, element.Y1),
+                new Point(element.X2, element.Y2));
         }
     }
 
