@@ -80,6 +80,7 @@
                         <UniformGrid.Styles>
                             <Style Selector="ColorPicker">
                                 <Setter Property="Theme" Value="{StaticResource SimpleColorPicker}" />
+                                <Setter Property="Padding" Value="0" />
                             </Style>
                             <Style Selector="ColorPicker DropDownButton">
                                 <Setter Property="Padding" Value="0" />
