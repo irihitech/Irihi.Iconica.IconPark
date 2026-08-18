@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace IconGenerator;
+namespace IconGenerator.IconPark;
 
 public class IconInfo
 {

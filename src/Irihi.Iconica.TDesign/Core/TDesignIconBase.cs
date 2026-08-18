@@ -2,9 +2,8 @@
 using Avalonia.Controls;
 using Avalonia.Controls.Documents;
 using Avalonia.Media;
-using Irihi.Iconica.Core;
 
-namespace Irihi.Iconica.TDesign.Icons;
+namespace Irihi.Iconica.TDesign;
 
 public abstract class TDesignIconBase : Control
 {

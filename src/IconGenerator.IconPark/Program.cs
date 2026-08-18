@@ -5,17 +5,17 @@ using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Xml;
-using IconGenerator;
+using IconGenerator.IconPark;
 
 var rootPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", ".."));
-var svgPath = Path.Combine(rootPath, "iconpark", "packages", "react", "src", "icons");
+var svgPath = Path.Combine(rootPath, "external", "iconpark", "packages", "react", "src", "icons");
 var fileNames = Directory.GetFiles(svgPath, "*.tsx");
 var sourceTargetPath = Path.Combine(rootPath, "src", "Irihi.Iconica.IconPark", "Generated");
 
 if (!Directory.Exists(sourceTargetPath))
     Directory.CreateDirectory(sourceTargetPath);
 
-var iconsInfoFile = Path.Combine(rootPath, "iconpark", "packages", "react", "icons.json");
+var iconsInfoFile = Path.Combine(rootPath, "external", "iconpark", "packages", "react", "icons.json");
 var iconsInfoFileContent = File.ReadAllText(iconsInfoFile);
 var infoList = JsonSerializer.Deserialize<IconInfo[]>(iconsInfoFileContent);
 
@@ -361,7 +361,7 @@ foreach (var info in infoList)
 builder.AppendLine("    ];");
 builder.AppendLine("}");
 
-var iconInfoFile = Path.Combine(rootPath, "demo", "IconDemo", "Models", "IconInfo.Generated.cs");
+var iconInfoFile = Path.Combine(rootPath, "demo", "IconDemo", "Models", "IconInfo.IconPark.Generated.cs");
 await File.WriteAllTextAsync(iconInfoFile, builder.ToString());
 
 static string? CreateMatrix(string? transformString)

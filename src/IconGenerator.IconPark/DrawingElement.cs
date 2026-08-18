@@ -1,4 +1,4 @@
-namespace IconGenerator;
+namespace IconGenerator.IconPark;
 
 public abstract class DrawingElement
 {
@@ -10,12 +10,12 @@ public abstract class DrawingElement
     public string? Transform { get; set; }
 }
 
-public class PathDrawingElement: DrawingElement
+public class PathDrawingElement : DrawingElement
 {
     public string? Data { get; set; }
 }
 
-public class EllipseDrawingElement: DrawingElement
+public class EllipseDrawingElement : DrawingElement
 {
     public double RadiusX { get; set; }
     public double RadiusY { get; set; }
@@ -23,7 +23,7 @@ public class EllipseDrawingElement: DrawingElement
     public double Y { get; set; }
 }
 
-public class LineDrawingElement: DrawingElement
+public class LineDrawingElement : DrawingElement
 {
     public double X1 { get; set; }
     public double Y1 { get; set; }
@@ -31,7 +31,7 @@ public class LineDrawingElement: DrawingElement
     public double Y2 { get; set; }
 }
 
-public class RectDrawingElement: DrawingElement
+public class RectDrawingElement : DrawingElement
 {
     public double Width { get; set; }
     public double Height { get; set; }

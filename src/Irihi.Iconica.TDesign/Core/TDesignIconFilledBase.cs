@@ -1,4 +1,4 @@
-﻿namespace Irihi.Iconica.TDesign.Icons;
+﻿namespace Irihi.Iconica.TDesign;
 
 public abstract class TDesignIconFilledBase : TDesignIconBase
 {
