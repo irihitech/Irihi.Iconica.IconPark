@@ -8,29 +8,54 @@ namespace IconDemo.ViewModels;
 
 public partial class IconViewerViewModel : ObservableObject
 {
+    private readonly IReadOnlyList<IconInfo> _source;
+
     [ObservableProperty] private List<IconInfo>? _activeIconNames;
     [ObservableProperty] private int _columnCount;
     [ObservableProperty] private List<IconInfo>? _iconNames;
     [ObservableProperty] private string? _searchInput;
+    [ObservableProperty] private string _title;
+    [ObservableProperty] private Func<IconInfo, bool>? _filter;
     [ObservableProperty] private List<List<IconInfo>> _virtualizedNames = new();
+
+    public IconViewerViewModel(IReadOnlyList<IconInfo> source, string title)
+    {
+        _source = source;
+        _title = title;
+    }
 
     internal void OnLoad()
     {
-        IconNames = IconInfo.IconInfos;
-        ActiveIconNames = IconNames;
+        Reload();
+    }
+
+    partial void OnFilterChanged(Func<IconInfo, bool>? value)
+    {
+        Reload();
+    }
+
+    private void Reload()
+    {
+        var filtered = _source.Where(Filter ?? (_ => true)).ToList();
+        IconNames = filtered;
+        ActiveIconNames = ApplySearch(filtered);
     }
 
     partial void OnSearchInputChanged(string? value)
     {
-        if (string.IsNullOrWhiteSpace(value))
+        ActiveIconNames = ApplySearch(IconNames ?? []);
+    }
+
+    private List<IconInfo> ApplySearch(IEnumerable<IconInfo> source)
+    {
+        if (string.IsNullOrWhiteSpace(SearchInput))
         {
-            ActiveIconNames = IconNames;
-            return;
+            return [.. source];
         }
 
-        ActiveIconNames = IconNames
-                          ?.Where(n => n.Keywords.Any(b => b.Contains(value, StringComparison.OrdinalIgnoreCase)))
-                          .ToList();
+        return source
+               .Where(n => n.Keywords.Any(b => b.Contains(SearchInput, StringComparison.OrdinalIgnoreCase)))
+               .ToList();
     }
 
     partial void OnColumnCountChanged(int value)

@@ -3,9 +3,9 @@ using IconDemo.ViewModels;
 
 namespace IconDemo.Views;
 
-public partial class SettingPanelView : UserControl
+public partial class IconParkSettingPanelView : UserControl
 {
-    public SettingPanelView()
+    public IconParkSettingPanelView()
     {
         InitializeComponent();
     }

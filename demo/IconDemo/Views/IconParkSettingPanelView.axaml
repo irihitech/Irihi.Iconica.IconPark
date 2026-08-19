@@ -1,5 +1,5 @@
 <UserControl
-    x:Class="IconDemo.Views.SettingPanelView"
+    x:Class="IconDemo.Views.IconParkSettingPanelView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,10 +7,10 @@
     xmlns:u="https://irihi.tech/ursa"
     xmlns:viewModels="clr-namespace:IconDemo.ViewModels"
     Width="400"
-    x:DataType="viewModels:SettingPanelViewModel"
+    x:DataType="viewModels:IconParkSettingPanelViewModel"
     mc:Ignorable="d">
     <Design.DataContext>
-        <viewModels:SettingPanelViewModel />
+        <viewModels:IconParkSettingPanelViewModel />
     </Design.DataContext>
     <Border Theme="{DynamicResource CardBorder}">
         <ScrollViewer Theme="{DynamicResource StaticScrollViewer}">

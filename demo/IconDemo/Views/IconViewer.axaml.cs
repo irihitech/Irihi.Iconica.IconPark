@@ -19,7 +19,7 @@ public partial class IconViewer : UserControl
         ColumnCount = (int) (e.NewSize.Width / 200);
     }
 
-    public static readonly StyledProperty<int> ColumnCountProperty = AvaloniaProperty.Register<MainWindow, int>(
+    public static readonly StyledProperty<int> ColumnCountProperty = AvaloniaProperty.Register<IconViewer, int>(
         nameof(ColumnCount));
 
     public int ColumnCount

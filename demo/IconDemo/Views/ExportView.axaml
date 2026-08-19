@@ -8,28 +8,24 @@
              MinHeight="400"
              x:DataType="viewModels:ExportViewModel"
              x:Class="IconDemo.Views.ExportView">
-    <UserControl.Styles>
-    </UserControl.Styles>
     <Grid RowDefinitions="Auto, *">
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <TextBlock Text="XML命名空间："/>
-            <SelectableTextBlock>
-                https://irihi.tech/iconica/iconpark
-            </SelectableTextBlock>
+            <TextBlock Text="XML命名空间：" />
+            <SelectableTextBlock Text="{Binding XmlNamespace}" />
         </StackPanel>
-        <TabControl Grid.Row="1" >
-            <TabItem Header="全局样式" >
+        <TabControl Grid.Row="1">
+            <TabItem Header="全局样式">
                 <Grid RowDefinitions="Auto, *" ColumnDefinitions="*, *" Margin="16" Name="grid">
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="全局样式"/>
-                    <TextBlock Grid.Row="0" Grid.Column="1" Text="全局资源"/>
-                    <SelectableTextBlock Grid.Row="1" Grid.Column="0" Text="{Binding GlobalStyle}" TextWrapping="Wrap"/>
-                    <SelectableTextBlock Grid.Row="1" Grid.Column="1" Text="{Binding GlobalResource}" TextWrapping="Wrap"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="全局样式" />
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="全局资源" />
+                    <SelectableTextBlock Grid.Row="1" Grid.Column="0" Text="{Binding GlobalStyle}" TextWrapping="Wrap" />
+                    <SelectableTextBlock Grid.Row="1" Grid.Column="1" Text="{Binding GlobalResource}" TextWrapping="Wrap" />
                 </Grid>
             </TabItem>
-            <TabItem Header="独立设置" IsVisible="{Binding HasIconInfo}" >
+            <TabItem Header="独立设置" IsVisible="{Binding HasIconInfo}">
                 <Grid RowDefinitions="Auto, *" Margin="16" Width="{Binding  #grid.Bounds.Width}">
                     <CheckBox Grid.Row="0" Content="独立设置颜色" IsChecked="{Binding UseLocalColor}" />
-                    <SelectableTextBlock Grid.Row="1" Text="{Binding Icon}"/>
+                    <SelectableTextBlock Grid.Row="1" Text="{Binding Icon}" />
                 </Grid>
             </TabItem>
         </TabControl>

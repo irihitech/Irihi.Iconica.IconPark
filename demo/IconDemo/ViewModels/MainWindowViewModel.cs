@@ -1,30 +1,45 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IconDemo.Views;
 using Ursa.Controls;
 
 namespace IconDemo.ViewModels;
 
-public class MainWindowViewModel : ViewModelBase
+public partial class MainWindowViewModel : ViewModelBase
 {
     public MainWindowViewModel()
     {
-        IconDetailViewModel = new IconDetailViewModel();
-        SettingPanelViewModel = new SettingPanelViewModel();
-        IconViewerViewModel = new IconViewerViewModel();
+        IconParkPage = new IconParkPageViewModel();
+        TDesignPage = new TDesignPageViewModel();
         SaveDialogCommand = new AsyncRelayCommand(OnSaveDialogAsync);
     }
 
-    public IconDetailViewModel IconDetailViewModel { get; set; }
-    public SettingPanelViewModel SettingPanelViewModel { get; set; }
-    public IconViewerViewModel IconViewerViewModel { get; set; }
+    public IconParkPageViewModel IconParkPage { get; }
+    public TDesignPageViewModel TDesignPage { get; }
+
+    public string[] PageNames { get; } = ["IconPark", "TDesign"];
+
+    [ObservableProperty] private int _selectedTabIndex;
+
+    [ObservableProperty] private bool _iconParkPageVisible = true;
+
+    [ObservableProperty] private bool _tDesignPageVisible;
+
+    partial void OnSelectedTabIndexChanged(int value)
+    {
+        IconParkPageVisible = value == 0;
+        TDesignPageVisible = value == 1;
+    }
 
     public ICommand SaveDialogCommand { get; set; }
 
     private async Task OnSaveDialogAsync()
     {
-        var vm = new ExportViewModel(SettingPanelViewModel, IconDetailViewModel.IconInfo);
+        var settings = SelectedTabIndex == 0 ? IconParkPage.SettingPanel : TDesignPage.SettingPanel;
+        var iconInfo = SelectedTabIndex == 0 ? IconParkPage.Detail.IconInfo : TDesignPage.Detail.IconInfo;
+        var vm = new ExportViewModel(settings, iconInfo);
         await OverlayDialog.ShowStandardAsync<ExportView, ExportViewModel>(vm,
             options: new OverlayDialogOptions
             {

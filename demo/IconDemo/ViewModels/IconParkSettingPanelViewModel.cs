@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Avalonia.Media;
@@ -10,7 +11,7 @@ using Irihi.Iconica.IconPark;
 
 namespace IconDemo.ViewModels;
 
-public partial class SettingPanelViewModel : ObservableObject
+public partial class IconParkSettingPanelViewModel : ObservableObject, IExportSettings
 {
     private readonly Color? _darkDefaultInnerFillColor = Color.Parse("#FF33C2B0");
     private readonly Color? _darkDefaultInnerStrokeColor = Color.Parse("#FF333333");
@@ -36,6 +37,7 @@ public partial class SettingPanelViewModel : ObservableObject
     internal Color? _lightOuterStrokeColor = Color.Parse("#FF333333");
     internal Color? _lightFallbackColor = Colors.White;
     private ThemeVariant? _currentThemeVariant;
+
     [ObservableProperty] private Color? _fallbackColor = Colors.White;
     [ObservableProperty] private Color? _innerFillColor = Color.Parse("#43CCF8");
     [ObservableProperty] private Color? _innerStrokeColor = Color.Parse("#FFF");
@@ -44,10 +46,10 @@ public partial class SettingPanelViewModel : ObservableObject
     [ObservableProperty] private double _size;
     [ObservableProperty] private double _strokeWidth;
 
-    public SettingPanelViewModel()
+    public IconParkSettingPanelViewModel()
     {
         ResetCommand = new RelayCommand(Reset);
-        WeakReferenceMessenger.Default.Register<SettingPanelViewModel, ThemeVariant>(this, OnActualThemeChanged);
+        WeakReferenceMessenger.Default.Register<IconParkSettingPanelViewModel, ThemeVariant>(this, OnActualThemeChanged);
         Size = 24;
         StrokeWidth = 2;
     }
@@ -56,7 +58,8 @@ public partial class SettingPanelViewModel : ObservableObject
 
     partial void OnInnerFillColorChanged(Color? value)
     {
-        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(InnerFillColor)));
+        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(InnerFillColor)),
+            MessengerChannels.IconPark);
         if(_currentThemeVariant == ThemeVariant.Light)
         {
             _lightInnerFillColor = InnerFillColor;
@@ -69,7 +72,8 @@ public partial class SettingPanelViewModel : ObservableObject
 
     partial void OnInnerStrokeColorChanged(Color? value)
     {
-        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(InnerStrokeColor)));
+        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(InnerStrokeColor)),
+            MessengerChannels.IconPark);
         if (_currentThemeVariant == ThemeVariant.Light)
         {
              _lightInnerStrokeColor = InnerStrokeColor;
@@ -82,7 +86,8 @@ public partial class SettingPanelViewModel : ObservableObject
 
     partial void OnOuterFillColorChanged(Color? value)
     {
-        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(OuterFillColor)));
+        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(OuterFillColor)),
+            MessengerChannels.IconPark);
         if (_currentThemeVariant == ThemeVariant.Light)
         {
              _lightOuterFillColor = OuterFillColor;
@@ -95,7 +100,8 @@ public partial class SettingPanelViewModel : ObservableObject
 
     partial void OnOuterStrokeColorChanged(Color? value)
     {
-        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(OuterStrokeColor)));
+        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(OuterStrokeColor)),
+            MessengerChannels.IconPark);
         if (_currentThemeVariant == ThemeVariant.Light)
         {
              _lightOuterStrokeColor = OuterStrokeColor;
@@ -108,7 +114,8 @@ public partial class SettingPanelViewModel : ObservableObject
 
     partial void OnFallbackColorChanged(Color? value)
     {
-        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(FallbackColor)));
+        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(FallbackColor)),
+            MessengerChannels.IconPark);
         if (_currentThemeVariant == ThemeVariant.Light)
         {
             _lightFallbackColor = FallbackColor;
@@ -121,19 +128,20 @@ public partial class SettingPanelViewModel : ObservableObject
     
     partial void OnSizeChanged(double value)
     {
-        WeakReferenceMessenger.Default.Send(new SizeResourceChangeMessage(value));
+        WeakReferenceMessenger.Default.Send(new SizeResourceChangeMessage(value), MessengerChannels.IconPark);
     }
     
     partial void OnStrokeWidthChanged(double value)
     {
-        WeakReferenceMessenger.Default.Send(new StrokeWidthResourceChangeMessage(value));
+        WeakReferenceMessenger.Default.Send(new StrokeWidthResourceChangeMessage(value), MessengerChannels.IconPark);
     }
     
     partial void OnSelectedModeChanged(IconMode value)
     {
-        WeakReferenceMessenger.Default.Send(new ModeResourceChangeMessage(value));
+        WeakReferenceMessenger.Default.Send(new ModeResourceChangeMessage(value), MessengerChannels.IconPark);
     }
     
+
 
 
     private void Reset()
@@ -156,7 +164,7 @@ public partial class SettingPanelViewModel : ObservableObject
         }
     }
 
-    private void OnActualThemeChanged(SettingPanelViewModel recipient, ThemeVariant message)
+    private void OnActualThemeChanged(IconParkSettingPanelViewModel recipient, ThemeVariant message)
     {
         _currentThemeVariant = message;
         if (message == ThemeVariant.Light)
@@ -185,6 +193,22 @@ public partial class SettingPanelViewModel : ObservableObject
         [IconMode.Line, IconMode.Fill, IconMode.TwoTone, IconMode.MultiColor];
 
     #endregion
-    
-    
+
+    #region IExportSettings
+
+    public string XmlNamespace => "https://irihi.tech/iconica/iconpark";
+    public string ElementPrefix => "iconpark";
+    public string StyleSelector => "iconpark|IconParkBase";
+    public string Mode => SelectedMode.ToString();
+
+    public IReadOnlyList<ExportColor> ExportColors =>
+    [
+        new ("OuterFill", _lightOuterFillColor!.Value.ToString(), _darkOuterFillColor!.Value.ToString()),
+        new ("OuterStroke", _lightOuterStrokeColor!.Value.ToString(), _darkOuterStrokeColor!.Value.ToString()),
+        new ("InnerFill", _lightInnerFillColor!.Value.ToString(), _darkInnerFillColor!.Value.ToString()),
+        new ("InnerStroke", _lightInnerStrokeColor!.Value.ToString(), _darkInnerStrokeColor!.Value.ToString()),
+        new ("FallbackBrush", _lightFallbackColor!.Value.ToString(), _darkFallbackColor!.Value.ToString())
+    ];
+
+    #endregion
 }

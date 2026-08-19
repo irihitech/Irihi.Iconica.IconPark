@@ -1,3 +1,4 @@
+using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using IconDemo.Models;
 
@@ -5,8 +6,8 @@ namespace IconDemo.ViewModels;
 
 public partial class ExportViewModel : ObservableObject
 {
-    private SettingPanelViewModel _settingPanelViewModel;
-    private IconInfo? _iconInfo;
+    private readonly IExportSettings _settings;
+    private readonly IconInfo? _iconInfo;
 
     [ObservableProperty] private string? _globalStyle;
     [ObservableProperty] private string? _globalResource;
@@ -14,9 +15,11 @@ public partial class ExportViewModel : ObservableObject
     [ObservableProperty] private bool _useLocalColor;
     [ObservableProperty] private bool _hasIconInfo;
 
-    public ExportViewModel(SettingPanelViewModel settingPanelViewModel, IconInfo? iconType)
+    public string XmlNamespace => _settings.XmlNamespace;
+
+    public ExportViewModel(IExportSettings settings, IconInfo? iconType)
     {
-        _settingPanelViewModel = settingPanelViewModel;
+        _settings = settings;
         _iconInfo = iconType;
         _hasIconInfo = iconType != null;
         GenerateGlobalStyle();
@@ -26,37 +29,42 @@ public partial class ExportViewModel : ObservableObject
 
     private void GenerateGlobalStyle()
     {
+        var setters = string.Join("\n",
+            _settings.ExportColors.Select(c =>
+                $$"""
+                                  <Setter Property="{{c.Property}}" Value="{DynamicResource Icon{{c.Property}}Brush}" />
+                  """));
+
         GlobalStyle =
-            """
-            <Style Selector=":is(iconpark|IconParkBase)">
-                <Setter Property="OuterFill" Value="{{DynamicResource IconOuterFillBrush}}" />
-                <Setter Property="OuterStroke" Value="{{DynamicResource IconOuterStrokeBrush}}" />
-                <Setter Property="InnerFill" Value="{{DynamicResource IconInnerFillBrush}}" />
-                <Setter Property="InnerStroke" Value="{{DynamicResource IconInnerStrokeBrush}}" />
-                <Setter Property="FallbackBrush" Value="{{DynamicResource IconFallbackBrush}}" />
-            </Style>
-            """;
+            $"""
+             <Style Selector=":is({_settings.StyleSelector})">
+             {setters}
+             </Style>
+             """;
     }
 
     private void GenerateGlobalResource()
     {
+        var light = string.Join("\n",
+            _settings.ExportColors.Select(c =>
+                $"""
+                                         <SolidColorBrush x:Key="Icon{c.Property}Brush" Color="{c.LightColor}" />
+                 """));
+        var dark = string.Join("\n",
+            _settings.ExportColors.Select(c =>
+                $"""
+                                         <SolidColorBrush x:Key="Icon{c.Property}Brush" Color="{c.DarkColor}" />
+                 """));
+
         GlobalResource =
             $"""
              <ResourceDictionary>
                  <ResourceDictionary.ThemeDictionaries>
                      <ResourceDictionary x:Key="Light">
-                         <SolidColorBrush x:Key="IconOuterFillBrush" Color="{_settingPanelViewModel._lightOuterFillColor}" />
-                         <SolidColorBrush x:Key="IconOuterStrokeBrush" Color="{_settingPanelViewModel._lightOuterStrokeColor}" />
-                         <SolidColorBrush x:Key="IconInnerFillBrush" Color="{_settingPanelViewModel._lightInnerFillColor}" />
-                         <SolidColorBrush x:Key="IconInnerStrokeBrush" Color="{_settingPanelViewModel._lightInnerStrokeColor}" />
-                         <SolidColorBrush x:Key="IconFallbackBrush" Color="{_settingPanelViewModel._lightFallbackColor}" />
+             {light}
                      </ResourceDictionary>
                      <ResourceDictionary x:Key="Dark">
-                         <SolidColorBrush x:Key="IconOuterFillBrush" Color="{_settingPanelViewModel._darkOuterFillColor}" />
-                         <SolidColorBrush x:Key="IconOuterStrokeBrush" Color="{_settingPanelViewModel._darkOuterStrokeColor}" />
-                         <SolidColorBrush x:Key="IconInnerFillBrush" Color="{_settingPanelViewModel._darkInnerFillColor}" />
-                         <SolidColorBrush x:Key="IconInnerStrokeBrush" Color="{_settingPanelViewModel._darkInnerStrokeColor}" />
-                         <SolidColorBrush x:Key="IconFallbackBrush" Color="{_settingPanelViewModel._darkFallbackColor}" />
+             {dark}
                      </ResourceDictionary>
                  </ResourceDictionary.ThemeDictionaries>
              </ResourceDictionary>
@@ -68,30 +76,31 @@ public partial class ExportViewModel : ObservableObject
         if (_iconInfo is null) return;
         var element =
             $"""
-             <iconpark:{_iconInfo.ClassName}
-                 Width="{_settingPanelViewModel.Size}"
-                 Height="{_settingPanelViewModel.Size}"
+             <{_settings.ElementPrefix}:{_iconInfo.ClassName}
+                 Width="{_settings.Size}"
+                 Height="{_settings.Size}"
              """;
         if (UseLocalColor)
         {
+            var colorProps = string.Join("\n",
+                _settings.ExportColors.Select(c =>
+                    $$"""
+                                             {{c.Property}}="{DynamicResource Icon{{c.Property}}Brush}"
+                      """));
             element =
-                $$$"""
-                   {{{element}}}
-                       OuterFill="{{DynamicResource IconOuterFillBrush}}"
-                       OuterStroke="{{DynamicResource IconOuterStrokeBrush}}"
-                       InnerFill="{{DynamicResource IconInnerFillBrush}}"
-                       InnerStroke="{{DynamicResource IconInnerStrokeBrush}}"
-                       FallbackBrush="{{DynamicResource IconFallbackBrush}}"
-                   """;
+                $"""
+                 {element}
+                 {colorProps}
+                 """;
         }
 
         element =
             $"""
              {element}
-                 StrokeWidth="{_settingPanelViewModel.StrokeWidth}"
+                 StrokeWidth="{_settings.StrokeWidth}"
                  LineCap="Round"
                  LineJoin="Round"
-                 Mode="{_settingPanelViewModel.SelectedMode}" />
+                 Mode="{_settings.Mode}" />
              """;
         Icon = element;
     }

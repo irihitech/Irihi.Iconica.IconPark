@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:iconpark="https://irihi.tech/iconica/iconpark"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tdesign="https://irihi.tech/iconica/tdesign"
     xmlns:u="https://irihi.tech/ursa"
     xmlns:viewModels="clr-namespace:IconDemo.ViewModels"
     xmlns:views="clr-namespace:IconDemo.Views"
@@ -21,7 +22,7 @@
                     Margin="8"
                     HorizontalAlignment="Left"
                     Classes="H3"
-                    Text="IRIHI ICONICA 系列图标 - IconPark"
+                    Text="{Binding Title}"
                     Theme="{DynamicResource TitleTextBlock}" />
                 <u:Badge Classes="Success" Header="AOT Compatible" />
             </StackPanel>
@@ -50,6 +51,17 @@
                     <Setter Property="OuterStroke" Value="{DynamicResource OuterStrokeColor}" />
                     <Setter Property="InnerFill" Value="{DynamicResource InnerFillColor}" />
                     <Setter Property="InnerStroke" Value="{DynamicResource InnerStrokeColor}" />
+                    <Setter Property="FallbackBrush" Value="{DynamicResource FallbackColor}" />
+                </Style>
+                <Style Selector=":is(tdesign|TDesignIconBase)">
+                    <Setter Property="Width" Value="36" />
+                    <Setter Property="Height" Value="36" />
+                    <Setter Property="Mode" Value="{DynamicResource TDesignMode}" />
+                    <Setter Property="StrokeWidth" Value="{DynamicResource IconStrokeWidth}" />
+                    <Setter Property="Stroke1" Value="{DynamicResource Stroke1Color}" />
+                    <Setter Property="Fill1" Value="{DynamicResource Fill1Color}" />
+                    <Setter Property="Stroke2" Value="{DynamicResource Stroke2Color}" />
+                    <Setter Property="Fill2" Value="{DynamicResource Fill2Color}" />
                     <Setter Property="FallbackBrush" Value="{DynamicResource FallbackColor}" />
                 </Style>
             </ScrollViewer.Styles>
