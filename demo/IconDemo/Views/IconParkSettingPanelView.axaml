@@ -6,9 +6,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:u="https://irihi.tech/ursa"
     xmlns:viewModels="clr-namespace:IconDemo.ViewModels"
+    xmlns:converters="clr-namespace:Avalonia.Controls.Converters;assembly=Avalonia.Controls.ColorPicker"
     Width="400"
     x:DataType="viewModels:IconParkSettingPanelViewModel"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:ColorToHexConverter x:Key="SettingColorToHexConverter" AlphaPosition="Trailing" />
+    </UserControl.Resources>
     <Design.DataContext>
         <viewModels:IconParkSettingPanelViewModel />
     </Design.DataContext>
@@ -107,7 +111,7 @@
                                 Grid.Column="1"
                                 Margin="8,0,0,0"
                                 VerticalAlignment="Center"
-                                Text="{Binding OuterStrokeColor}" />
+                                Text="{Binding OuterStrokeColor,Converter={StaticResource SettingColorToHexConverter},ConverterParameter={x:True}}" />
                             <ColorPicker
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -130,7 +134,7 @@
                                 Grid.Column="1"
                                 Margin="8,0,0,0"
                                 VerticalAlignment="Center"
-                                Text="{Binding OuterFillColor}" />
+                                Text="{Binding OuterFillColor,Converter={StaticResource SettingColorToHexConverter},ConverterParameter={x:True}}" />
                             <ColorPicker
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -153,7 +157,7 @@
                                 Grid.Column="1"
                                 Margin="8,0,0,0"
                                 VerticalAlignment="Center"
-                                Text="{Binding InnerStrokeColor}" />
+                                Text="{Binding InnerStrokeColor,Converter={StaticResource SettingColorToHexConverter},ConverterParameter={x:True}}" />
                             <ColorPicker
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -176,7 +180,7 @@
                                 Grid.Column="1"
                                 Margin="8,0,0,0"
                                 VerticalAlignment="Center"
-                                Text="{Binding InnerFillColor}" />
+                                Text="{Binding InnerFillColor,Converter={StaticResource SettingColorToHexConverter},ConverterParameter={x:True}}" />
                             <ColorPicker
                                 Grid.Row="1"
                                 Grid.Column="0"

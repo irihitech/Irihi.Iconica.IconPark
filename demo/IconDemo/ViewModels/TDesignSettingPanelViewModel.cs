@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using Avalonia.Media;
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -13,54 +12,45 @@ namespace IconDemo.ViewModels;
 
 public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSettings
 {
-    private readonly Color? _darkDefaultStroke1Color = Color.Parse("#FFFFFFFF");
-    private readonly Color? _darkDefaultFill1Color = Color.Parse("#FFBBD3FB");
-    private readonly Color? _darkDefaultStroke2Color = Color.Parse("#FF366EF4");
-    private readonly Color? _darkDefaultFill2Color = Color.Parse("#FFF78D94");
-    private readonly Color? _darkDefaultFallbackColor = Colors.Black;
+    private readonly Color? _lightDefaultFill1Color = Color.Parse("#02D8F2");
+    private readonly Color? _lightDefaultFill2Color = Color.Parse("#FFAA75");
+    private readonly Color? _lightDefaultStroke1Color = Colors.Black;
+    private readonly Color? _lightDefaultStroke2Color = Color.Parse("#0262F8");
+    private readonly Color? _lightDefaultFallbackColor = Colors.Black;
 
-    private readonly Color? _lightDefaultStroke1Color = Color.Parse("#FF0052D9");
-    private readonly Color? _lightDefaultFill1Color = Color.Parse("#FFBBD3FB");
-    private readonly Color? _lightDefaultStroke2Color = Color.Parse("#FF0052D9");
-    private readonly Color? _lightDefaultFill2Color = Color.Parse("#FFF78D94");
-    private readonly Color? _lightDefaultFallbackColor = Colors.White;
+    private readonly Color? _darkDefaultFill1Color = Color.Parse("#02D8F2");
+    private readonly Color? _darkDefaultFill2Color = Color.Parse("#FFAA75");
+    private readonly Color? _darkDefaultStroke1Color = Colors.White;
+    private readonly Color? _darkDefaultStroke2Color = Color.Parse("#0262F8");
+    private readonly Color? _darkDefaultFallbackColor = Colors.White;
 
-    internal Color? _darkStroke1Color = Color.Parse("#FFFFFFFF");
-    internal Color? _darkFill1Color = Color.Parse("#FFBBD3FB");
-    internal Color? _darkStroke2Color = Color.Parse("#FF366EF4");
-    internal Color? _darkFill2Color = Color.Parse("#FFF78D94");
-    internal Color? _darkFallbackColor = Colors.Black;
+    internal Color? _lightFill1Color = Color.Parse("#02D8F2");
+    internal Color? _lightFill2Color = Color.Parse("#FFAA75");
+    internal Color? _lightStroke1Color = Colors.Black;
+    internal Color? _lightStroke2Color = Color.Parse("#0262F8");
+    internal Color? _lightFallbackColor = Colors.Black;
 
-    internal Color? _lightStroke1Color = Color.Parse("#FF000000");
-    internal Color? _lightFill1Color = Color.Parse("#FFBBD3FB");
-    internal Color? _lightStroke2Color = Color.Parse("#FF0052D9");
-    internal Color? _lightFill2Color = Color.Parse("#FFF78D94");
-    internal Color? _lightFallbackColor = Colors.White;
+    internal Color? _darkFill1Color = Color.Parse("#02D8F2");
+    internal Color? _darkFill2Color = Color.Parse("#FFAA75");
+    internal Color? _darkStroke1Color = Colors.White;
+    internal Color? _darkStroke2Color = Color.Parse("#0262F8");
+    internal Color? _darkFallbackColor = Colors.White;
+
     private ThemeVariant? _currentThemeVariant;
 
-    [ObservableProperty] private Color? _fallbackColor = Colors.White;
-    [ObservableProperty] private Color? _fill1Color = Color.Parse("#BBD3FB");
-    [ObservableProperty] private Color? _fill2Color = Color.Parse("#F78D94");
-    [ObservableProperty] private Color? _stroke1Color = Color.Parse("#0052D9");
-    [ObservableProperty] private Color? _stroke2Color = Color.Parse("#0052D9");
+    [ObservableProperty] private Color? _fill1Color = Color.Parse("#02D8F2");
+    [ObservableProperty] private Color? _fill2Color = Color.Parse("#FFAA75");
+    [ObservableProperty] private Color? _stroke1Color = Colors.Black;
+    [ObservableProperty] private Color? _stroke2Color = Color.Parse("#0262F8");
+    [ObservableProperty] private Color? _fallbackColor = Colors.Black;
     [ObservableProperty] private double _size;
     [ObservableProperty] private double _strokeWidth;
 
     public TDesignSettingPanelViewModel()
     {
-        ResetCommand = new RelayCommand(Reset);
         WeakReferenceMessenger.Default.Register<TDesignSettingPanelViewModel, ThemeVariant>(this, OnActualThemeChanged);
         Size = 24;
         StrokeWidth = 2;
-    }
-
-    public ICommand ResetCommand { get; set; }
-
-    partial void OnStroke1ColorChanged(Color? value)
-    {
-        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(Stroke1Color)),
-            MessengerChannels.TDesign);
-        SaveToThemeCache(value, ref _lightStroke1Color, ref _darkStroke1Color);
     }
 
     partial void OnFill1ColorChanged(Color? value)
@@ -70,18 +60,25 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
         SaveToThemeCache(value, ref _lightFill1Color, ref _darkFill1Color);
     }
 
-    partial void OnStroke2ColorChanged(Color? value)
-    {
-        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(Stroke2Color)),
-            MessengerChannels.TDesign);
-        SaveToThemeCache(value, ref _lightStroke2Color, ref _darkStroke2Color);
-    }
-
     partial void OnFill2ColorChanged(Color? value)
     {
         WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(Fill2Color)),
             MessengerChannels.TDesign);
         SaveToThemeCache(value, ref _lightFill2Color, ref _darkFill2Color);
+    }
+
+    partial void OnStroke1ColorChanged(Color? value)
+    {
+        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(Stroke1Color)),
+            MessengerChannels.TDesign);
+        SaveToThemeCache(value, ref _lightStroke1Color, ref _darkStroke1Color);
+    }
+
+    partial void OnStroke2ColorChanged(Color? value)
+    {
+        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(Stroke2Color)),
+            MessengerChannels.TDesign);
+        SaveToThemeCache(value, ref _lightStroke2Color, ref _darkStroke2Color);
     }
 
     partial void OnFallbackColorChanged(Color? value)
@@ -130,6 +127,7 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
         }
     }
 
+    [RelayCommand]
     private void Reset()
     {
         if (_currentThemeVariant == ThemeVariant.Light)
@@ -155,18 +153,18 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
         _currentThemeVariant = message;
         if (message == ThemeVariant.Light)
         {
-            Stroke1Color = _lightStroke1Color;
             Fill1Color = _lightFill1Color;
-            Stroke2Color = _lightStroke2Color;
             Fill2Color = _lightFill2Color;
+            Stroke1Color = _lightStroke1Color;
+            Stroke2Color = _lightStroke2Color;
             FallbackColor = _lightFallbackColor;
         }
         else if (message == ThemeVariant.Dark)
         {
-            Stroke1Color = _darkStroke1Color;
             Fill1Color = _darkFill1Color;
-            Stroke2Color = _darkStroke2Color;
             Fill2Color = _darkFill2Color;
+            Stroke1Color = _darkStroke1Color;
+            Stroke2Color = _darkStroke2Color;
             FallbackColor = _darkFallbackColor;
         }
     }
@@ -175,7 +173,7 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
 
     [ObservableProperty] private IconMode _selectedMode = IconMode.FilledDouble;
 
-    [ObservableProperty] private ObservableCollection<IconMode> _modes =
+    public ObservableCollection<IconMode> Modes { get; set; } =
         [IconMode.OutlineSingle, IconMode.OutlineDouble, IconMode.FilledDouble, IconMode.FilledMultiple];
 
     #endregion
@@ -198,10 +196,10 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
 
     public IReadOnlyList<ExportColor> ExportColors =>
     [
-        new ("Stroke1", _lightStroke1Color!.Value.ToString(), _darkStroke1Color!.Value.ToString()),
-        new ("Fill1", _lightFill1Color!.Value.ToString(), _darkFill1Color!.Value.ToString()),
-        new ("Stroke2", _lightStroke2Color!.Value.ToString(), _darkStroke2Color!.Value.ToString()),
-        new ("Fill2", _lightFill2Color!.Value.ToString(), _darkFill2Color!.Value.ToString())
+        new("Fill1", _lightFill1Color!.Value.ToString(), _darkFill1Color!.Value.ToString()),
+        new("Fill2", _lightFill2Color!.Value.ToString(), _darkFill2Color!.Value.ToString()),
+        new("Stroke1", _lightStroke1Color!.Value.ToString(), _darkStroke1Color!.Value.ToString()),
+        new("Stroke2", _lightStroke2Color!.Value.ToString(), _darkStroke2Color!.Value.ToString())
     ];
 
     #endregion

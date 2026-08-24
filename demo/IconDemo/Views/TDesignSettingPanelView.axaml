@@ -6,9 +6,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:u="https://irihi.tech/ursa"
     xmlns:viewModels="clr-namespace:IconDemo.ViewModels"
+    xmlns:converters="clr-namespace:Avalonia.Controls.Converters;assembly=Avalonia.Controls.ColorPicker"
     Width="400"
     x:DataType="viewModels:TDesignSettingPanelViewModel"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:ColorToHexConverter x:Key="SettingColorToHexConverter" AlphaPosition="Trailing" />
+    </UserControl.Resources>
     <Design.DataContext>
         <viewModels:TDesignSettingPanelViewModel />
     </Design.DataContext>
@@ -51,9 +55,9 @@
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Center"
                             IsSnapToTickEnabled="True"
-                            Maximum="4"
-                            Minimum="1"
-                            TickFrequency="1"
+                            Maximum="2.5"
+                            Minimum="0.5"
+                            TickFrequency="0.5"
                             Value="{Binding StrokeWidth}" />
                     </DockPanel>
                 </u:FormItem>
@@ -70,7 +74,7 @@
                     </u:SelectionList.Styles>
                     <u:SelectionList.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Columns="2" />
+                            <UniformGrid Rows="1" Columns="2"/>
                         </ItemsPanelTemplate>
                     </u:SelectionList.ItemsPanel>
                 </u:SelectionList>
@@ -87,7 +91,7 @@
                     </u:SelectionList.Styles>
                     <u:SelectionList.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <UniformGrid Columns="2" />
+                            <UniformGrid Rows="2" Columns="2"/>
                         </ItemsPanelTemplate>
                     </u:SelectionList.ItemsPanel>
                 </u:SelectionList>
@@ -117,36 +121,13 @@
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 VerticalAlignment="Center"
-                                Text="主描边" />
+                                Text="填充颜色1" />
                             <SelectableTextBlock
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Margin="8,0,0,0"
                                 VerticalAlignment="Center"
-                                Text="{Binding Stroke1Color}" />
-                            <ColorPicker
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Grid.ColumnSpan="2"
-                                Width="{x:Static x:Double.NaN}"
-                                HorizontalAlignment="Stretch"
-                                Color="{Binding Stroke1Color}" />
-                        </Grid>
-                        <Grid
-                            Classes="Root"
-                            ColumnDefinitions="Auto, *"
-                            RowDefinitions="*, *">
-                            <TextBlock
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                VerticalAlignment="Center"
-                                Text="主填充" />
-                            <SelectableTextBlock
-                                Grid.Row="0"
-                                Grid.Column="1"
-                                Margin="8,0,0,0"
-                                VerticalAlignment="Center"
-                                Text="{Binding Fill1Color}" />
+                                Text="{Binding Fill1Color,Converter={StaticResource SettingColorToHexConverter},ConverterParameter={x:True}}" />
                             <ColorPicker
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -163,20 +144,21 @@
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 VerticalAlignment="Center"
-                                Text="辅描边" />
+                                Text="填充颜色2" />
                             <SelectableTextBlock
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Margin="8,0,0,0"
                                 VerticalAlignment="Center"
-                                Text="{Binding Stroke2Color}" />
+                                Text="{Binding Fill2Color,Converter={StaticResource SettingColorToHexConverter},ConverterParameter={x:True}}" />
                             <ColorPicker
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 Width="{x:Static x:Double.NaN}"
                                 HorizontalAlignment="Stretch"
-                                Color="{Binding Stroke2Color}" />
+                                HorizontalContentAlignment="Stretch"
+                                Color="{Binding Fill2Color}" />
                         </Grid>
                         <Grid
                             Classes="Root"
@@ -186,21 +168,43 @@
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 VerticalAlignment="Center"
-                                Text="辅填充" />
+                                Text="线条颜色1" />
                             <SelectableTextBlock
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Margin="8,0,0,0"
                                 VerticalAlignment="Center"
-                                Text="{Binding Fill2Color}" />
+                                Text="{Binding Stroke1Color,Converter={StaticResource SettingColorToHexConverter},ConverterParameter={x:True}}" />
                             <ColorPicker
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 Width="{x:Static x:Double.NaN}"
                                 HorizontalAlignment="Stretch"
-                                HorizontalContentAlignment="Stretch"
-                                Color="{Binding Fill2Color}" />
+                                Color="{Binding Stroke1Color}" />
+                        </Grid>
+                        <Grid
+                            Classes="Root"
+                            ColumnDefinitions="Auto, *"
+                            RowDefinitions="*, *">
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                Text="线条颜色2" />
+                            <SelectableTextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="8,0,0,0"
+                                VerticalAlignment="Center"
+                                Text="{Binding Stroke2Color,Converter={StaticResource SettingColorToHexConverter},ConverterParameter={x:True}}" />
+                            <ColorPicker
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Width="{x:Static x:Double.NaN}"
+                                HorizontalAlignment="Stretch"
+                                Color="{Binding Stroke2Color}" />
                         </Grid>
                     </UniformGrid>
                 </u:FormItem>

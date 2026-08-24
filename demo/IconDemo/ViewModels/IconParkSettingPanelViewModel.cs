@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using Avalonia.Media;
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -13,74 +12,58 @@ namespace IconDemo.ViewModels;
 
 public partial class IconParkSettingPanelViewModel : ObservableObject, IExportSettings
 {
-    private readonly Color? _darkDefaultInnerFillColor = Color.Parse("#FF33C2B0");
-    private readonly Color? _darkDefaultInnerStrokeColor = Color.Parse("#FF333333");
-    private readonly Color? _darkDefaultOuterFillColor = Color.Parse("#FF54A9FF");
-    private readonly Color? _darkDefaultOuterStrokeColor = Color.Parse("#FFFFFFFF");
-    private readonly Color? _darkDefaultFallbackColor = Colors.Black;
-
-    private readonly Color? _lightDefaultInnerFillColor = Color.Parse("#FF00B3A1");
-    private readonly Color? _lightDefaultInnerStrokeColor = Color.Parse("#FFFFFFFF");
-    private readonly Color? _lightDefaultOuterFillColor = Color.Parse("#FF0077FA");
-    private readonly Color? _lightDefaultOuterStrokeColor = Color.Parse("#FF333333");
+    private readonly Color? _lightDefaultOuterStrokeColor = Color.Parse("#333333");
+    private readonly Color? _lightDefaultOuterFillColor = Color.Parse("#0077FA");
+    private readonly Color? _lightDefaultInnerStrokeColor = Color.Parse("#FFFFFF");
+    private readonly Color? _lightDefaultInnerFillColor = Color.Parse("#00B3A1");
     private readonly Color? _lightDefaultFallbackColor = Colors.White;
 
-    internal Color? _darkInnerFillColor = Color.Parse("#FF33C2B0");
-    internal Color? _darkInnerStrokeColor = Color.Parse("#FF333333");
-    internal Color? _darkOuterFillColor = Color.Parse("#FF54A9FF");
-    internal Color? _darkOuterStrokeColor = Color.Parse("#FFFFFFFF");
+    private readonly Color? _darkDefaultOuterStrokeColor = Color.Parse("#FFFFFF");
+    private readonly Color? _darkDefaultOuterFillColor = Color.Parse("#54A9FF");
+    private readonly Color? _darkDefaultInnerStrokeColor = Color.Parse("#333333");
+    private readonly Color? _darkDefaultInnerFillColor = Color.Parse("#33C2B0");
+    private readonly Color? _darkDefaultFallbackColor = Colors.Black;
+
+    internal Color? _lightOuterStrokeColor = Color.Parse("#333333");
+    internal Color? _lightOuterFillColor = Color.Parse("#0077FA");
+    internal Color? _lightInnerStrokeColor = Color.Parse("#FFFFFF");
+    internal Color? _lightInnerFillColor = Color.Parse("#00B3A1");
+    internal Color? _lightFallbackColor = Colors.White;
+
+    internal Color? _darkOuterStrokeColor = Color.Parse("#FFFFFF");
+    internal Color? _darkOuterFillColor = Color.Parse("#54A9FF");
+    internal Color? _darkInnerStrokeColor = Color.Parse("#333333");
+    internal Color? _darkInnerFillColor = Color.Parse("#33C2B0");
     internal Color? _darkFallbackColor = Colors.Black;
 
-    internal Color? _lightInnerFillColor = Color.Parse("#FF00B3A1");
-    internal Color? _lightInnerStrokeColor = Color.Parse("#FFFFFFFF");
-    internal Color? _lightOuterFillColor = Color.Parse("#FF0077FA");
-    internal Color? _lightOuterStrokeColor = Color.Parse("#FF333333");
-    internal Color? _lightFallbackColor = Colors.White;
     private ThemeVariant? _currentThemeVariant;
 
-    [ObservableProperty] private Color? _fallbackColor = Colors.White;
-    [ObservableProperty] private Color? _innerFillColor = Color.Parse("#43CCF8");
-    [ObservableProperty] private Color? _innerStrokeColor = Color.Parse("#FFF");
-    [ObservableProperty] private Color? _outerFillColor = Color.Parse("#2F88FF");
     [ObservableProperty] private Color? _outerStrokeColor = Color.Parse("#333");
+    [ObservableProperty] private Color? _outerFillColor = Color.Parse("#2F88FF");
+    [ObservableProperty] private Color? _innerStrokeColor = Color.Parse("#FFFFFF");
+    [ObservableProperty] private Color? _innerFillColor = Color.Parse("#43CCF8");
+    [ObservableProperty] private Color? _fallbackColor = Colors.White;
     [ObservableProperty] private double _size;
     [ObservableProperty] private double _strokeWidth;
 
     public IconParkSettingPanelViewModel()
     {
-        ResetCommand = new RelayCommand(Reset);
         WeakReferenceMessenger.Default.Register<IconParkSettingPanelViewModel, ThemeVariant>(this, OnActualThemeChanged);
         Size = 24;
         StrokeWidth = 2;
     }
 
-    public ICommand ResetCommand { get; set; }
-
-    partial void OnInnerFillColorChanged(Color? value)
+    partial void OnOuterStrokeColorChanged(Color? value)
     {
-        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(InnerFillColor)),
-            MessengerChannels.IconPark);
-        if(_currentThemeVariant == ThemeVariant.Light)
-        {
-            _lightInnerFillColor = InnerFillColor;
-        }
-        else if (_currentThemeVariant == ThemeVariant.Dark)
-        {
-            _darkInnerFillColor = InnerFillColor;
-        }
-    }
-
-    partial void OnInnerStrokeColorChanged(Color? value)
-    {
-        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(InnerStrokeColor)),
+        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(OuterStrokeColor)),
             MessengerChannels.IconPark);
         if (_currentThemeVariant == ThemeVariant.Light)
         {
-             _lightInnerStrokeColor = InnerStrokeColor;
+            _lightOuterStrokeColor = OuterStrokeColor;
         }
         else if (_currentThemeVariant == ThemeVariant.Dark)
         {
-            _darkInnerStrokeColor = InnerStrokeColor;
+            _darkOuterStrokeColor = OuterStrokeColor;
         }
     }
 
@@ -90,7 +73,7 @@ public partial class IconParkSettingPanelViewModel : ObservableObject, IExportSe
             MessengerChannels.IconPark);
         if (_currentThemeVariant == ThemeVariant.Light)
         {
-             _lightOuterFillColor = OuterFillColor;
+            _lightOuterFillColor = OuterFillColor;
         }
         else if (_currentThemeVariant == ThemeVariant.Dark)
         {
@@ -98,17 +81,31 @@ public partial class IconParkSettingPanelViewModel : ObservableObject, IExportSe
         }
     }
 
-    partial void OnOuterStrokeColorChanged(Color? value)
+    partial void OnInnerStrokeColorChanged(Color? value)
     {
-        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(OuterStrokeColor)),
+        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(InnerStrokeColor)),
             MessengerChannels.IconPark);
         if (_currentThemeVariant == ThemeVariant.Light)
         {
-             _lightOuterStrokeColor = OuterStrokeColor;
+            _lightInnerStrokeColor = InnerStrokeColor;
         }
         else if (_currentThemeVariant == ThemeVariant.Dark)
         {
-            _darkOuterStrokeColor = OuterStrokeColor;
+            _darkInnerStrokeColor = InnerStrokeColor;
+        }
+    }
+
+    partial void OnInnerFillColorChanged(Color? value)
+    {
+        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(InnerFillColor)),
+            MessengerChannels.IconPark);
+        if (_currentThemeVariant == ThemeVariant.Light)
+        {
+            _lightInnerFillColor = InnerFillColor;
+        }
+        else if (_currentThemeVariant == ThemeVariant.Dark)
+        {
+            _darkInnerFillColor = InnerFillColor;
         }
     }
 
@@ -125,25 +122,23 @@ public partial class IconParkSettingPanelViewModel : ObservableObject, IExportSe
             _darkFallbackColor = FallbackColor;
         }
     }
-    
+
     partial void OnSizeChanged(double value)
     {
         WeakReferenceMessenger.Default.Send(new SizeResourceChangeMessage(value), MessengerChannels.IconPark);
     }
-    
+
     partial void OnStrokeWidthChanged(double value)
     {
         WeakReferenceMessenger.Default.Send(new StrokeWidthResourceChangeMessage(value), MessengerChannels.IconPark);
     }
-    
+
     partial void OnSelectedModeChanged(IconMode value)
     {
         WeakReferenceMessenger.Default.Send(new ModeResourceChangeMessage(value), MessengerChannels.IconPark);
     }
-    
 
-
-
+    [RelayCommand]
     private void Reset()
     {
         if (_currentThemeVariant == ThemeVariant.Light)
@@ -189,7 +184,7 @@ public partial class IconParkSettingPanelViewModel : ObservableObject, IExportSe
 
     [ObservableProperty] private IconMode _selectedMode;
 
-    [ObservableProperty] private ObservableCollection<IconMode> _modes =
+    public ObservableCollection<IconMode> Modes { get; set; } =
         [IconMode.Line, IconMode.Fill, IconMode.TwoTone, IconMode.MultiColor];
 
     #endregion
@@ -203,11 +198,11 @@ public partial class IconParkSettingPanelViewModel : ObservableObject, IExportSe
 
     public IReadOnlyList<ExportColor> ExportColors =>
     [
-        new ("OuterFill", _lightOuterFillColor!.Value.ToString(), _darkOuterFillColor!.Value.ToString()),
-        new ("OuterStroke", _lightOuterStrokeColor!.Value.ToString(), _darkOuterStrokeColor!.Value.ToString()),
-        new ("InnerFill", _lightInnerFillColor!.Value.ToString(), _darkInnerFillColor!.Value.ToString()),
-        new ("InnerStroke", _lightInnerStrokeColor!.Value.ToString(), _darkInnerStrokeColor!.Value.ToString()),
-        new ("FallbackBrush", _lightFallbackColor!.Value.ToString(), _darkFallbackColor!.Value.ToString())
+        new("OuterStroke", _lightOuterStrokeColor!.Value.ToString(), _darkOuterStrokeColor!.Value.ToString()),
+        new("OuterFill", _lightOuterFillColor!.Value.ToString(), _darkOuterFillColor!.Value.ToString()),
+        new("InnerStroke", _lightInnerStrokeColor!.Value.ToString(), _darkInnerStrokeColor!.Value.ToString()),
+        new("InnerFill", _lightInnerFillColor!.Value.ToString(), _darkInnerFillColor!.Value.ToString()),
+        new("FallbackBrush", _lightFallbackColor!.Value.ToString(), _darkFallbackColor!.Value.ToString())
     ];
 
     #endregion

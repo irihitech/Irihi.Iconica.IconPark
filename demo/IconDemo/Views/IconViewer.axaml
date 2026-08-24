@@ -58,10 +58,10 @@
                     <Setter Property="Height" Value="36" />
                     <Setter Property="Mode" Value="{DynamicResource TDesignMode}" />
                     <Setter Property="StrokeWidth" Value="{DynamicResource IconStrokeWidth}" />
-                    <Setter Property="Stroke1" Value="{DynamicResource Stroke1Color}" />
                     <Setter Property="Fill1" Value="{DynamicResource Fill1Color}" />
-                    <Setter Property="Stroke2" Value="{DynamicResource Stroke2Color}" />
                     <Setter Property="Fill2" Value="{DynamicResource Fill2Color}" />
+                    <Setter Property="Stroke1" Value="{DynamicResource Stroke1Color}" />
+                    <Setter Property="Stroke2" Value="{DynamicResource Stroke2Color}" />
                     <Setter Property="FallbackBrush" Value="{DynamicResource FallbackColor}" />
                 </Style>
             </ScrollViewer.Styles>
