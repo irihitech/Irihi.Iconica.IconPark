@@ -50,7 +50,7 @@ public partial class IconParkSettingPanelViewModel : ObservableObject, IExportSe
     {
         WeakReferenceMessenger.Default.Register<IconParkSettingPanelViewModel, ThemeVariant>(this, OnActualThemeChanged);
         Size = 24;
-        StrokeWidth = 2;
+        StrokeWidth = 4;
     }
 
     partial void OnOuterStrokeColorChanged(Color? value)

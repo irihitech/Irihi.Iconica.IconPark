@@ -67,8 +67,8 @@
             Background="{DynamicResource SemiBackground0}">
             <ScrollViewer.Styles>
                 <Style Selector=":is(iconpark|IconParkBase)">
-                    <Setter Property="Width" Value="36" />
-                    <Setter Property="Height" Value="36" />
+                    <Setter Property="Width" Value="24" />
+                    <Setter Property="Height" Value="24" />
                     <Setter Property="Mode" Value="{DynamicResource IconMode}" />
                     <Setter Property="StrokeWidth" Value="{DynamicResource IconStrokeWidth}" />
                     <Setter Property="OuterFill" Value="{DynamicResource OuterFillColor}" />
@@ -78,8 +78,8 @@
                     <Setter Property="FallbackBrush" Value="{DynamicResource FallbackColor}" />
                 </Style>
                 <Style Selector=":is(tdicon|TDesignIconBase)">
-                    <Setter Property="Width" Value="36" />
-                    <Setter Property="Height" Value="36" />
+                    <Setter Property="Width" Value="24" />
+                    <Setter Property="Height" Value="24" />
                     <Setter Property="Mode" Value="{DynamicResource TDesignMode}" />
                     <Setter Property="StrokeWidth" Value="{DynamicResource IconStrokeWidth}" />
                     <Setter Property="Fill1" Value="{DynamicResource Fill1Color}" />
@@ -107,7 +107,7 @@
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <controls:VirtualizingUniformGrid
-                                                ItemHeight="70"
+                                                ItemHeight="80"
                                                 Columns="{Binding #root.ColumnCount}" />
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
