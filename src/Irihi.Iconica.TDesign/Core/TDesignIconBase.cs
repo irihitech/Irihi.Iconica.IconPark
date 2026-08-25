@@ -42,13 +42,9 @@ public abstract class TDesignIconBase : Control
         AvaloniaProperty.Register<TDesignIconBase, IBrush?>(
             nameof(Background));
 
-    public static readonly StyledProperty<IBrush?> FallbackBrushProperty =
-        AvaloniaProperty.Register<TDesignIconBase, IBrush?>(
-            nameof(FallbackBrush), Brushes.White);
-
-    // 0: Stroke1, 1: Stroke2, 2: Fill1, 3: Fill2, 4: WhiteFallback, 5: NullFallback
-    private readonly IBrush?[] _brushes = new IBrush[6];
-    private readonly Pen?[] _pens = new Pen?[6];
+    // 0: Stroke1, 1: Stroke2, 2: Fill1, 3: Fill2, 4: NullFallback
+    private readonly IBrush?[] _brushes = new IBrush[5];
+    private readonly Pen?[] _pens = new Pen?[5];
 
 
     static TDesignIconBase()
@@ -59,7 +55,6 @@ public abstract class TDesignIconBase : Control
         Stroke2Property.Changed.AddClassHandler<TDesignIconBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 1));
         Fill1Property.Changed.AddClassHandler<TDesignIconBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 2));
         Fill2Property.Changed.AddClassHandler<TDesignIconBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 3));
-        FallbackBrushProperty.Changed.AddClassHandler<TDesignIconBase, IBrush?>((icon, e) => icon.InvalidateBrushes(e, 4));
         StrokeWidthProperty.Changed.AddClassHandler<TDesignIconBase, double>((icon, e) => icon.InvalidateStrokeWidth(e));
         LineCapProperty.Changed.AddClassHandler<TDesignIconBase, PenLineCap>((icon, e) => icon.InvalidateLineCap(e));
         LineJoinProperty.Changed.AddClassHandler<TDesignIconBase, PenLineJoin>((icon, e) => icon.InvalidateLineJoin(e));
@@ -68,8 +63,6 @@ public abstract class TDesignIconBase : Control
 
     protected TDesignIconBase()
     {
-        _brushes[4] = Brushes.White;
-        _pens[4] = new Pen(Brushes.White);
     }
 
     public IBrush? Stroke1
@@ -94,12 +87,6 @@ public abstract class TDesignIconBase : Control
     {
         get => GetValue(Fill2Property);
         set => SetValue(Fill2Property, value);
-    }
-
-    public IBrush? FallbackBrush
-    {
-        get => GetValue(FallbackBrushProperty);
-        set => SetValue(FallbackBrushProperty, value);
     }
 
     public double StrokeWidth
@@ -141,12 +128,10 @@ public abstract class TDesignIconBase : Control
         _brushes[1] = Stroke2;
         _brushes[2] = Fill1;
         _brushes[3] = Fill2;
-        _brushes[4] = FallbackBrush;
         _pens[0] = new Pen(Stroke1, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
         _pens[1] = new Pen(Stroke2, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
         _pens[2] = new Pen(Fill1, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
         _pens[3] = new Pen(Fill2, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
-        _pens[4] = new Pen(FallbackBrush, StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
     }
 
     private void InvalidateBrushes(AvaloniaPropertyChangedEventArgs<IBrush?> args, int index)
@@ -158,7 +143,7 @@ public abstract class TDesignIconBase : Control
     private void InvalidatePens(int? index = null)
     {
         if (index is null)
-            for (var i = 0; i < 6; i++)
+            for (var i = 0; i < 5; i++)
                 _pens[i] = new Pen(_brushes[i], StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
         else
             _pens[index.Value] = new Pen(_brushes[index.Value], StrokeWidth, lineCap: LineCap, lineJoin: LineJoin);
@@ -217,7 +202,7 @@ public abstract class TDesignIconBase : Control
                 {
                     0 => 0,
                     1 => 0,
-                    _ => 5
+                    _ => 4
                 };
                 break;
             case IconMode.OutlineDouble:
@@ -225,7 +210,7 @@ public abstract class TDesignIconBase : Control
                 {
                     0 => 0,
                     1 => 1,
-                    _ => 5
+                    _ => 4
                 };
                 break;
             case IconMode.FilledDouble:
@@ -235,7 +220,7 @@ public abstract class TDesignIconBase : Control
                     1 => 0,
                     2 => 2,
                     3 => 2,
-                    _ => 5
+                    _ => 4
                 };
                 break;
             case IconMode.FilledMultiple:
@@ -245,7 +230,7 @@ public abstract class TDesignIconBase : Control
                     1 => 1,
                     2 => 2,
                     3 => 3,
-                    _ => 5
+                    _ => 4
                 };
                 break;
         }

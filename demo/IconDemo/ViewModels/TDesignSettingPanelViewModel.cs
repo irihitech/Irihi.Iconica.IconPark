@@ -16,25 +16,21 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
     private readonly Color? _lightDefaultFill2Color = Color.Parse("#FFAA75");
     private readonly Color? _lightDefaultStroke1Color = Colors.Black;
     private readonly Color? _lightDefaultStroke2Color = Color.Parse("#0262F8");
-    private readonly Color? _lightDefaultFallbackColor = Colors.Black;
 
     private readonly Color? _darkDefaultFill1Color = Color.Parse("#02D8F2");
     private readonly Color? _darkDefaultFill2Color = Color.Parse("#FFAA75");
     private readonly Color? _darkDefaultStroke1Color = Colors.White;
     private readonly Color? _darkDefaultStroke2Color = Color.Parse("#0262F8");
-    private readonly Color? _darkDefaultFallbackColor = Colors.White;
 
     internal Color? _lightFill1Color = Color.Parse("#02D8F2");
     internal Color? _lightFill2Color = Color.Parse("#FFAA75");
     internal Color? _lightStroke1Color = Colors.Black;
     internal Color? _lightStroke2Color = Color.Parse("#0262F8");
-    internal Color? _lightFallbackColor = Colors.Black;
 
     internal Color? _darkFill1Color = Color.Parse("#02D8F2");
     internal Color? _darkFill2Color = Color.Parse("#FFAA75");
     internal Color? _darkStroke1Color = Colors.White;
     internal Color? _darkStroke2Color = Color.Parse("#0262F8");
-    internal Color? _darkFallbackColor = Colors.White;
 
     private ThemeVariant? _currentThemeVariant;
 
@@ -42,7 +38,6 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
     [ObservableProperty] public partial Color? Fill2Color { get; set; } = Color.Parse("#FFAA75");
     [ObservableProperty] public partial Color? Stroke1Color { get; set; } = Colors.Black;
     [ObservableProperty] public partial Color? Stroke2Color { get; set; } = Color.Parse("#0262F8");
-    [ObservableProperty] public partial Color? FallbackColor { get; set; } = Colors.Black;
     [ObservableProperty] public partial double Size { get; set; }
     [ObservableProperty] public partial double StrokeWidth { get; set; }
 
@@ -79,20 +74,6 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
         WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(Stroke2Color)),
             MessengerChannels.TDesign);
         SaveToThemeCache(value, ref _lightStroke2Color, ref _darkStroke2Color);
-    }
-
-    partial void OnFallbackColorChanged(Color? value)
-    {
-        WeakReferenceMessenger.Default.Send(new ColorResourceChangeMessage(value, nameof(FallbackColor)),
-            MessengerChannels.IconPark);
-        if (_currentThemeVariant == ThemeVariant.Light)
-        {
-            _lightFallbackColor = FallbackColor;
-        }
-        else if (_currentThemeVariant == ThemeVariant.Dark)
-        {
-            _darkFallbackColor = FallbackColor;
-        }
     }
 
     partial void OnSizeChanged(double value)
@@ -136,7 +117,6 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
             Fill1Color = _lightDefaultFill1Color;
             Stroke2Color = _lightDefaultStroke2Color;
             Fill2Color = _lightDefaultFill2Color;
-            FallbackColor = _lightDefaultFallbackColor;
         }
         else if (_currentThemeVariant == ThemeVariant.Dark)
         {
@@ -144,7 +124,6 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
             Fill1Color = _darkDefaultFill1Color;
             Stroke2Color = _darkDefaultStroke2Color;
             Fill2Color = _darkDefaultFill2Color;
-            FallbackColor = _darkDefaultFallbackColor;
         }
     }
 
@@ -157,7 +136,6 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
             Fill2Color = _lightFill2Color;
             Stroke1Color = _lightStroke1Color;
             Stroke2Color = _lightStroke2Color;
-            FallbackColor = _lightFallbackColor;
         }
         else if (message == ThemeVariant.Dark)
         {
@@ -165,13 +143,12 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
             Fill2Color = _darkFill2Color;
             Stroke1Color = _darkStroke1Color;
             Stroke2Color = _darkStroke2Color;
-            FallbackColor = _darkFallbackColor;
         }
     }
 
     #region Modes
 
-    [ObservableProperty] public partial IconMode SelectedMode { get; set; } = IconMode.FilledDouble;
+    [ObservableProperty] public partial IconMode SelectedMode { get; set; } = IconMode.OutlineSingle;
 
     public ObservableCollection<IconMode> Modes { get; set; } =
         [IconMode.OutlineSingle, IconMode.OutlineDouble, IconMode.FilledDouble, IconMode.FilledMultiple];

@@ -86,7 +86,6 @@
                     <Setter Property="Fill2" Value="{DynamicResource Fill2Color}" />
                     <Setter Property="Stroke1" Value="{DynamicResource Stroke1Color}" />
                     <Setter Property="Stroke2" Value="{DynamicResource Stroke2Color}" />
-                    <Setter Property="FallbackBrush" Value="{DynamicResource FallbackColor}" />
                 </Style>
             </ScrollViewer.Styles>
             <ItemsControl Margin="24" ItemsSource="{Binding Groups}">
