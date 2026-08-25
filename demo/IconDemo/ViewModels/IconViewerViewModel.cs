@@ -10,13 +10,12 @@ public partial class IconViewerViewModel : ObservableObject
 {
     private readonly IReadOnlyList<IconInfo> _source;
 
+    [ObservableProperty] private List<IconCategoryGroup> _groups = [];
     [ObservableProperty] private List<IconInfo>? _activeIconNames;
-    [ObservableProperty] private int _columnCount;
     [ObservableProperty] private List<IconInfo>? _iconNames;
     [ObservableProperty] private string? _searchInput;
     [ObservableProperty] private string _title;
     [ObservableProperty] private Func<IconInfo, bool>? _filter;
-    [ObservableProperty] private List<List<IconInfo>> _virtualizedNames = new();
 
     public IconViewerViewModel(IReadOnlyList<IconInfo> source, string title)
     {
@@ -53,21 +52,25 @@ public partial class IconViewerViewModel : ObservableObject
             return [.. source];
         }
 
-        return source
-               .Where(n => n.Keywords.Any(b => b.Contains(SearchInput, StringComparison.OrdinalIgnoreCase)))
-               .ToList();
+        return source.Where(n =>
+                n.CategoryChinese.Contains(SearchInput, StringComparison.OrdinalIgnoreCase) ||
+                n.Category.Contains(SearchInput, StringComparison.OrdinalIgnoreCase) ||
+                n.Keywords.Any(b => b.Contains(SearchInput, StringComparison.OrdinalIgnoreCase)))
+            .ToList();
     }
 
-    partial void OnColumnCountChanged(int value)
-    {
-        if (ColumnCount == 0) return;
-        var values = VirtualizedNames.SelectMany(a => a).ToList();
-        VirtualizedNames = values.Chunk(value).Select(a => a.ToList()).ToList();
-    }
 
     partial void OnActiveIconNamesChanged(List<IconInfo>? value)
     {
-        if (value is null || ColumnCount == 0) return;
-        VirtualizedNames = value.Chunk(ColumnCount).Select(a => a.ToList()).ToList();
+        if (value is null) return;
+        RebuildGroups();
+    }
+
+    private void RebuildGroups()
+    {
+        Groups = ActiveIconNames!
+            .GroupBy(i => i.Category)
+            .Select(g => new IconCategoryGroup(g.Key, g.First().CategoryChinese, g.ToList()))
+            .ToList();
     }
 }

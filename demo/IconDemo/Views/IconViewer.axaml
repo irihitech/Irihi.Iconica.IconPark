@@ -9,14 +9,14 @@
     xmlns:u="https://irihi.tech/ursa"
     xmlns:viewModels="clr-namespace:IconDemo.ViewModels"
     xmlns:views="clr-namespace:IconDemo.Views"
+    xmlns:controls="clr-namespace:IconDemo.Controls"
     Name="root"
     d:DesignHeight="450"
     d:DesignWidth="800"
     x:DataType="viewModels:IconViewerViewModel"
-    ColumnCount="{Binding ColumnCount, Mode=OneWayToSource}"
     mc:Ignorable="d">
-    <Grid RowDefinitions="Auto, *">
-        <StackPanel Grid.Row="0">
+    <Grid RowDefinitions="Auto, *" ColumnDefinitions="Auto, *">
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
                 <TextBlock
                     Margin="8"
@@ -35,11 +35,35 @@
                 Margin="8"
                 Classes="ClearButton"
                 Text="{Binding SearchInput}"
-                PlaceholderText="输入图标名称" />
+                PlaceholderText="输入图标名称或关键词">
+                <TextBox.InnerLeftContent>
+                    <PathIcon
+                        Theme="{DynamicResource InnerPathIcon}"
+                        Data="{DynamicResource SemiIconSearch}" />
+                </TextBox.InnerLeftContent>
+            </TextBox>
         </StackPanel>
+        <ScrollViewer
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="8,0,0,0"
+            VerticalScrollBarVisibility="Hidden">
+            <u:Anchor
+                Name="NavAnchor"
+                TargetContainer="{Binding #IconsContainer}"
+                ItemsSource="{Binding Groups}"
+                AnchorIdMemberBinding="{Binding Category}">
+                <u:Anchor.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Padding="8 4" Text="{Binding CategoryChinese}" />
+                    </DataTemplate>
+                </u:Anchor.ItemTemplate>
+            </u:Anchor>
+        </ScrollViewer>
         <ScrollViewer
             Name="IconsContainer"
             Grid.Row="1"
+            Grid.Column="1"
             Background="{DynamicResource SemiBackground0}">
             <ScrollViewer.Styles>
                 <Style Selector=":is(iconpark|IconParkBase)">
@@ -65,28 +89,37 @@
                     <Setter Property="FallbackBrush" Value="{DynamicResource FallbackColor}" />
                 </Style>
             </ScrollViewer.Styles>
-            <ItemsControl Margin="24" ItemsSource="{Binding VirtualizedNames}">
+            <ItemsControl Margin="24" ItemsSource="{Binding Groups}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
+                        <StackPanel />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <ItemsControl ItemsSource="{Binding}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <u:VirtualizingUniformGrid
-                                        UniformItemHeight="False"
-                                        Columns="{Binding #root.ColumnCount}" />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <views:IconBriefView />
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                        <StackPanel Margin="0,16">
+                            <Expander Theme="{DynamicResource CategoryExpander}">
+                                <Expander.Header>
+                                    <TextBlock
+                                        u:Anchor.Id="{Binding Category}"
+                                        Text="{Binding CategoryDisplay}" />
+                                </Expander.Header>
+                                <ItemsControl ItemsSource="{Binding Items}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <controls:VirtualizingUniformGrid
+                                                UniformItemHeight="False"
+                                                Columns="{Binding #root.ColumnCount}" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <views:IconBriefView />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Expander>
+                        </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
