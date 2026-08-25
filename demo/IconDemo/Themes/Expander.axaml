@@ -8,6 +8,7 @@
                     <ToggleSwitch
                         Name="ExpanderHeader"
                         Theme="{DynamicResource CategoryToggleSwitch}"
+                        HorizontalAlignment="Left"
                         Content="{TemplateBinding Header}"
                         ContentTemplate="{TemplateBinding HeaderTemplate}"
                         OnContent="{DynamicResource SemiIconSmallTriangleDown}"
