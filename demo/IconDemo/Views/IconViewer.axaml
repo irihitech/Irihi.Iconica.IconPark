@@ -107,7 +107,7 @@
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <controls:VirtualizingUniformGrid
-                                                UniformItemHeight="False"
+                                                ItemHeight="70"
                                                 Columns="{Binding #root.ColumnCount}" />
                                         </ItemsPanelTemplate>
                                     </ItemsControl.ItemsPanel>
