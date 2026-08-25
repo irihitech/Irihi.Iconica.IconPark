@@ -9,11 +9,11 @@ public partial class ExportViewModel : ObservableObject
     private readonly IExportSettings _settings;
     private readonly IconInfo? _iconInfo;
 
-    [ObservableProperty] private string? _globalStyle;
-    [ObservableProperty] private string? _globalResource;
-    [ObservableProperty] private string? _icon;
-    [ObservableProperty] private bool _useLocalColor;
-    [ObservableProperty] private bool _hasIconInfo;
+    [ObservableProperty] public partial string? GlobalStyle { get; set; }
+    [ObservableProperty] public partial string? GlobalResource { get; set; }
+    [ObservableProperty] public partial string? Icon { get; set; }
+    [ObservableProperty] public partial bool UseLocalColor { get; set; }
+    [ObservableProperty] public partial bool HasIconInfo { get; set; }
 
     public string XmlNamespace => _settings.XmlNamespace;
 
@@ -21,7 +21,7 @@ public partial class ExportViewModel : ObservableObject
     {
         _settings = settings;
         _iconInfo = iconType;
-        _hasIconInfo = iconType != null;
+        HasIconInfo = iconType != null;
         GenerateGlobalStyle();
         GenerateGlobalResource();
         GenerateIcon();

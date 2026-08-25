@@ -38,13 +38,13 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
 
     private ThemeVariant? _currentThemeVariant;
 
-    [ObservableProperty] private Color? _fill1Color = Color.Parse("#02D8F2");
-    [ObservableProperty] private Color? _fill2Color = Color.Parse("#FFAA75");
-    [ObservableProperty] private Color? _stroke1Color = Colors.Black;
-    [ObservableProperty] private Color? _stroke2Color = Color.Parse("#0262F8");
-    [ObservableProperty] private Color? _fallbackColor = Colors.Black;
-    [ObservableProperty] private double _size;
-    [ObservableProperty] private double _strokeWidth;
+    [ObservableProperty] public partial Color? Fill1Color { get; set; } = Color.Parse("#02D8F2");
+    [ObservableProperty] public partial Color? Fill2Color { get; set; } = Color.Parse("#FFAA75");
+    [ObservableProperty] public partial Color? Stroke1Color { get; set; } = Colors.Black;
+    [ObservableProperty] public partial Color? Stroke2Color { get; set; } = Color.Parse("#0262F8");
+    [ObservableProperty] public partial Color? FallbackColor { get; set; } = Colors.Black;
+    [ObservableProperty] public partial double Size { get; set; }
+    [ObservableProperty] public partial double StrokeWidth { get; set; }
 
     public TDesignSettingPanelViewModel()
     {
@@ -171,7 +171,7 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
 
     #region Modes
 
-    [ObservableProperty] private IconMode _selectedMode = IconMode.FilledDouble;
+    [ObservableProperty] public partial IconMode SelectedMode { get; set; } = IconMode.FilledDouble;
 
     public ObservableCollection<IconMode> Modes { get; set; } =
         [IconMode.OutlineSingle, IconMode.OutlineDouble, IconMode.FilledDouble, IconMode.FilledMultiple];
@@ -180,7 +180,7 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
 
     #region Variants
 
-    [ObservableProperty] private IconVariant _selectedVariant = IconVariant.Outline;
+    [ObservableProperty] public partial IconVariant SelectedVariant { get; set; } = IconVariant.Outline;
 
     public ObservableCollection<IconVariant> Variants { get; set; } =
         [IconVariant.Outline, IconVariant.Filled];

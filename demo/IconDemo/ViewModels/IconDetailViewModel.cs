@@ -10,7 +10,7 @@ public partial class IconDetailViewModel : ObservableObject
 {
     private readonly IReadOnlyList<IconInfo> _source;
 
-    [ObservableProperty] private IconInfo? _iconInfo;
+    [ObservableProperty] public partial IconInfo? IconInfo { get; set; }
 
     public IconDetailViewModel(IReadOnlyList<IconInfo> source)
     {

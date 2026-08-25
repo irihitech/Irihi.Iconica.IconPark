@@ -38,13 +38,13 @@ public partial class IconParkSettingPanelViewModel : ObservableObject, IExportSe
 
     private ThemeVariant? _currentThemeVariant;
 
-    [ObservableProperty] private Color? _outerStrokeColor = Color.Parse("#333");
-    [ObservableProperty] private Color? _outerFillColor = Color.Parse("#2F88FF");
-    [ObservableProperty] private Color? _innerStrokeColor = Color.Parse("#FFFFFF");
-    [ObservableProperty] private Color? _innerFillColor = Color.Parse("#43CCF8");
-    [ObservableProperty] private Color? _fallbackColor = Colors.White;
-    [ObservableProperty] private double _size;
-    [ObservableProperty] private double _strokeWidth;
+    [ObservableProperty] public partial Color? OuterStrokeColor { get; set; } = Color.Parse("#333");
+    [ObservableProperty] public partial Color? OuterFillColor { get; set; } = Color.Parse("#2F88FF");
+    [ObservableProperty] public partial Color? InnerStrokeColor { get; set; } = Color.Parse("#FFFFFF");
+    [ObservableProperty] public partial Color? InnerFillColor { get; set; } = Color.Parse("#43CCF8");
+    [ObservableProperty] public partial Color? FallbackColor { get; set; } = Colors.White;
+    [ObservableProperty] public partial double Size { get; set; }
+    [ObservableProperty] public partial double StrokeWidth { get; set; }
 
     public IconParkSettingPanelViewModel()
     {
@@ -182,7 +182,7 @@ public partial class IconParkSettingPanelViewModel : ObservableObject, IExportSe
 
     #region Modes
 
-    [ObservableProperty] private IconMode _selectedMode;
+    [ObservableProperty] public partial IconMode SelectedMode { get; set; }
 
     public ObservableCollection<IconMode> Modes { get; set; } =
         [IconMode.Line, IconMode.Fill, IconMode.TwoTone, IconMode.MultiColor];

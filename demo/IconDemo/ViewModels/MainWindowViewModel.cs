@@ -21,11 +21,9 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public string[] PageNames { get; } = ["IconPark", "TDesign"];
 
-    [ObservableProperty] private int _selectedTabIndex;
-
-    [ObservableProperty] private bool _iconParkPageVisible = true;
-
-    [ObservableProperty] private bool _tDesignPageVisible;
+    [ObservableProperty] public partial int SelectedTabIndex { get; set; }
+    [ObservableProperty] public partial bool IconParkPageVisible { get; set; } = true;
+    [ObservableProperty] public partial bool TDesignPageVisible { get; set; }
 
     partial void OnSelectedTabIndexChanged(int value)
     {

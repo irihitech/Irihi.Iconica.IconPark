@@ -10,17 +10,17 @@ public partial class IconViewerViewModel : ObservableObject
 {
     private readonly IReadOnlyList<IconInfo> _source;
 
-    [ObservableProperty] private List<IconCategoryGroup> _groups = [];
-    [ObservableProperty] private List<IconInfo>? _activeIconNames;
-    [ObservableProperty] private List<IconInfo>? _iconNames;
-    [ObservableProperty] private string? _searchInput;
-    [ObservableProperty] private string _title;
-    [ObservableProperty] private Func<IconInfo, bool>? _filter;
+    [ObservableProperty] public partial List<IconCategoryGroup> Groups { get; set; } = [];
+    [ObservableProperty] public partial List<IconInfo>? ActiveIconNames { get; set; }
+    [ObservableProperty] public partial List<IconInfo>? IconNames { get; set; }
+    [ObservableProperty] public partial string? SearchInput { get; set; }
+    [ObservableProperty] public partial string Title { get; set; }
+    [ObservableProperty] public partial Func<IconInfo, bool>? Filter { get; set; }
 
     public IconViewerViewModel(IReadOnlyList<IconInfo> source, string title)
     {
         _source = source;
-        _title = title;
+        Title = title;
     }
 
     internal void OnLoad()
