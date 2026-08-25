@@ -167,8 +167,8 @@ public partial class TDesignSettingPanelViewModel : ObservableObject, IExportSet
     #region IExportSettings
 
     public string XmlNamespace => "https://irihi.tech/iconica/tdesign";
-    public string ElementPrefix => "tdesign";
-    public string StyleSelector => "tdesign|TDesignIconBase";
+    public string ElementPrefix => "tdicon";
+    public string StyleSelector => "tdicon|TDesignIconBase";
     public string Mode => SelectedMode.ToString();
 
     public IReadOnlyList<ExportColor> ExportColors =>

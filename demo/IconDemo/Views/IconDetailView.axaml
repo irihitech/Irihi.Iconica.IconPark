@@ -6,7 +6,7 @@
     xmlns:dataTemplates="clr-namespace:IconDemo.DataTemplates"
     xmlns:iconpark="https://irihi.tech/iconica/iconpark"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tdesign="https://irihi.tech/iconica/tdesign"
+    xmlns:tdicon="https://irihi.tech/iconica/tdesign"
     xmlns:u="https://irihi.tech/ursa"
     xmlns:viewModels="clr-namespace:IconDemo.ViewModels"
     Width="400"
@@ -24,7 +24,7 @@
             <Setter Property="InnerStroke" Value="{DynamicResource InnerStrokeColor}" />
             <Setter Property="FallbackBrush" Value="{DynamicResource FallbackColor}" />
         </Style>
-        <Style Selector=":is(tdesign|TDesignIconBase)">
+        <Style Selector=":is(tdicon|TDesignIconBase)">
             <Setter Property="Width" Value="{DynamicResource IconSize}" />
             <Setter Property="Height" Value="{DynamicResource IconSize}" />
             <Setter Property="Mode" Value="{DynamicResource TDesignMode}" />

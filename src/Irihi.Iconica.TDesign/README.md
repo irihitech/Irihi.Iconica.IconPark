@@ -18,16 +18,16 @@ Irihi.Iconica.TDesign is a .NET library that provides 2,300+ icons for Avalonia 
 
 ```xml
 <Window.Styles>
-    <Style Selector="tdesign|TDesignIconBase">
+    <Style Selector="tdicon|TDesignIconBase">
         <Setter Property="Stroke1" Value="#0052D9" />
         <Setter Property="Fill1" Value="#D9E1FF" />
     </Style>
 </Window.Styles>
 
 <StackPanel Orientation="Horizontal">
-    <tdesign:AddCircle />
-    <tdesign:AddCircleFilled />
-    <tdesign:User Mode="FilledMultiple" />
+    <tdicon:AddCircle />
+    <tdicon:AddCircleFilled />
+    <tdicon:User Mode="FilledMultiple" />
 </StackPanel>
 ```
 

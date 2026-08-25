@@ -32,7 +32,7 @@ public partial class ExportViewModel : ObservableObject
         var setters = string.Join("\n",
             _settings.ExportColors.Select(c =>
                 $$"""
-                                  <Setter Property="{{c.Property}}" Value="{DynamicResource Icon{{c.Property}}Brush}" />
+                      <Setter Property="{{c.Property}}" Value="{DynamicResource Icon{{c.Property}}Brush}" />
                   """));
 
         GlobalStyle =
@@ -48,12 +48,12 @@ public partial class ExportViewModel : ObservableObject
         var light = string.Join("\n",
             _settings.ExportColors.Select(c =>
                 $"""
-                                         <SolidColorBrush x:Key="Icon{c.Property}Brush" Color="{c.LightColor}" />
+                             <SolidColorBrush x:Key="Icon{c.Property}Brush" Color="{c.LightColor}" />
                  """));
         var dark = string.Join("\n",
             _settings.ExportColors.Select(c =>
                 $"""
-                                         <SolidColorBrush x:Key="Icon{c.Property}Brush" Color="{c.DarkColor}" />
+                             <SolidColorBrush x:Key="Icon{c.Property}Brush" Color="{c.DarkColor}" />
                  """));
 
         GlobalResource =
@@ -85,7 +85,7 @@ public partial class ExportViewModel : ObservableObject
             var colorProps = string.Join("\n",
                 _settings.ExportColors.Select(c =>
                     $$"""
-                                             {{c.Property}}="{DynamicResource Icon{{c.Property}}Brush}"
+                          {{c.Property}}="{DynamicResource Icon{{c.Property}}Brush}"
                       """));
             element =
                 $"""
