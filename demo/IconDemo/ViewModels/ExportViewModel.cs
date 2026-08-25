@@ -21,7 +21,7 @@ public partial class ExportViewModel : ObservableObject
     {
         _settings = settings;
         _iconInfo = iconType;
-        HasIconInfo = iconType != null;
+        HasIconInfo = iconType is not null;
         GenerateGlobalStyle();
         GenerateGlobalResource();
         GenerateIcon();

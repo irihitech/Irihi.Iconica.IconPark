@@ -1,5 +1,4 @@
 using Avalonia.Controls;
-using IconDemo.ViewModels;
 
 namespace IconDemo.Views;
 

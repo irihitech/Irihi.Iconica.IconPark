@@ -13,7 +13,6 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         IconParkPage = new IconParkPageViewModel();
         TDesignPage = new TDesignPageViewModel();
-        SaveDialogCommand = new AsyncRelayCommand(OnSaveDialogAsync);
     }
 
     public IconParkPageViewModel IconParkPage { get; }
@@ -31,8 +30,7 @@ public partial class MainWindowViewModel : ViewModelBase
         TDesignPageVisible = value == 1;
     }
 
-    public ICommand SaveDialogCommand { get; set; }
-
+    [RelayCommand]
     private async Task OnSaveDialogAsync()
     {
         var settings = SelectedTabIndex == 0 ? IconParkPage.SettingPanel : TDesignPage.SettingPanel;

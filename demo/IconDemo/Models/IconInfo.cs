@@ -17,7 +17,7 @@ public partial class IconInfo
     public string ClassName { get; set; } = string.Empty;
     public Func<Control>? Creator { get; set; }
     public List<string> Keywords { get; set; } = [];
-    public Type IconType { get; set; }
+    public Type? IconType { get; set; }
 
     /// <summary>TDesign 图标是否 Filled 变体（类名以 Filled 结尾）。</summary>
     public static bool IsFilled(IconInfo icon) => icon.ClassName.EndsWith("Filled", StringComparison.Ordinal);
