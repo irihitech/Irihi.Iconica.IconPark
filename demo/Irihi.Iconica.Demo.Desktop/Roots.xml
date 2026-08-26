@@ -1,0 +1,4 @@
+<linker>
+    <assembly fullname="Irihi.Iconica.IconPark" preserve="All"/>
+    <assembly fullname="Irihi.Iconica.TDesign" preserve="All"/>
+</linker>

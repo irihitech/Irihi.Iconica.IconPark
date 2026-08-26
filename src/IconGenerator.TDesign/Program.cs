@@ -64,7 +64,7 @@ foreach (var svgFile in svgFiles)
     }
 }
 
-var demoFile = Path.Combine(rootPath, "demo", "IconDemo", "Models", "IconInfo.TDesign.Generated.cs");
+var demoFile = Path.Combine(rootPath, "demo", "Irihi.Iconica.Demo", "Models", "IconInfo.TDesign.Generated.cs");
 var demoCode = GenerateDemoDocument(iconsInfo);
 await File.WriteAllTextAsync(demoFile, demoCode);
 
@@ -285,7 +285,7 @@ static string GenerateDemoDocument(List<IconInfo> icons)
     sb.AppendLine("using System;");
     sb.AppendLine("using System.Collections.Generic;");
     sb.AppendLine("using Irihi.Iconica.TDesign.Icons;");
-    sb.AppendLine("namespace IconDemo.Models;");
+    sb.AppendLine("namespace Irihi.Iconica.Demo.Models;");
     sb.AppendLine("public partial class IconInfo");
     sb.AppendLine("{");
     sb.AppendLine("    public static List<IconInfo> TDesignIconInfos { get; } =");

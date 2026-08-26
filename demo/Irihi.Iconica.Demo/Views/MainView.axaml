@@ -1,0 +1,37 @@
+<UserControl
+    x:Class="Irihi.Iconica.Demo.Views.MainView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:u="https://irihi.tech/ursa"
+    xmlns:views="clr-namespace:Irihi.Iconica.Demo.Views"
+    xmlns:vm="using:Irihi.Iconica.Demo.ViewModels"
+    xmlns:iconpark="https://irihi.tech/iconica/iconpark"
+    Name="root"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:MainWindowViewModel"
+    mc:Ignorable="d">
+    <!-- <DockPanel> -->
+    <!--     <StackPanel -->
+    <!--         DockPanel.Dock="Top" -->
+    <!--         Margin="12,8" -->
+    <!--         Orientation="Horizontal" -->
+    <!--         Spacing="8"> -->
+    <!--         <ComboBox -->
+    <!--             Background="Transparent" -->
+    <!--             MinWidth="100" -->
+    <!--             ItemsSource="{Binding PageNames}" -->
+    <!--             SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay}" /> -->
+    <!--         <Button Theme="{DynamicResource BorderlessButton}" Classes="Tertiary" Padding="8" Command="{Binding SaveDialogCommand}"> -->
+    <!--             <iconpark:Export Width="16" Height="16" Mode="Fill" StrokeWidth="6" OuterStroke="{DynamicResource SemiGrey8}"/> -->
+    <!--         </Button> -->
+    <!--         <u:ThemeToggleButton /> -->
+    <!--     </StackPanel> -->
+        <Panel>
+            <views:IconParkPage DataContext="{Binding IconParkPage}" IsVisible="{Binding #root.((vm:MainWindowViewModel)DataContext).IconParkPageVisible}" />
+            <views:TDesignPage DataContext="{Binding TDesignPage}" IsVisible="{Binding #root.((vm:MainWindowViewModel)DataContext).TDesignPageVisible}" />
+        </Panel>
+    <!-- </DockPanel> -->
+</UserControl>

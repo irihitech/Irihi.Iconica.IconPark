@@ -1,5 +1,7 @@
 <Project>
   <ItemGroup>
     <PackageReference Update="Avalonia" VersionOverride="12.1.1" />
+    <PackageReference Update="Avalonia.Browser" VersionOverride="12.1.1" />
+    <PackageReference Update="Avalonia.Desktop" VersionOverride="12.1.1" />
   </ItemGroup>
 </Project>

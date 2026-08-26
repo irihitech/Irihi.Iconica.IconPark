@@ -330,7 +330,7 @@ builder.AppendLine("using System;");
 builder.AppendLine("using System.Collections.Generic;");
 builder.AppendLine("using Irihi.Iconica;");
 builder.AppendLine("using Irihi.Iconica.IconPark.Icons;");
-builder.AppendLine("namespace IconDemo.Models;");
+builder.AppendLine("namespace Irihi.Iconica.Demo.Models;");
 builder.AppendLine("public partial class IconInfo");
 builder.AppendLine("{");
 builder.AppendLine("    public static List<IconInfo> IconInfos { get; } =");
@@ -361,7 +361,7 @@ foreach (var info in infoList)
 builder.AppendLine("    ];");
 builder.AppendLine("}");
 
-var iconInfoFile = Path.Combine(rootPath, "demo", "IconDemo", "Models", "IconInfo.IconPark.Generated.cs");
+var iconInfoFile = Path.Combine(rootPath, "demo", "Irihi.Iconica.Demo", "Models", "IconInfo.IconPark.Generated.cs");
 await File.WriteAllTextAsync(iconInfoFile, builder.ToString());
 
 static string? CreateMatrix(string? transformString)

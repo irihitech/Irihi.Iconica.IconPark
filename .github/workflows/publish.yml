@@ -1,0 +1,54 @@
+name: Publish Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      win-x64:
+        description: 'Windows x64'
+        default: false
+        type: boolean
+      win-x64-aot:
+        description: 'Windows x64 AOT'
+        default: false
+        type: boolean
+  workflow_call:
+    inputs:
+      win-x64:
+        type: boolean
+        default: true
+      win-x64-aot:
+        type: boolean
+        default: true
+
+jobs:
+  win-x64:
+    if: ${{inputs.win-x64}}
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Publish win-x64
+        run: dotnet publish demo/Irihi.Iconica.Demo.Desktop -r win-x64 -c Release -o publish --sc /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true /p:PublishAot=false
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: Irihi.Iconica.Demo.Desktop.win-x64
+          path: |
+            publish
+            !publish/*.pdb
+
+  win-x64-aot:
+    if: ${{inputs.win-x64-aot}}
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Publish win-x64 AOT
+        run: dotnet publish demo/Irihi.Iconica.Demo.Desktop -r win-x64 -c Release -o publish /p:PublishAot=true
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: Irihi.Iconica.Demo.Desktop.win-x64.NativeAOT
+          path: |
+            publish
+            !publish/*.pdb

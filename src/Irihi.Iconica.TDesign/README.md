@@ -43,7 +43,7 @@ This regenerates:
 
 - `src/Irihi.Iconica.TDesign/Generated/Outline/*.cs` — icons with stroke layers (inherit `TDesignIconBase`)
 - `src/Irihi.Iconica.TDesign/Generated/Filled/*.cs` — filled icons (inherit `TDesignIconFilledBase`)
-- `demo/IconDemo/Models/IconInfo.TDesign.Generated.cs` — demo icon list
+- `demo/Irihi.Iconica.Demo/Models/IconInfo.TDesign.Generated.cs` — demo icon list
 
 ## License
 

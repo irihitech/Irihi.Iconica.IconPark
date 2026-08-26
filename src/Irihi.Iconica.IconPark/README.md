@@ -115,11 +115,11 @@ dotnet build Irihi.Iconica.IconPark.sln
 
 The build will produce:
 - `Irihi.Iconica.IconPark.dll` - The main icon library
-- `IconDemo` - A sample application showcasing all icons
+- `Irihi.Iconica.Demo` - A sample application showcasing all icons
 
 ### Running the Demo
 ```bash
-cd demo/IconDemo
+cd demo/Irihi.Iconica.Demo
 dotnet run
 ```
 

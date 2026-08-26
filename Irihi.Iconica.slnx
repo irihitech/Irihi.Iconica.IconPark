@@ -1,14 +1,24 @@
 <Solution>
+    <Folder Name="/Demo/">
+        <Project Path="demo/Irihi.Iconica.Demo.Browser/Irihi.Iconica.Demo.Browser.csproj"/>
+        <Project Path="demo/Irihi.Iconica.Demo.Desktop/Irihi.Iconica.Demo.Desktop.csproj"/>
+        <Project Path="demo/Irihi.Iconica.Demo/Irihi.Iconica.Demo.csproj"/>
+    </Folder>
+    <Folder Name="/GitHub Action/">
+        <File Path=".github/workflows/deploy.yml"/>
+        <File Path=".github/workflows/pack.yml"/>
+        <File Path=".github/workflows/publish.yml"/>
+        <File Path=".github/workflows/release-tag.yml"/>
+    </Folder>
     <Folder Name="/Solution Items/">
-        <File Path="Directory.Packages.props" />
+        <File Path="Directory.Packages.props"/>
     </Folder>
     <Folder Name="/Solution Items/demo/">
-        <File Path="demo/Directory.Build.targets" />
+        <File Path="demo/Directory.Build.targets"/>
     </Folder>
-    <Project Path="demo/IconDemo/IconDemo.csproj" />
-    <Project Path="src/IconGenerator.IconPark/IconGenerator.IconPark.csproj" />
-    <Project Path="src/IconGenerator.TDesign/IconGenerator.TDesign.csproj" />
-    <Project Path="src/Irihi.Iconica.Core/Irihi.Iconica.Core.csproj" />
-    <Project Path="src/Irihi.Iconica.IconPark/Irihi.Iconica.IconPark.csproj" />
-    <Project Path="src/Irihi.Iconica.TDesign/Irihi.Iconica.TDesign.csproj" />
+    <Project Path="src/IconGenerator.IconPark/IconGenerator.IconPark.csproj"/>
+    <Project Path="src/IconGenerator.TDesign/IconGenerator.TDesign.csproj"/>
+    <Project Path="src/Irihi.Iconica.Core/Irihi.Iconica.Core.csproj"/>
+    <Project Path="src/Irihi.Iconica.IconPark/Irihi.Iconica.IconPark.csproj"/>
+    <Project Path="src/Irihi.Iconica.TDesign/Irihi.Iconica.TDesign.csproj"/>
 </Solution>
