@@ -288,26 +288,41 @@ static string GenerateDemoDocument(List<IconInfo> icons)
     sb.AppendLine("namespace Irihi.Iconica.Demo.Models;");
     sb.AppendLine("public partial class IconInfo");
     sb.AppendLine("{");
-    sb.AppendLine("    public static List<IconInfo> TDesignIconInfos { get; } =");
-    sb.AppendLine("    [");
-    foreach (var icon in icons)
+    sb.AppendLine("    public static List<IconInfo> TDesignIconInfos { get; } = CreateTDesignIconInfos();");
+    sb.AppendLine();
+    sb.AppendLine("    private static List<IconInfo> CreateTDesignIconInfos()");
+    sb.AppendLine("    {");
+    sb.AppendLine($"        var list = new List<IconInfo>({icons.Count});");
+    var tDesignChunkCount = (icons.Count + 99) / 100;
+    for (var chunkIndex = 0; chunkIndex < tDesignChunkCount; chunkIndex++)
+        sb.AppendLine($"        list.AddRange(CreateTDesignChunk_{chunkIndex:D4}());");
+    sb.AppendLine("        return list;");
+    sb.AppendLine("    }");
+    for (var chunkIndex = 0; chunkIndex < tDesignChunkCount; chunkIndex++)
     {
-        sb.AppendLine("        new IconInfo()");
-        sb.AppendLine("        {");
-        if (icon.Category.Length > 0) sb.AppendLine($"            Category = \"{icon.Category}\",");
-        if (icon.CategoryCN.Length > 0) sb.AppendLine($"            CategoryChinese = \"{icon.CategoryCN}\",");
-        sb.AppendLine($"            ClassName = \"{icon.ClassName}\",");
-        sb.AppendLine($"            Name = \"{icon.Name}\",");
-        if (icon.Title.Length > 0) sb.AppendLine($"            Title = \"{icon.Title}\",");
-        if (icon.Keywords.Count > 0)
-            sb.AppendLine($"            Tag = [{string.Join(", ", icon.Keywords.Select(k => $"\"{EscapeCsString(k)}\""))}],");
-        sb.AppendLine($"            Creator = () => new Irihi.Iconica.TDesign.Icons.{icon.ClassName}(),");
-        var keywords = icon.Keywords.Concat([icon.Name, icon.ClassName]).ToList();
-        sb.AppendLine($"            Keywords = [{string.Join(", ", keywords.Select(k => $"\"{EscapeCsString(k)}\""))}],");
-        sb.AppendLine($"            IconType = typeof(Irihi.Iconica.TDesign.Icons.{icon.ClassName})");
-        sb.AppendLine("        },");
+        sb.AppendLine();
+        sb.AppendLine($"    private static List<IconInfo> CreateTDesignChunk_{chunkIndex:D4}() =>");
+        sb.AppendLine("    [");
+        for (var i = chunkIndex * 100; i < icons.Count && i < (chunkIndex + 1) * 100; i++)
+        {
+            var icon = icons[i];
+            sb.AppendLine("        new IconInfo()");
+            sb.AppendLine("        {");
+            if (icon.Category.Length > 0) sb.AppendLine($"            Category = \"{icon.Category}\",");
+            if (icon.CategoryCN.Length > 0) sb.AppendLine($"            CategoryChinese = \"{icon.CategoryCN}\",");
+            sb.AppendLine($"            ClassName = \"{icon.ClassName}\",");
+            sb.AppendLine($"            Name = \"{icon.Name}\",");
+            if (icon.Title.Length > 0) sb.AppendLine($"            Title = \"{icon.Title}\",");
+            if (icon.Keywords.Count > 0)
+                sb.AppendLine($"            Tag = [{string.Join(", ", icon.Keywords.Select(k => $"\"{EscapeCsString(k)}\""))}],");
+            sb.AppendLine($"            Creator = () => new Irihi.Iconica.TDesign.Icons.{icon.ClassName}(),");
+            var keywords = icon.Keywords.Concat([icon.Name, icon.ClassName]).ToList();
+            sb.AppendLine($"            Keywords = [{string.Join(", ", keywords.Select(k => $"\"{EscapeCsString(k)}\""))}],");
+            sb.AppendLine($"            IconType = typeof(Irihi.Iconica.TDesign.Icons.{icon.ClassName})");
+            sb.AppendLine("        },");
+        }
+        sb.AppendLine("    ];");
     }
-    sb.AppendLine("    ];");
     sb.AppendLine("}");
 
     return sb.ToString();

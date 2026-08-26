@@ -326,6 +326,10 @@ foreach (var fileName in fileNames)
 }
 
 StringBuilder builder = new StringBuilder();
+var validIcons = infoList.Where(i => i.Valid).ToList();
+const int chunkSize = 100;
+var chunkCount = (validIcons.Count + chunkSize - 1) / chunkSize;
+
 builder.AppendLine("using System;");
 builder.AppendLine("using System.Collections.Generic;");
 builder.AppendLine("using Irihi.Iconica;");
@@ -333,32 +337,45 @@ builder.AppendLine("using Irihi.Iconica.IconPark.Icons;");
 builder.AppendLine("namespace Irihi.Iconica.Demo.Models;");
 builder.AppendLine("public partial class IconInfo");
 builder.AppendLine("{");
-builder.AppendLine("    public static List<IconInfo> IconInfos { get; } =");
-builder.AppendLine("    [");
-foreach (var info in infoList)
+builder.AppendLine("    public static List<IconInfo> IconInfos { get; } = CreateIconInfos();");
+builder.AppendLine();
+builder.AppendLine("    private static List<IconInfo> CreateIconInfos()");
+builder.AppendLine("    {");
+builder.AppendLine($"        var list = new List<IconInfo>({validIcons.Count});");
+for (var chunkIndex = 0; chunkIndex < chunkCount; chunkIndex++)
+    builder.AppendLine($"        list.AddRange(CreateChunk_{chunkIndex:D4}());");
+builder.AppendLine("        return list;");
+builder.AppendLine("    }");
+for (var chunkIndex = 0; chunkIndex < chunkCount; chunkIndex++)
 {
-    if(!info.Valid) continue;
-    builder.AppendLine($"        new IconInfo()");
-    builder.AppendLine("        {");
-    builder.AppendLine($"            Author = \"{info.Author.Trim()}\",");
-    builder.AppendLine($"            Category = \"{info.Category.Trim()}\",");
-    builder.AppendLine($"            CategoryChinese = \"{info.CategoryCN.Trim()}\",");
-    builder.AppendLine($"            ClassName = \"{info.ClassName.Trim()}\",");
-    builder.AppendLine($"            Id = {info.Id},");
-    builder.AppendLine($"            Name = \"{info.Name.Trim()}\",");
-    builder.AppendLine($"            Rtl = {info.Rtl.ToString().ToLower().Trim()},");
-    builder.AppendLine($"            Tag = [{string.Join(", " , info.Tag.Select(a => $"\"{a.Trim()}\""))}],");
-    builder.AppendLine($"            Title = \"{info.Title.Trim()}\",");
-    builder.AppendLine($"            Creator = () => new Irihi.Iconica.IconPark.Icons.{info.ClassName.Trim()}(),");
-    var keywords = new List<string>(info.Tag);
-    keywords.Add(info.Name);
-    keywords.Add(info.Title);
-    keywords.Add(info.ClassName);
-    builder.AppendLine($"            Keywords = [{string.Join(", ", keywords.Select(a => $"\"{a.Trim()}\""))}],");
-    builder.AppendLine($"            IconType = typeof(Irihi.Iconica.IconPark.Icons.{info.ClassName.Trim()})");
-    builder.AppendLine("        },");
+    builder.AppendLine();
+    builder.AppendLine($"    private static List<IconInfo> CreateChunk_{chunkIndex:D4}() =>");
+    builder.AppendLine("    [");
+    for (var i = chunkIndex * chunkSize; i < validIcons.Count && i < (chunkIndex + 1) * chunkSize; i++)
+    {
+        var info = validIcons[i];
+        builder.AppendLine($"        new IconInfo()");
+        builder.AppendLine("        {");
+        builder.AppendLine($"            Author = \"{info.Author.Trim()}\",");
+        builder.AppendLine($"            Category = \"{info.Category.Trim()}\",");
+        builder.AppendLine($"            CategoryChinese = \"{info.CategoryCN.Trim()}\",");
+        builder.AppendLine($"            ClassName = \"{info.ClassName.Trim()}\",");
+        builder.AppendLine($"            Id = {info.Id},");
+        builder.AppendLine($"            Name = \"{info.Name.Trim()}\",");
+        builder.AppendLine($"            Rtl = {info.Rtl.ToString().ToLower().Trim()},");
+        builder.AppendLine($"            Tag = [{string.Join(", " , info.Tag.Select(a => $"\"{a.Trim()}\""))}],");
+        builder.AppendLine($"            Title = \"{info.Title.Trim()}\",");
+        builder.AppendLine($"            Creator = () => new Irihi.Iconica.IconPark.Icons.{info.ClassName.Trim()}(),");
+        var keywords = new List<string>(info.Tag);
+        keywords.Add(info.Name);
+        keywords.Add(info.Title);
+        keywords.Add(info.ClassName);
+        builder.AppendLine($"            Keywords = [{string.Join(", ", keywords.Select(a => $"\"{a.Trim()}\""))}],");
+        builder.AppendLine($"            IconType = typeof(Irihi.Iconica.IconPark.Icons.{info.ClassName.Trim()})");
+        builder.AppendLine("        },");
+    }
+    builder.AppendLine("    ];");
 }
-builder.AppendLine("    ];");
 builder.AppendLine("}");
 
 var iconInfoFile = Path.Combine(rootPath, "demo", "Irihi.Iconica.Demo", "Models", "IconInfo.IconPark.Generated.cs");

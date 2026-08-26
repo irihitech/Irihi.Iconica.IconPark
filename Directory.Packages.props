@@ -15,5 +15,6 @@
         <PackageVersion Include="Irihi.Ursa.Themes.Semi" Version="2.2.0"/>
         <PackageVersion Include="Semi.Avalonia" Version="12.1.0.1"/>
         <PackageVersion Include="Semi.Avalonia.ColorPicker" Version="12.1.0.1"/>
+        <PackageVersion Include="Quick.AvaloniaFonts.SourceHanSansCN" Version="1.0.0" />
     </ItemGroup>
 </Project>

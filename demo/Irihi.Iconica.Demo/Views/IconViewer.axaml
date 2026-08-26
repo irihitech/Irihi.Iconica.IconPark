@@ -97,7 +97,9 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="0,16">
-                            <Expander Theme="{DynamicResource CategoryExpander}">
+                            <Expander
+                                Theme="{DynamicResource CategoryExpander}"
+                                IsExpanded="{OnPlatform {x:True}, Browser={x:False}}">
                                 <Expander.Header>
                                     <TextBlock
                                         u:Anchor.Id="{Binding Category}"

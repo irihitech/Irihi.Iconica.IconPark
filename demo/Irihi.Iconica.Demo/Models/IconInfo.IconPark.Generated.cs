@@ -5,7 +5,42 @@ using Irihi.Iconica.IconPark.Icons;
 namespace Irihi.Iconica.Demo.Models;
 public partial class IconInfo
 {
-    public static List<IconInfo> IconInfos { get; } =
+    public static List<IconInfo> IconInfos { get; } = CreateIconInfos();
+
+    private static List<IconInfo> CreateIconInfos()
+    {
+        var list = new List<IconInfo>(2605);
+        list.AddRange(CreateChunk_0000());
+        list.AddRange(CreateChunk_0001());
+        list.AddRange(CreateChunk_0002());
+        list.AddRange(CreateChunk_0003());
+        list.AddRange(CreateChunk_0004());
+        list.AddRange(CreateChunk_0005());
+        list.AddRange(CreateChunk_0006());
+        list.AddRange(CreateChunk_0007());
+        list.AddRange(CreateChunk_0008());
+        list.AddRange(CreateChunk_0009());
+        list.AddRange(CreateChunk_0010());
+        list.AddRange(CreateChunk_0011());
+        list.AddRange(CreateChunk_0012());
+        list.AddRange(CreateChunk_0013());
+        list.AddRange(CreateChunk_0014());
+        list.AddRange(CreateChunk_0015());
+        list.AddRange(CreateChunk_0016());
+        list.AddRange(CreateChunk_0017());
+        list.AddRange(CreateChunk_0018());
+        list.AddRange(CreateChunk_0019());
+        list.AddRange(CreateChunk_0020());
+        list.AddRange(CreateChunk_0021());
+        list.AddRange(CreateChunk_0022());
+        list.AddRange(CreateChunk_0023());
+        list.AddRange(CreateChunk_0024());
+        list.AddRange(CreateChunk_0025());
+        list.AddRange(CreateChunk_0026());
+        return list;
+    }
+
+    private static List<IconInfo> CreateChunk_0000() =>
     [
         new IconInfo()
         {
@@ -1507,6 +1542,10 @@ public partial class IconInfo
             Keywords = ["ambulance", "救护车", "Ambulance"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.Ambulance)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0001() =>
+    [
         new IconInfo()
         {
             Author = "常留留",
@@ -3007,6 +3046,10 @@ public partial class IconInfo
             Keywords = ["银行", "转账", "bank-transfer", "银行转账", "BankTransfer"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.BankTransfer)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0002() =>
+    [
         new IconInfo()
         {
             Author = "梁超",
@@ -4507,6 +4550,10 @@ public partial class IconInfo
             Keywords = ["面食", "食物", "零食", "早餐", "面包", "bread", "面包", "Bread"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.Bread)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0003() =>
+    [
         new IconInfo()
         {
             Author = "胡玉娜",
@@ -6007,6 +6054,10 @@ public partial class IconInfo
             Keywords = ["值机", "检票", "check-in", "插入", "CheckIn"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.CheckIn)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0004() =>
+    [
         new IconInfo()
         {
             Author = "刘心乐",
@@ -7507,6 +7558,10 @@ public partial class IconInfo
             Keywords = ["颜色滤镜", "滤镜", "过滤", "效果", "特效", "color-filter", "颜色滤镜", "ColorFilter"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.ColorFilter)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0005() =>
+    [
         new IconInfo()
         {
             Author = "常留留",
@@ -9007,6 +9062,10 @@ public partial class IconInfo
             Keywords = ["仪表盘", "汽车", "指针", "表盘", "dashboard-car", "仪表盘", "DashboardCar"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.DashboardCar)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0006() =>
+    [
         new IconInfo()
         {
             Author = "张晏",
@@ -10507,6 +10566,10 @@ public partial class IconInfo
             Keywords = ["文档失败", "文本", "文件", "失败", "doc-fail", "文档失败", "DocFail"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.DocFail)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0007() =>
+    [
         new IconInfo()
         {
             Author = "金磊",
@@ -12007,6 +12070,10 @@ public partial class IconInfo
             Keywords = ["engineering-brand", "工程牌", "EngineeringBrand"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.EngineeringBrand)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0008() =>
+    [
         new IconInfo()
         {
             Author = "杨威",
@@ -13507,6 +13574,10 @@ public partial class IconInfo
             Keywords = ["文件", "编辑", "file-editing", "编辑文件", "FileEditing"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.FileEditing)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0009() =>
+    [
         new IconInfo()
         {
             Author = "齐奉飞",
@@ -15007,6 +15078,10 @@ public partial class IconInfo
             Keywords = ["转换文件", "文件夹", "folder-conversion", "转换文件夹", "FolderConversion"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.FolderConversion)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0010() =>
+    [
         new IconInfo()
         {
             Author = "齐奉飞",
@@ -16507,6 +16582,10 @@ public partial class IconInfo
             Keywords = ["代码共享社区", "开发", "社区", "logo", "小猫", "github-one", "github-one", "GithubOne"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.GithubOne)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0011() =>
+    [
         new IconInfo()
         {
             Author = "杨威",
@@ -18007,6 +18086,10 @@ public partial class IconInfo
             Keywords = ["装饰", "发夹", "发箍", "headwear", "头饰", "Headwear"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.Headwear)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0012() =>
+    [
         new IconInfo()
         {
             Author = "齐奉飞",
@@ -19507,6 +19590,10 @@ public partial class IconInfo
             Keywords = ["圆", "左上投影", "内阴影", "inner-shadow-top-left", "内左上投影", "InnerShadowTopLeft"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.InnerShadowTopLeft)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0013() =>
+    [
         new IconInfo()
         {
             Author = "齐奉飞",
@@ -21007,6 +21094,10 @@ public partial class IconInfo
             Keywords = ["救生圈", "lifebuoy", "救生圈", "Lifebuoy"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.Lifebuoy)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0014() =>
+    [
         new IconInfo()
         {
             Author = "金磊",
@@ -22507,6 +22598,10 @@ public partial class IconInfo
             Keywords = ["遮罩", "蒙版", "阴影", "mask-two", "遮罩", "MaskTwo"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.MaskTwo)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0015() =>
+    [
         new IconInfo()
         {
             Author = "史晓彤",
@@ -24007,6 +24102,10 @@ public partial class IconInfo
             Keywords = ["moving-picture", "图片", "MovingPicture"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.MovingPicture)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0016() =>
+    [
         new IconInfo()
         {
             Author = "金磊",
@@ -25507,6 +25606,10 @@ public partial class IconInfo
             Keywords = ["电脑", "平板", "pad", "游戏", "设备", "pad", "平板电脑", "Pad"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.Pad)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0017() =>
+    [
         new IconInfo()
         {
             Author = "刘心乐",
@@ -27007,6 +27110,10 @@ public partial class IconInfo
             Keywords = ["进度", "百分比", "饼图", "划分", "pie", "进度", "Pie"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.Pie)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0018() =>
+    [
         new IconInfo()
         {
             Author = "白明泽",
@@ -28507,6 +28614,10 @@ public partial class IconInfo
             Keywords = ["排行", "排名", "榜单", "ranking-list", "排行榜", "RankingList"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.RankingList)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0019() =>
+    [
         new IconInfo()
         {
             Author = "齐奉飞",
@@ -30007,6 +30118,10 @@ public partial class IconInfo
             Keywords = ["中心", "焦点", "雷达", "转动", "统计", "图表", "铃铛", "rotate-one", "旋转", "RotateOne"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.RotateOne)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0020() =>
+    [
         new IconInfo()
         {
             Author = "金磊",
@@ -31507,6 +31622,10 @@ public partial class IconInfo
             Keywords = ["船", "舰船", "出行", "海洋", "运输", "交通", "ship", "船", "Ship"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.Ship)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0021() =>
+    [
         new IconInfo()
         {
             Author = "金磊",
@@ -33007,6 +33126,10 @@ public partial class IconInfo
             Keywords = ["思维导图", "分支", "分散", "split-turn-down-left", "左下分支", "SplitTurnDownLeft"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.SplitTurnDownLeft)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0022() =>
+    [
         new IconInfo()
         {
             Author = "高亚栋",
@@ -34507,6 +34630,10 @@ public partial class IconInfo
             Keywords = ["技术", "终端", "命令行", "代码框", "程序", "terminal", "终端", "Terminal"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.Terminal)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0023() =>
+    [
         new IconInfo()
         {
             Author = "田婧",
@@ -36007,6 +36134,10 @@ public partial class IconInfo
             Keywords = ["下降", "向下", "降低", "下跌", "趋势", "trending-down", "趋势下降", "TrendingDown"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.TrendingDown)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0024() =>
+    [
         new IconInfo()
         {
             Author = "常留留",
@@ -37507,6 +37638,10 @@ public partial class IconInfo
             Keywords = ["列表模式", "排列方式", "排版", "view-grid-detail", "详情查看模式", "ViewGridDetail"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.ViewGridDetail)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0025() =>
+    [
         new IconInfo()
         {
             Author = "常留留",
@@ -39007,6 +39142,10 @@ public partial class IconInfo
             Keywords = ["logo", "资金运营平台", "zijinyunying", "资金运营平台", "Zijinyunying"],
             IconType = typeof(Irihi.Iconica.IconPark.Icons.Zijinyunying)
         },
+    ];
+
+    private static List<IconInfo> CreateChunk_0026() =>
+    [
         new IconInfo()
         {
             Author = "常留留",
