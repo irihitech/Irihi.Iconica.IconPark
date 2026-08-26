@@ -1,10 +1,8 @@
-using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Styling;
 using CommunityToolkit.Mvvm.Messaging;
-using Irihi.Iconica.Demo.ViewModels;
 using Irihi.Avalonia.Shared.Helpers;
 
 namespace Irihi.Iconica.Demo.Views;
