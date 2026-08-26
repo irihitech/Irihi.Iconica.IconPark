@@ -1,0 +1,27 @@
+<u:UrsaView xmlns="https://github.com/avaloniaui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:u="https://irihi.tech/ursa"
+            xmlns:views="clr-namespace:Irihi.Iconica.Demo.Views"
+            xmlns:vm="clr-namespace:Irihi.Iconica.Demo.ViewModels"
+            xmlns:iconpark="https://irihi.tech/iconica/iconpark"
+            mc:Ignorable="d" d:DesignWidth="800"
+            d:DesignHeight="450"
+            x:DataType="vm:MainWindowViewModel"
+            x:Class="Irihi.Iconica.Demo.Views.SingleView">
+    <u:UrsaView.RightContent>
+        <StackPanel Orientation="Horizontal">
+            <ComboBox
+                Background="Transparent"
+                MinWidth="100"
+                ItemsSource="{Binding PageNames}"
+                SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay}" />
+            <Button Theme="{DynamicResource BorderlessButton}" Classes="Tertiary" Padding="8" Command="{Binding SaveDialogCommand}">
+                <iconpark:Export Width="16" Height="16" Mode="Fill" StrokeWidth="6" OuterStroke="{DynamicResource SemiGrey8}" />
+            </Button>
+            <u:ThemeToggleButton />
+        </StackPanel>
+    </u:UrsaView.RightContent>
+    <views:MainView />
+</u:UrsaView>

@@ -1,0 +1,18 @@
+using System.Runtime.Versioning;
+using System.Threading.Tasks;
+using Avalonia;
+using Avalonia.Browser;
+
+[assembly: SupportedOSPlatform("browser")]
+
+namespace Irihi.Iconica.Demo.Browser;
+
+internal sealed partial class Program
+{
+    private static Task Main(string[] args) => BuildAvaloniaApp()
+        .WithFont_SourceHanSansCN()
+        .StartBrowserAppAsync("out");
+
+    public static AppBuilder BuildAvaloniaApp()
+        => AppBuilder.Configure<App>();
+}

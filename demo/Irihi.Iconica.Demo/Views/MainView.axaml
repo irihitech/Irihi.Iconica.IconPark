@@ -1,0 +1,21 @@
+<UserControl
+    x:Class="Irihi.Iconica.Demo.Views.MainView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:Irihi.Iconica.Demo.Views"
+    xmlns:vm="using:Irihi.Iconica.Demo.ViewModels"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:MainWindowViewModel"
+    mc:Ignorable="d">
+    <Panel>
+        <views:IconParkPage
+            DataContext="{Binding IconParkPage}"
+            IsVisible="{Binding $parent[UserControl].((vm:MainWindowViewModel)DataContext).IconParkPageVisible}" />
+        <views:TDesignPage
+            DataContext="{Binding TDesignPage}"
+            IsVisible="{Binding $parent[UserControl].((vm:MainWindowViewModel)DataContext).TDesignPageVisible}" />
+    </Panel>
+</UserControl>

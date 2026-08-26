@@ -169,8 +169,7 @@ public abstract class IconParkBase : Avalonia.Controls.Control
     {
         foreach (var pen in _pens)
         {
-            if (pen is not null)
-                pen.Thickness = args.NewValue.Value;
+            pen?.Thickness = args.NewValue.Value;
         }
 
         InvalidateVisual();
@@ -180,8 +179,7 @@ public abstract class IconParkBase : Avalonia.Controls.Control
     {
         foreach (var pen in _pens)
         {
-            if (pen is not null)
-                pen.LineCap = args.NewValue.Value;
+            pen?.LineCap = args.NewValue.Value;
         }
 
         InvalidateVisual();
@@ -191,8 +189,7 @@ public abstract class IconParkBase : Avalonia.Controls.Control
     {
         foreach (var pen in _pens)
         {
-            if (pen is not null)
-                pen.LineJoin = args.NewValue.Value;
+            pen?.LineJoin = args.NewValue.Value;
         }
 
         InvalidateVisual();

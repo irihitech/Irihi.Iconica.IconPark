@@ -1,3 +1,6 @@
 [submodule "iconpark"]
-	path = iconpark
-	url = https://github.com/bytedance/iconpark
+	path = external/iconpark
+	url = git@github.com:bytedance/IconPark.git
+[submodule "tdesign-icons"]
+	path = external/tdesign-icons
+	url = git@github.com:Tencent/tdesign-icons.git

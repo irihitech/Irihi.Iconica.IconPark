@@ -1,0 +1,64 @@
+name: Pack to NuGet
+
+on:
+  workflow_dispatch:
+    inputs:
+      Upload_to_NuGet:
+        description: 'Upload to NuGet'
+        default: true
+        type: boolean
+      Irihi_Iconica_IconPark:
+        description: 'Pack Irihi.Iconica.IconPark'
+        default: true
+        type: boolean
+      Irihi_Iconica_TDesign:
+        description: 'Pack Irihi.Iconica.TDesign'
+        default: true
+        type: boolean
+  workflow_call:
+    inputs:
+      Upload_to_NuGet:
+        type: boolean
+        default: false
+      Irihi_Iconica_IconPark:
+        type: boolean
+        default: true
+      Irihi_Iconica_TDesign:
+        type: boolean
+        default: true
+    secrets: {}
+
+jobs:
+  Pack_to_NuGet:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Pack Irihi.Iconica.IconPark
+        if: ${{ inputs.Irihi_Iconica_IconPark }}
+        run: dotnet pack src/Irihi.Iconica.IconPark -o nugets
+
+      - name: Pack Irihi.Iconica.TDesign
+        if: ${{ inputs.Irihi_Iconica_TDesign }}
+        run: dotnet pack src/Irihi.Iconica.TDesign -o nugets
+
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        if: ${{ inputs.Upload_to_NuGet }}
+        with:
+          user: ${{ secrets.NUGET_USER }}
+
+      - name: NuGet push
+        if: ${{ inputs.Upload_to_NuGet }}
+        run: dotnet nuget push nugets/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: nugets
+          path: nugets
+        if: always()

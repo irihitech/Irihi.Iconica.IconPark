@@ -1,0 +1,31 @@
+<UserControl
+    x:Class="Irihi.Iconica.Demo.Views.IconParkPage"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:Irihi.Iconica.Demo.Views"
+    xmlns:vm="using:Irihi.Iconica.Demo.ViewModels"
+    x:DataType="vm:IconParkPageViewModel"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light" />
+                <ResourceDictionary x:Key="Dark" />
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, *">
+        <Border
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            Padding="16"
+            Theme="{DynamicResource CardBorder}">
+            <views:IconViewer DataContext="{Binding Viewer}" />
+        </Border>
+        <views:IconDetailView Grid.Row="0" Grid.Column="1" DataContext="{Binding Detail}" />
+        <views:IconParkSettingPanelView Grid.Row="1" Grid.Column="1" DataContext="{Binding SettingPanel}" />
+    </Grid>
+</UserControl>
