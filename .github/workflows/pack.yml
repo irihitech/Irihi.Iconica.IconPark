@@ -7,6 +7,10 @@ on:
         description: 'Upload to NuGet'
         default: false
         type: boolean
+      Irihi_Iconica_Core:
+        description: 'Pack Irihi.Iconica.Core'
+        default: true
+        type: boolean
       Irihi_Iconica_IconPark:
         description: 'Pack Irihi.Iconica.IconPark'
         default: false
@@ -36,6 +40,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+
+      - name: Pack Irihi.Iconica.Core
+        if: ${{ inputs.Irihi_Iconica_Core }}
+        run: dotnet pack src/Irihi.Iconica.Core -o nugets
 
       - name: Pack Irihi.Iconica.IconPark
         if: ${{ inputs.Irihi_Iconica_IconPark }}
